@@ -11,6 +11,10 @@
 		657A42302BFCD55C00020DCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422F2BFCD55C00020DCD /* ContentView.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
+		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
+		65AA51C52BFCFFF20097F697 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C42BFCFFF20097F697 /* Core */; };
+		65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C62BFCFFF20097F697 /* CoreUI */; };
+		65AA51C92BFCFFF20097F697 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C82BFCFFF20097F697 /* Networking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		657A422F2BFCD55C00020DCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		65AA51BD2BFCFB2C0097F697 /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreUI; sourceTree = "<group>"; };
+		65AA51BE2BFCFB3F0097F697 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
+		65AA51BF2BFCFB580097F697 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
+		65AA51C02BFCFFC60097F697 /* Cocktails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Cocktails; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +34,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */,
+				65AA51C52BFCFFF20097F697 /* Core in Frameworks */,
+				65AA51C92BFCFFF20097F697 /* Networking in Frameworks */,
+				65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,8 +47,13 @@
 		657A42212BFCD55C00020DCD = {
 			isa = PBXGroup;
 			children = (
+				65AA51C02BFCFFC60097F697 /* Cocktails */,
+				65AA51BF2BFCFB580097F697 /* Networking */,
+				65AA51BE2BFCFB3F0097F697 /* Core */,
+				65AA51BD2BFCFB2C0097F697 /* CoreUI */,
 				657A422C2BFCD55C00020DCD /* CocktailsBuddy */,
 				657A422B2BFCD55C00020DCD /* Products */,
+				65AA51C12BFCFFF20097F697 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		65AA51C12BFCFFF20097F697 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +107,12 @@
 			dependencies = (
 			);
 			name = CocktailsBuddy;
+			packageProductDependencies = (
+				65AA51C22BFCFFF20097F697 /* Cocktails */,
+				65AA51C42BFCFFF20097F697 /* Core */,
+				65AA51C62BFCFFF20097F697 /* CoreUI */,
+				65AA51C82BFCFFF20097F697 /* Networking */,
+			);
 			productName = CocktailsBuddy;
 			productReference = 657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */;
 			productType = "com.apple.product-type.application";
@@ -346,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65AA51C22BFCFFF20097F697 /* Cocktails */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Cocktails;
+		};
+		65AA51C42BFCFFF20097F697 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		65AA51C62BFCFFF20097F697 /* CoreUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreUI;
+		};
+		65AA51C82BFCFFF20097F697 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 657A42222BFCD55C00020DCD /* Project object */;
 }
