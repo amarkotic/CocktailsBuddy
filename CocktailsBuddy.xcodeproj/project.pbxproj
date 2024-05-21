@@ -98,9 +98,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 657A424E2BFCD55D00020DCD /* Build configuration list for PBXNativeTarget "CocktailsBuddy" */;
 			buildPhases = (
+				65D055FD2BFD030A00ED1379 /* Swiftlint */,
+				657A42282BFCD55C00020DCD /* Resources */,
 				657A42262BFCD55C00020DCD /* Sources */,
 				657A42272BFCD55C00020DCD /* Frameworks */,
-				657A42282BFCD55C00020DCD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -162,6 +163,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65D055FD2BFD030A00ED1379 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n    cd \"${SRCROOT}\"\n    swiftlint --strict\nelse\n    echo \"warning: SwiftLint not installed, install it by running:\"\n    echo \"brew install swiftlint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		657A42262BFCD55C00020DCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -212,7 +235,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -275,7 +298,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
