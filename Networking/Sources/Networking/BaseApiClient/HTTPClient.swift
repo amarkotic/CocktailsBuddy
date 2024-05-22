@@ -6,7 +6,7 @@ extension URLSession: HTTPClientProtocol {
     struct HTTPResponseError: Error {}
 
     func publisher(request: URLRequest) -> AnyPublisher<HTTPResponse, Error> {
-        return URLSession.shared.dataTaskPublisher(for: request)
+        dataTaskPublisher(for: request)
             .tryMap { output in
                 guard let httpResponse = output.response as? HTTPURLResponse else {
                     throw NetworkError.invalidResponse
