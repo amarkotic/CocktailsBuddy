@@ -11,7 +11,7 @@ class Repository: RepositoryProtocol {
     func getDetails(id: String) -> AnyPublisher<DetailsRepositoryModel, Error> {
         dataSource
             .getDetails(id: id)
-            .map { _ in DetailsRepositoryModel() }
+            .map { DetailsRepositoryModel(from: $0) }
             .eraseToAnyPublisher()
     }
 

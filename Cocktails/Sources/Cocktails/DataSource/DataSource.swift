@@ -11,7 +11,7 @@ class DataSource: DataSourceProtocol {
     func getDetails(id: String) -> AnyPublisher<DetailsDataSourceModel, Error> {
         networkClient
             .fetchDetails(id: id)
-            .map { _ in DetailsDataSourceModel() }
+            .map { DetailsDataSourceModel(from: $0) }
             .eraseToAnyPublisher()
     }
 
