@@ -2,6 +2,7 @@ import Foundation
 
 public enum NetworkError: Error, LocalizedError {
 
+    case invalidUrl
     case invalidResponse
     case serverError(statusCode: Int)
     case decodingError(Error)
@@ -9,6 +10,8 @@ public enum NetworkError: Error, LocalizedError {
 
     public var errorDescription: String? {
         switch self {
+        case .invalidUrl:
+            return "Invalid url."
         case .invalidResponse:
             return "Invalid response from server."
         case .serverError(let statusCode):

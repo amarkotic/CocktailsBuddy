@@ -2,9 +2,9 @@ import Foundation
 import Combine
 import Core
 
-class BaseAPIClient {
+class BaseApiClient {
 
-    public static let shared = BaseAPIClient()
+    public static let shared = BaseApiClient()
 
     private let httpClient: HTTPClientProtocol
 
@@ -13,11 +13,13 @@ class BaseAPIClient {
     }
 
     func performRequest<T: Decodable>(
-        _ url: URL,
+        _ url: String,
         method: HTTPMethod,
         body: Data? = nil,
         responseType: T.Type
-    ) -> AnyPublisher<T, NetworkError> {
+    ) throws -> AnyPublisher<T, NetworkError> {
+        guard let url = URL(string: url) else { throw NetworkError.invalidUrl }
+
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body

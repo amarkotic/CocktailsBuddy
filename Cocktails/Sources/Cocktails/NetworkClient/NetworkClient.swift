@@ -17,6 +17,7 @@ class NetworkClient: NetworkClientProtocol {
                 method: .get,
                 body: nil,
                 responseType: DetailsNetworkModel.self)
+            .mapError { _ in NetworkError() }
             .eraseToAnyPublisher()
     }
 
