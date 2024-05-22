@@ -1,5 +1,6 @@
-import Combine
 import Foundation
+import Combine
+import Core
 
 class BaseAPIClient {
 
@@ -26,6 +27,8 @@ class BaseAPIClient {
             .map { $0.data }
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
+                Core.Logger.shared.log(error: error)
+
                 switch error {
                 case is URLError:
                     return .networkError(error)
