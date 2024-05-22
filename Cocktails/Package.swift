@@ -12,9 +12,15 @@ let package = Package(
             name: "Cocktails",
             targets: ["Cocktails"]),
     ],
+    dependencies: [
+        .package(name: "Networking", path: "../Networking"),
+    ],
     targets: [
         .target(
-            name: "Cocktails"),
+            name: "Cocktails",
+            dependencies: [
+                "Networking"
+            ]),
         .testTarget(
             name: "CocktailsTests",
             dependencies: ["Cocktails"]),
