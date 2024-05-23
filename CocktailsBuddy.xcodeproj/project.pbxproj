@@ -15,6 +15,7 @@
 		65AA51C52BFCFFF20097F697 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C42BFCFFF20097F697 /* Core */; };
 		65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C62BFCFFF20097F697 /* CoreUI */; };
 		65AA51C92BFCFFF20097F697 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C82BFCFFF20097F697 /* Networking */; };
+		65B919582BFFDD940065BC9D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 65B919572BFFDD940065BC9D /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 				65AA51C52BFCFFF20097F697 /* Core in Frameworks */,
 				65AA51C92BFCFFF20097F697 /* Networking in Frameworks */,
 				65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */,
+				65B919582BFFDD940065BC9D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +115,7 @@
 				65AA51C42BFCFFF20097F697 /* Core */,
 				65AA51C62BFCFFF20097F697 /* CoreUI */,
 				65AA51C82BFCFFF20097F697 /* Networking */,
+				65B919572BFFDD940065BC9D /* Kingfisher */,
 			);
 			productName = CocktailsBuddy;
 			productReference = 657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */;
@@ -142,6 +145,9 @@
 				Base,
 			);
 			mainGroup = 657A42212BFCD55C00020DCD;
+			packageReferences = (
+				65B919562BFFDD940065BC9D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 657A422B2BFCD55C00020DCD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -400,6 +406,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		65B919562BFFDD940065BC9D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = exactVersion;
+				version = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		65AA51C22BFCFFF20097F697 /* Cocktails */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -416,6 +433,11 @@
 		65AA51C82BFCFFF20097F697 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;
+		};
+		65B919572BFFDD940065BC9D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65B919562BFFDD940065BC9D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
