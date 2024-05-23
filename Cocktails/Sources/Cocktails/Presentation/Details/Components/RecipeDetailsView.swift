@@ -28,15 +28,15 @@ struct RecipeDetailsView: View {
     // TODO: - replace mocked images with assets
     func headerView(model: DetailsModel) -> some View {
         HStack {
-            iconView(image: Image(systemName: "tag"), title: model.category)
+            iconView(image: Image.category, title: model.category)
 
             Spacer()
 
-            iconView(image: Image(systemName: "cube"), title: model.glass)
+            iconView(image: Image.glass, title: model.glass)
 
             Spacer()
 
-            iconView(image: Image(systemName: "flame"), title: model.alcoholicType)
+            iconView(image: Image.alcoholic, title: model.alcoholicType)
         }
     }
 
@@ -57,9 +57,10 @@ struct RecipeDetailsView: View {
     @ViewBuilder
     func iconView(image: Image, title: String?) -> some View {
         if let title {
-            VStack(spacing: 8) {
+            VStack(spacing: 12) {
                 image
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 48, height: 48)
                     .background(Color.white)
 
@@ -72,7 +73,7 @@ struct RecipeDetailsView: View {
     @ViewBuilder
     func ingredientsView(_ ingredients: [String]) -> some View {
         MainSectionView(
-            headerLabel: "Ingredients:",
+            headerLabel: LocalizableStrings.ingredientsTitle.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(ingredients, id: \.self) { ingredient in
@@ -86,7 +87,7 @@ struct RecipeDetailsView: View {
     func directionsView(_ directions: String?) -> some View {
         if let directions {
             MainSectionView(
-                headerLabel: "Directions:",
+                headerLabel: LocalizableStrings.directionsTitle.localized,
                 compositionType: .vertical(alignment: .leading)) {
                     Text(directions)
                 }
@@ -97,7 +98,7 @@ struct RecipeDetailsView: View {
     func historyView(_ lastModified: LastModified?) -> some View {
         if let lastModified {
             MainSectionView(
-                headerLabel: "Last modified:",
+                headerLabel: LocalizableStrings.lastModifiedTitle.localized,
                 compositionType: .horizontal(spacing: 4)) {
                     Text(lastModified.description)
                 }

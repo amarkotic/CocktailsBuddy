@@ -32,15 +32,15 @@ enum LastModified {
     var description: String {
         switch self {
         case .today:
-            "Today"
+            LocalizableStrings.today.localized
         case .thisWeek:
-            "This week"
+            LocalizableStrings.thisWeek.localized
         case .thisMonth:
-            "This month"
+            LocalizableStrings.thisMonth.localized
         case .thisYear:
-            "This year"
+            LocalizableStrings.thisYear.localized
         case .yearsAgo(let numberOfYears):
-            "\(numberOfYears) years ago"
+            String(numberOfYears).appending(LocalizableStrings.yearsAgo.localized)
         }
     }
 
