@@ -3,12 +3,12 @@ import Foundation
 public struct DetailsRepositoryModel {
 
     let id: String
-    let name: String
+    let name: String?
     let category: String?
     let glass: String?
     let alcoholicType: String?
     let instructions: String?
-    let thumbnail: String?
+    let imageUrl: String?
     let ingredients: [String]
     let dateModified: Date?
 
@@ -23,7 +23,7 @@ extension DetailsRepositoryModel {
         glass = model.glass
         alcoholicType = model.alcoholicType
         instructions = model.instructions
-        thumbnail = model.thumbnail
+        imageUrl = model.imageUrl
         ingredients = model.ingredients
         dateModified = model.dateModified
     }

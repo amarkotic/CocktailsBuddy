@@ -9,38 +9,24 @@ enum LastModified {
     case yearsAgo(_ numberOfYears: Int)
 
     init?(from dateModified: Date?) {
-        guard let dateModified else { return nil }
+        guard let dateModified = dateModified else { return nil }
 
         let calendar = Calendar.current
         let now = Date()
 
         if calendar.isDateInToday(dateModified) {
             self = .today
-            return
-        }
-
-        if calendar.isDate(dateModified, equalTo: now, toGranularity: .weekOfYear) {
+        } else if calendar.isDate(dateModified, equalTo: now, toGranularity: .weekOfYear) {
             self = .thisWeek
-            return
-        }
-
-        if calendar.isDate(dateModified, equalTo: now, toGranularity: .month) {
+        } else if calendar.isDate(dateModified, equalTo: now, toGranularity: .month) {
             self = .thisMonth
-            return
-        }
-
-        if calendar.isDate(dateModified, equalTo: now, toGranularity: .year) {
+        } else if calendar.isDate(dateModified, equalTo: now, toGranularity: .year) {
             self = .thisYear
-            return
-        }
-
-        let components = calendar.dateComponents([.year], from: dateModified, to: now)
-        if let years = components.year {
+        } else if let years = calendar.dateComponents([.year], from: dateModified, to: now).year {
             self = .yearsAgo(years)
-            return
+        } else {
+            return nil
         }
-
-        return nil
     }
 
     var description: String {

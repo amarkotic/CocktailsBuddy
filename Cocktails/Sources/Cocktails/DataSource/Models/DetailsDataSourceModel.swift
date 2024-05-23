@@ -3,23 +3,23 @@ import Foundation
 public struct DetailsDataSourceModel {
 
     let id: String
-    let name: String
+    let name: String?
     let category: String?
     let glass: String?
     let alcoholicType: String?
     let instructions: String?
-    let thumbnail: String?
+    let imageUrl: String?
     let ingredients: [String]
     let dateModified: Date?
 
     init(from model: DetailsNetworkModel) {
         self.id = model.id
-        self.name = model.name ?? ""
+        self.name = model.name
         self.category = model.category
         self.glass = model.glass
         self.alcoholicType = model.alcoholicType
         self.instructions = model.instructions
-        self.thumbnail = model.thumbnail
+        self.imageUrl = model.imageUrl
         self.ingredients = DetailsDataSourceModel.createIngredientsList(from: model)
         self.dateModified = DateFormatter.date(from: model.dateModified)
     }

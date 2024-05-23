@@ -8,7 +8,7 @@ public struct DetailsNetworkModel: Decodable {
     let glass: String?
     let alcoholicType: String?
     let instructions: String?
-    let thumbnail: String?
+    let imageUrl: String?
     let ingredient1: String?
     let ingredient2: String?
     let ingredient3: String?
@@ -49,7 +49,7 @@ public struct DetailsNetworkModel: Decodable {
         case glass = "strGlass"
         case alcoholicType = "strAlcoholic"
         case instructions = "strInstructions"
-        case thumbnail = "strDrinkThumb"
+        case imageUrl = "strDrinkThumb"
         case ingredient1 = "strIngredient1"
         case ingredient2 = "strIngredient2"
         case ingredient3 = "strIngredient3"
