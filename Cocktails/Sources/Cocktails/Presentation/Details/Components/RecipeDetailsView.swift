@@ -73,7 +73,7 @@ struct RecipeDetailsView: View {
     @ViewBuilder
     func ingredientsView(_ ingredients: [String]) -> some View {
         MainSectionView(
-            headerLabel: "Ingredients:",
+            headerLabel: LocalizableStrings.ingredientsTitle.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(ingredients, id: \.self) { ingredient in
@@ -87,7 +87,7 @@ struct RecipeDetailsView: View {
     func directionsView(_ directions: String?) -> some View {
         if let directions {
             MainSectionView(
-                headerLabel: "Directions:",
+                headerLabel: LocalizableStrings.directionsTitle.localized,
                 compositionType: .vertical(alignment: .leading)) {
                     Text(directions)
                 }
@@ -98,7 +98,7 @@ struct RecipeDetailsView: View {
     func historyView(_ lastModified: LastModified?) -> some View {
         if let lastModified {
             MainSectionView(
-                headerLabel: "Last modified:",
+                headerLabel: LocalizableStrings.lastModifiedTitle.localized,
                 compositionType: .horizontal(spacing: 4)) {
                     Text(lastModified.description)
                 }
