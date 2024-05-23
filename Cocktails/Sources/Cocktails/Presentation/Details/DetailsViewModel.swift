@@ -9,7 +9,7 @@ public class DetailsViewModel: ObservableObject {
     private let useCase: UseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
 
-    public init(useCase: UseCaseProtocol) {
+    init(useCase: UseCaseProtocol) {
         self.useCase = useCase
     }
 

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */; };
-		657A42302BFCD55C00020DCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422F2BFCD55C00020DCD /* ContentView.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
 		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
@@ -16,18 +14,21 @@
 		65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C62BFCFFF20097F697 /* CoreUI */; };
 		65AA51C92BFCFFF20097F697 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C82BFCFFF20097F697 /* Networking */; };
 		65B919582BFFDD940065BC9D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 65B919572BFFDD940065BC9D /* Kingfisher */; };
+		65C811AB2C00091300373E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C811AA2C00091300373E23 /* AppDelegate.swift */; };
+		65C811AD2C00092800373E23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C811AC2C00092800373E23 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyApp.swift; sourceTree = "<group>"; };
-		657A422F2BFCD55C00020DCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65AA51BD2BFCFB2C0097F697 /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreUI; sourceTree = "<group>"; };
 		65AA51BE2BFCFB3F0097F697 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		65AA51BF2BFCFB580097F697 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		65AA51C02BFCFFC60097F697 /* Cocktails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Cocktails; sourceTree = "<group>"; };
+		65C811AA2C00091300373E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65C811AC2C00092800373E23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		65C811AE2C00097B00373E23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +71,11 @@
 		657A422C2BFCD55C00020DCD /* CocktailsBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */,
-				657A422F2BFCD55C00020DCD /* ContentView.swift */,
+				65C811AE2C00097B00373E23 /* Info.plist */,
 				657A42312BFCD55D00020DCD /* Assets.xcassets */,
 				657A42332BFCD55D00020DCD /* Preview Content */,
+				65C811AA2C00091300373E23 /* AppDelegate.swift */,
+				65C811AC2C00092800373E23 /* SceneDelegate.swift */,
 			);
 			path = CocktailsBuddy;
 			sourceTree = "<group>";
@@ -127,7 +129,7 @@
 		657A42222BFCD55C00020DCD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
@@ -196,8 +198,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657A42302BFCD55C00020DCD /* ContentView.swift in Sources */,
-				657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */,
+				65C811AB2C00091300373E23 /* AppDelegate.swift in Sources */,
+				65C811AD2C00092800373E23 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,9 +336,8 @@
 				DEVELOPMENT_TEAM = 4729CGQSC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = CocktailsBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -364,9 +365,8 @@
 				DEVELOPMENT_TEAM = 4729CGQSC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = CocktailsBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
