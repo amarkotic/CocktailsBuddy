@@ -12,9 +12,19 @@ let package = Package(
             name: "Cocktails",
             targets: ["Cocktails"]),
     ],
+    dependencies: [
+        .package(name: "CoreUI", path: "../CoreUI"),
+        .package(name: "Networking", path: "../Networking"),
+        .package(url: "https://github.com/onevcat/Kingfisher.git", exact: "7.11.0")
+    ],
     targets: [
         .target(
-            name: "Cocktails"),
+            name: "Cocktails",
+            dependencies: [
+                "CoreUI",
+                "Networking",
+                .product(name: "Kingfisher", package: "Kingfisher"),
+            ]),
         .testTarget(
             name: "CocktailsTests",
             dependencies: ["Cocktails"]),

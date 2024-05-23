@@ -4,7 +4,7 @@ import Foundation
 public protocol BaseApiClientProtocol {
 
     func performRequest<T: Decodable>(
-        _ url: URL,
+        _ url: String,
         method: HTTPMethod,
         body: Data?,
         responseType: T.Type

@@ -1,0 +1,1 @@
+struct NetworkError: Error { }
