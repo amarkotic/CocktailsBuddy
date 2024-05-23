@@ -28,15 +28,15 @@ struct RecipeDetailsView: View {
     // TODO: - replace mocked images with assets
     func headerView(model: DetailsModel) -> some View {
         HStack {
-            iconView(image: Image(systemName: "tag"), title: model.category)
+            iconView(image: Image.category, title: model.category)
 
             Spacer()
 
-            iconView(image: Image(systemName: "cube"), title: model.glass)
+            iconView(image: Image.glass, title: model.glass)
 
             Spacer()
 
-            iconView(image: Image(systemName: "flame"), title: model.alcoholicType)
+            iconView(image: Image.alcoholic, title: model.alcoholicType)
         }
     }
 
@@ -57,9 +57,10 @@ struct RecipeDetailsView: View {
     @ViewBuilder
     func iconView(image: Image, title: String?) -> some View {
         if let title {
-            VStack(spacing: 8) {
+            VStack(spacing: 12) {
                 image
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 48, height: 48)
                     .background(Color.white)
 
