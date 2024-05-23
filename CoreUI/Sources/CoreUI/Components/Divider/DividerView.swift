@@ -1,12 +1,28 @@
 import SwiftUI
 
-public struct DividerView: View {
+public struct HorizontalDivider: View {
 
-    public init() {}
+    var color: Color
+    var height: CGFloat
+
+    public init(color: Color = .gray, height: CGFloat = 1.0) {
+        self.color = color
+        self.height = height
+    }
 
     public var body: some View {
-        Divider()
-            .foregroundStyle(Color.gray)
+        Rectangle()
+            .foregroundColor(color)
+            .frame(height: height)
+            .opacity(0.5)
+    }
+
+}
+
+struct HorizontalDivider_Previews: PreviewProvider {
+
+    static var previews: some View {
+        HorizontalDivider()
     }
 
 }
