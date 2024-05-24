@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DetailsNetworkModel: Decodable {
+struct DetailsNetworkModel: Decodable {
 
     let id: String
     let name: String?
@@ -82,16 +82,6 @@ public struct DetailsNetworkModel: Decodable {
         case measure15 = "strMeasure15"
         case dateModified
 
-    }
-
-}
-
-public struct DrinksNetworkModel: Decodable {
-
-    let drinks: [DetailsNetworkModel]
-
-    public var firstDrink: DetailsNetworkModel {
-        drinks.first!
     }
 
 }

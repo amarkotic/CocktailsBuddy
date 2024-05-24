@@ -2,12 +2,12 @@ import SwiftUI
 import Kingfisher
 import CoreUI
 
-public struct DetailsView: View {
+struct DetailsView: View {
 
     @StateObject private var viewModel: DetailsViewModel
     let defaultImageHeight: CGFloat = DeviceType.isMobile ? 480 : 600
 
-    public init(viewModel: DetailsViewModel) {
+    init(viewModel: DetailsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DetailsDataSourceModel {
+struct DetailsDataSourceModel {
 
     let id: String
     let name: String?

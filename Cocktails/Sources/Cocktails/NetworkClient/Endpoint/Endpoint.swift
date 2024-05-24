@@ -7,6 +7,10 @@ public enum Endpoint {
 
     case details(_ id: String)
 
+    var urlString: String {
+        Core.ExternalLinks.endpoint + generatePath()
+    }
+
     private var version: Core.ApiVersion {
         switch self {
         default:
@@ -21,17 +25,13 @@ public enum Endpoint {
         }
     }
 
-    func generatePath() -> String {
+    private func generatePath() -> String {
         let combinedPath = String(format: Endpoint.baseApiPath, version.rawValue) + path
 
         switch self {
         case .details(let id):
             return String(format: combinedPath, id)
         }
-    }
-
-    var url: URL? {
-        URL(string: Core.ExternalLinks.endpoint + generatePath())
     }
 
 }

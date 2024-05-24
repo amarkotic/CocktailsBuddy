@@ -1,17 +1,15 @@
 import Combine
 import Foundation
+import Dependencies
 
-public class DetailsViewModel: ObservableObject {
+class DetailsViewModel: ObservableObject {
+
+    @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
     @Published var details: DetailsModel?
     @Published var errorMessage: String?
 
-    private let useCase: UseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
-
-    public init(useCase: UseCaseProtocol) {
-        self.useCase = useCase
-    }
 
     func fetchDetails(id: String) {
         useCase

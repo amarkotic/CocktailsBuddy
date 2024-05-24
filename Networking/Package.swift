@@ -14,12 +14,14 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Core", path: "../Core"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", exact: "1.3.0")
     ],
     targets: [
         .target(
             name: "Networking",
             dependencies: [
-                "Core"
+                "Core",
+                .product(name: "Dependencies", package: "swift-dependencies")
             ]),
         .testTarget(
             name: "NetworkingTests",
