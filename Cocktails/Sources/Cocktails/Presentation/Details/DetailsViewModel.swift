@@ -8,10 +8,15 @@ class DetailsViewModel: ObservableObject {
 
     @Published var details: DetailsModel?
     @Published var errorMessage: String?
+    let id: String
 
     private var cancellables = Set<AnyCancellable>()
 
-    func fetchDetails(id: String) {
+    init(id: String) {
+        self.id = id
+    }
+
+    func fetchDetails() {
         useCase
             .getDetails(id: id)
             .receive(on: DispatchQueue.main)
