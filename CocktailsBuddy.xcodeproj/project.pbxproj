@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */; };
-		657A42302BFCD55C00020DCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422F2BFCD55C00020DCD /* ContentView.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
 		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
@@ -16,12 +15,13 @@
 		65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C62BFCFFF20097F697 /* CoreUI */; };
 		65AA51C92BFCFFF20097F697 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C82BFCFFF20097F697 /* Networking */; };
 		65B919582BFFDD940065BC9D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 65B919572BFFDD940065BC9D /* Kingfisher */; };
+		65F2BD6F2C00A2D2000CEF22 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 65F2BD6E2C00A2D2000CEF22 /* Dependencies */; };
+		65F2BD712C00A2D2000CEF22 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 65F2BD702C00A2D2000CEF22 /* DependenciesMacros */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyApp.swift; sourceTree = "<group>"; };
-		657A422F2BFCD55C00020DCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65AA51BD2BFCFB2C0097F697 /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreUI; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 				65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */,
 				65AA51C52BFCFFF20097F697 /* Core in Frameworks */,
 				65AA51C92BFCFFF20097F697 /* Networking in Frameworks */,
+				65F2BD6F2C00A2D2000CEF22 /* Dependencies in Frameworks */,
+				65F2BD712C00A2D2000CEF22 /* DependenciesMacros in Frameworks */,
 				65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */,
 				65B919582BFFDD940065BC9D /* Kingfisher in Frameworks */,
 			);
@@ -71,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */,
-				657A422F2BFCD55C00020DCD /* ContentView.swift */,
 				657A42312BFCD55D00020DCD /* Assets.xcassets */,
 				657A42332BFCD55D00020DCD /* Preview Content */,
 			);
@@ -116,6 +117,8 @@
 				65AA51C62BFCFFF20097F697 /* CoreUI */,
 				65AA51C82BFCFFF20097F697 /* Networking */,
 				65B919572BFFDD940065BC9D /* Kingfisher */,
+				65F2BD6E2C00A2D2000CEF22 /* Dependencies */,
+				65F2BD702C00A2D2000CEF22 /* DependenciesMacros */,
 			);
 			productName = CocktailsBuddy;
 			productReference = 657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */;
@@ -147,6 +150,7 @@
 			mainGroup = 657A42212BFCD55C00020DCD;
 			packageReferences = (
 				65B919562BFFDD940065BC9D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				65F2BD6D2C00A2D2000CEF22 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			productRefGroup = 657A422B2BFCD55C00020DCD /* Products */;
 			projectDirPath = "";
@@ -196,7 +200,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657A42302BFCD55C00020DCD /* ContentView.swift in Sources */,
 				657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +418,14 @@
 				version = 7.11.0;
 			};
 		};
+		65F2BD6D2C00A2D2000CEF22 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -438,6 +449,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65B919562BFFDD940065BC9D /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		65F2BD6E2C00A2D2000CEF22 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65F2BD6D2C00A2D2000CEF22 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		65F2BD702C00A2D2000CEF22 /* DependenciesMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65F2BD6D2C00A2D2000CEF22 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = DependenciesMacros;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

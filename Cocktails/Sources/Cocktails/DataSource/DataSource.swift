@@ -1,18 +1,26 @@
 import Combine
+import Dependencies
 
-class DataSource: DataSourceProtocol {
+class DataSource: DataSourceProtocol, DependencyKey {
 
-    private let networkClient: NetworkClientProtocol
+    static var liveValue: any DataSourceProtocol = DataSource()
 
-    init(networkClient: NetworkClientProtocol) {
-        self.networkClient = networkClient
-    }
+    @Dependency(\.networkClient) private var networkClient: NetworkClientProtocol
 
     func getDetails(id: String) -> AnyPublisher<DetailsDataSourceModel, Error> {
         networkClient
             .fetchDetails(id: id)
-            .map { DetailsDataSourceModel(from: $0) }
+            .map { DetailsDataSourceModel(from: $0.firstDrink) }
             .eraseToAnyPublisher()
+    }
+
+}
+
+extension DependencyValues {
+
+    var dataSource: DataSourceProtocol {
+        get { self[DataSource.self] }
+        set { self[DataSource.self] = newValue }
     }
 
 }

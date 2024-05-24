@@ -1,24 +1,32 @@
-import Combine
 import Foundation
+import Combine
+import Dependencies
 import Networking
 
-class NetworkClient: NetworkClientProtocol {
+class NetworkClient: NetworkClientProtocol, DependencyKey {
 
-    private let baseApiClient: BaseApiClientProtocol
+    static var liveValue: any NetworkClientProtocol = NetworkClient()
 
-    private init(baseApiClient: BaseApiClientProtocol) {
-        self.baseApiClient = baseApiClient
-    }
+    @Dependency(\.baseApiClient) private var baseApiClient: BaseApiClientProtocol
 
-    func fetchDetails(id: String) -> AnyPublisher<DetailsNetworkModel, Error> {
+    func fetchDetails(id: String) -> AnyPublisher<DrinksNetworkModel, Error> {
         baseApiClient
             .performRequest(
-                Endpoint.details(id).generatePath(),
+                Endpoint.details(id).urlString,
                 method: .get,
                 body: nil,
-                responseType: DetailsNetworkModel.self)
+                responseType: DrinksNetworkModel.self)
             .mapError { _ in NetworkError() }
             .eraseToAnyPublisher()
+    }
+
+}
+
+extension DependencyValues {
+
+    var networkClient: NetworkClientProtocol {
+        get { self[NetworkClient.self] }
+        set { self[NetworkClient.self] = newValue }
     }
 
 }

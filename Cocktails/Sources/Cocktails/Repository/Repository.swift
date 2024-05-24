@@ -1,18 +1,26 @@
 import Combine
+import Dependencies
 
-class Repository: RepositoryProtocol {
+class Repository: RepositoryProtocol, DependencyKey {
 
-    private let dataSource: DataSourceProtocol
+    static var liveValue: any RepositoryProtocol = Repository()
 
-    init(dataSource: DataSourceProtocol) {
-        self.dataSource = dataSource
-    }
+    @Dependency(\.dataSource) private var dataSource: DataSourceProtocol
 
     func getDetails(id: String) -> AnyPublisher<DetailsRepositoryModel, Error> {
         dataSource
             .getDetails(id: id)
             .map { DetailsRepositoryModel(from: $0) }
             .eraseToAnyPublisher()
+    }
+
+}
+
+extension DependencyValues {
+
+    var repository: RepositoryProtocol {
+        get { self[Repository.self] }
+        set { self[Repository.self] = newValue }
     }
 
 }
