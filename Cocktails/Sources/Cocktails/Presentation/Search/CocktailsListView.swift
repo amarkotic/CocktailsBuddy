@@ -8,10 +8,14 @@ struct CocktailsListView: View {
 
     public var body: some View {
         NavigationStack {
-            VStack {
-                searchHeaderView
+            ZStack(alignment: .bottom) {
+                VStack {
+                    searchHeaderView
 
-                listView
+                    listView
+                }
+
+                feelingLuckyButton
             }
             .background(Color.blue)
         }
@@ -64,6 +68,19 @@ struct CocktailsListView: View {
             }
             .padding(.all, 16)
             .padding(.top, 16)
+        }
+    }
+
+    @ViewBuilder
+    private var feelingLuckyButton: some View {
+        NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: nil))) {
+            Text(LocalizableStrings.feelingLucky.localized.uppercased())
+                .fontWeight(.bold)
+                .foregroundStyle(Color.white)
+                .padding(.horizontal, 40)
+                .padding(.vertical, 16)
+                .background(Color.blue)
+                .cornerRadius(16)
         }
     }
 
