@@ -23,8 +23,18 @@ struct CocktailsListView: View {
 
     @ViewBuilder
     private var searchHeaderView: some View {
-        SearchBarView(query: $viewModel.query)
-            .padding([.horizontal, .top], 16)
+        HStack(spacing: 16) {
+            SearchBarView(query: $viewModel.query)
+
+            NavigationLink(destination: FilterView(viewModel: FilterViewModel())) {
+                if viewModel.query.isEmpty {
+                    Image.filter
+                        .resizable()
+                        .frame(width: 32, height: 32)
+                }
+            }
+        }
+        .padding([.horizontal, .top], 16)
     }
 
     @ViewBuilder
