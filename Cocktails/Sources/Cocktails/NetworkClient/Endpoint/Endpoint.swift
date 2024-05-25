@@ -6,6 +6,7 @@ public enum Endpoint {
     private static let baseApiPath = "/api/json/%@/1"
 
     case details(_ id: String)
+    case search(_ query: String)
 
     var urlString: String {
         Core.ExternalLinks.endpoint + generatePath()
@@ -22,6 +23,8 @@ public enum Endpoint {
         switch self {
         case .details:
             return "/lookup.php?i=%@"
+        case .search:
+            return "/search.php?s=%@"
         }
     }
 
@@ -31,6 +34,8 @@ public enum Endpoint {
         switch self {
         case .details(let id):
             return String(format: combinedPath, id)
+        case .search(let query):
+            return String(format: combinedPath, query)
         }
     }
 

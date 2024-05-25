@@ -14,6 +14,13 @@ class DataSource: DataSourceProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    func searchCocktails(query: String) -> AnyPublisher<[CocktailDataSourceModel], Error> {
+        networkClient
+            .searchCocktails(query)
+            .map { $0.drinks.map { CocktailDataSourceModel(from: $0) } }
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {

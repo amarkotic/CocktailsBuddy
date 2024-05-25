@@ -4,12 +4,9 @@ import CoreUI
 
 struct DetailsView: View {
 
-    @StateObject private var viewModel: DetailsViewModel
-    let defaultImageHeight: CGFloat = DeviceType.isMobile ? 480 : 600
+    @StateObject var viewModel: DetailsViewModel
 
-    init(viewModel: DetailsViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    private let defaultImageHeight: CGFloat = DeviceType.isMobile ? 480 : 600
 
     public var body: some View {
         VStack(alignment: .leading) {
@@ -23,9 +20,16 @@ struct DetailsView: View {
                 .edgesIgnoringSafeArea(.all)
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
         .onAppear {
-            viewModel.fetchDetails(id: "11000")
+            viewModel.fetchDetails()
         }
     }
+
+}
+
+#Preview {
+
+    DetailsView(viewModel: DetailsViewModel.init(id: "11000"))
 
 }

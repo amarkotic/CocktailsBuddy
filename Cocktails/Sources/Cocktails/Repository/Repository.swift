@@ -14,6 +14,13 @@ class Repository: RepositoryProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    func searchCocktails(query: String) -> AnyPublisher<[CocktailRepositoryModel], Error> {
+        dataSource
+            .searchCocktails(query: query)
+            .map { $0.map { CocktailRepositoryModel(from: $0) } }
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {

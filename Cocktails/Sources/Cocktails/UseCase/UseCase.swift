@@ -14,6 +14,14 @@ class UseCase: UseCaseProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    func searchCocktails(query: String) -> AnyPublisher<[CocktailCardModel], Never> {
+        repository
+            .searchCocktails(query: query)
+            .map { $0.map { CocktailCardModel(from: $0)} }
+            .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {

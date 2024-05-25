@@ -7,3 +7,6 @@
 "ingredients.title" = "Ingredients:";
 "directions.title" = "Directions:";
 "last.modified.title" = "Last modified:";
+
+"no.search.result" = "No search result for %@";
+"cocktail" = "Cocktail";
