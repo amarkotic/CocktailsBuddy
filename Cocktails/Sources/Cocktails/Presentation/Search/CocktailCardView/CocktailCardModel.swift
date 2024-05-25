@@ -17,12 +17,10 @@ struct CocktailCardModel: Identifiable {
 
 extension CocktailCardModel {
 
-    init(from model: DetailsDataSourceModel) {
+    init(from model: CocktailRepositoryModel) {
         id = model.id
-        title = model.name ?? LocalizableStrings.cocktail.localized
-        description = [model.alcoholicType, model.category, model.glass]
-            .compactMap { $0 }
-            .joined(separator: ", ")
+        title = model.title ?? LocalizableStrings.cocktail.localized
+        description = model.description
         imageUrl = model.imageUrl
     }
 

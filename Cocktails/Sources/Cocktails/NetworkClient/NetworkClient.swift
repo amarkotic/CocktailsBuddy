@@ -20,6 +20,17 @@ class NetworkClient: NetworkClientProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    func searchCocktails(_ query: String) -> AnyPublisher<DrinksNetworkModel, Error> {
+        baseApiClient
+            .performRequest(
+                Endpoint.search(query).urlString,
+                method: .get,
+                body: nil,
+                responseType: DrinksNetworkModel.self)
+            .mapError { _ in NetworkError() }
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {
