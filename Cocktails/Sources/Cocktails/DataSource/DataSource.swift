@@ -7,7 +7,7 @@ class DataSource: DataSourceProtocol, DependencyKey {
 
     @Dependency(\.networkClient) private var networkClient: NetworkClientProtocol
 
-    func getDetails(id: String) -> AnyPublisher<DetailsDataSourceModel, Error> {
+    func getDetails(id: String?) -> AnyPublisher<DetailsDataSourceModel, Error> {
         networkClient
             .fetchDetails(id: id)
             .map { DetailsDataSourceModel(from: $0.firstDrink) }

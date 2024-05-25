@@ -8,11 +8,11 @@ class DetailsViewModel: ObservableObject {
 
     @Published var details: DetailsModel?
     @Published var errorMessage: String?
-    let id: String
+    let id: String?
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(id: String) {
+    init(id: String?) {
         self.id = id
     }
 

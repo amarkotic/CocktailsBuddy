@@ -7,6 +7,7 @@ public enum Endpoint {
 
     case details(_ id: String)
     case search(_ query: String)
+    case randomDetails
 
     var urlString: String {
         Core.ExternalLinks.endpoint + generatePath()
@@ -25,6 +26,8 @@ public enum Endpoint {
             return "/lookup.php?i=%@"
         case .search:
             return "/search.php?s=%@"
+        case .randomDetails:
+            return "/random.php"
         }
     }
 
@@ -36,6 +39,8 @@ public enum Endpoint {
             return String(format: combinedPath, id)
         case .search(let query):
             return String(format: combinedPath, query)
+        case .randomDetails:
+            return combinedPath
         }
     }
 
