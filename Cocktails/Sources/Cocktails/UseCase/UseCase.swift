@@ -7,7 +7,7 @@ class UseCase: UseCaseProtocol, DependencyKey {
 
     @Dependency(\.repository) private var repository: RepositoryProtocol
 
-    func getDetails(id: String) -> AnyPublisher<DetailsModel, Error> {
+    func getDetails(id: String?) -> AnyPublisher<DetailsModel, Error> {
         repository
             .getDetails(id: id)
             .map { DetailsModel(from: $0) }

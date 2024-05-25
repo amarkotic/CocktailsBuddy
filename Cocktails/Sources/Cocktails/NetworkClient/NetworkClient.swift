@@ -9,10 +9,17 @@ class NetworkClient: NetworkClientProtocol, DependencyKey {
 
     @Dependency(\.baseApiClient) private var baseApiClient: BaseApiClientProtocol
 
-    func fetchDetails(id: String) -> AnyPublisher<DrinksNetworkModel, Error> {
-        baseApiClient
+    func fetchDetails(id: String?) -> AnyPublisher<DrinksNetworkModel, Error> {
+        let url: String
+        if let id {
+            url = Endpoint.details(id).urlString
+        } else {
+            url = Endpoint.randomDetails.urlString
+        }
+
+        return baseApiClient
             .performRequest(
-                Endpoint.details(id).urlString,
+                url,
                 method: .get,
                 body: nil,
                 responseType: DrinksNetworkModel.self)

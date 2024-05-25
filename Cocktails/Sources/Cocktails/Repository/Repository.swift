@@ -7,7 +7,7 @@ class Repository: RepositoryProtocol, DependencyKey {
 
     @Dependency(\.dataSource) private var dataSource: DataSourceProtocol
 
-    func getDetails(id: String) -> AnyPublisher<DetailsRepositoryModel, Error> {
+    func getDetails(id: String?) -> AnyPublisher<DetailsRepositoryModel, Error> {
         dataSource
             .getDetails(id: id)
             .map { DetailsRepositoryModel(from: $0) }

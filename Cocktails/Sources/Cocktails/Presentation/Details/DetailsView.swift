@@ -20,7 +20,6 @@ struct DetailsView: View {
                 .edgesIgnoringSafeArea(.all)
             }
         }
-        .toolbar(.hidden, for: .navigationBar)
         .onAppear {
             viewModel.fetchDetails()
         }
