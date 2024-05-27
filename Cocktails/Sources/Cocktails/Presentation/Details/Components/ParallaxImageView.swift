@@ -33,7 +33,7 @@ struct ParallaxImageView: View {
 #Preview {
 
     ScrollView {
-        let url = DetailsModel.mock.url
+        let url = CocktailModel.mock.url
         let defaultHeight: CGFloat = 480
 
         return ParallaxImageView(imageUrl: url, defaultHeight: defaultHeight)

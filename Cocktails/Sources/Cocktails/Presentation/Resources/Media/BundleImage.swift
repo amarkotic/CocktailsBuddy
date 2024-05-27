@@ -2,10 +2,10 @@ import SwiftUI
 
 public enum BundleImage: String {
 
-    case search
-    case searchCancel
-    case radioButton
-    case radioButtonSelected
+    case alcoholic
+    case category
+    case glass
+    case filter
 
     public var image: Image {
         Image(self.rawValue, bundle: .module)

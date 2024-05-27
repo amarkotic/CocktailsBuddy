@@ -3,9 +3,9 @@ import CoreUI
 
 struct RecipeDetailsView: View {
 
-    private var details: DetailsModel
+    private var details: CocktailModel
 
-    init(details: DetailsModel) {
+    init(details: CocktailModel) {
         self.details = details
     }
 
@@ -26,7 +26,7 @@ struct RecipeDetailsView: View {
     }
 
     // TODO: - replace mocked images with assets
-    func headerView(model: DetailsModel) -> some View {
+    func headerView(model: CocktailModel) -> some View {
         HStack {
             iconView(image: Image.category, title: model.category)
 
@@ -40,7 +40,7 @@ struct RecipeDetailsView: View {
         }
     }
 
-    func contentView(model: DetailsModel) -> some View {
+    func contentView(model: CocktailModel) -> some View {
         VStack(alignment: .leading, spacing: 24) {
             ingredientsView(details.ingredients)
 
@@ -110,7 +110,7 @@ struct RecipeDetailsView: View {
 #Preview {
 
     ScrollView {
-        RecipeDetailsView(details: DetailsModel.mock)
+        RecipeDetailsView(details: CocktailModel.mock)
     }
 
 }
