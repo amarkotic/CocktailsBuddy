@@ -22,6 +22,21 @@ class UseCase: UseCaseProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    var allFilters: AnyPublisher<CocktailFilterModel, Error> {
+        Publishers.Zip3(
+            repository.getFilter(for: .alcohol),
+            repository.getFilter(for: .glass),
+            repository.getFilter(for: .category))
+        .map { alcoholicResponse, glassResponse, categoryResponse in
+            CocktailFilterModel(
+                alcoholicFilterItems: alcoholicResponse.items,
+                glassFilterItems: glassResponse.items,
+                categoryFilterItems: categoryResponse.items
+            )
+        }
+        .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {

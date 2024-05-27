@@ -5,19 +5,26 @@ class Repository: RepositoryProtocol, DependencyKey {
 
     static var liveValue: any RepositoryProtocol = Repository()
 
-    @Dependency(\.dataSource) private var dataSource: DataSourceProtocol
+    @Dependency(\.networkDataSource) private var networkDataSource: NetworkDataSourceProtocol
 
     func getDetails(id: String?) -> AnyPublisher<DetailsRepositoryModel, Error> {
-        dataSource
-            .getDetails(id: id)
-            .map { DetailsRepositoryModel(from: $0) }
+        networkDataSource
+            .fetchDetails(id: id)
+            .map { DetailsRepositoryModel(from: DetailsDataSourceModel(from: $0.firstDrink)) }
             .eraseToAnyPublisher()
     }
 
     func searchCocktails(query: String) -> AnyPublisher<[CocktailRepositoryModel], Error> {
-        dataSource
-            .searchCocktails(query: query)
-            .map { $0.map { CocktailRepositoryModel(from: $0) } }
+        networkDataSource
+            .searchCocktails(query)
+            .map { $0.drinks.map { CocktailRepositoryModel(from: CocktailDataSourceModel(from: $0)) } }
+            .eraseToAnyPublisher()
+    }
+
+    func getFilter(for type: FilterType) -> AnyPublisher<FilterRepositoryModel, Error> {
+        networkDataSource
+            .fetchFilter(for: type)
+            .map { FilterRepositoryModel(from: $0) }
             .eraseToAnyPublisher()
     }
 

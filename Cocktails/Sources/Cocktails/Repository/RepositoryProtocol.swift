@@ -6,4 +6,6 @@ protocol RepositoryProtocol {
 
     func searchCocktails(query: String) -> AnyPublisher<[CocktailRepositoryModel], Error>
 
+    func getFilter(for type: FilterType) -> AnyPublisher<FilterRepositoryModel, Error>
+
 }
