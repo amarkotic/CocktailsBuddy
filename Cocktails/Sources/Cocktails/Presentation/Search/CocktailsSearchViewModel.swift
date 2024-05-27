@@ -29,8 +29,4 @@ class CocktailsSearchViewModel: ObservableObject {
             .assign(to: &$items)
     }
 
-    func applyFilterResults(_ results: [CocktailSearchCardModel]) {
-        items = results
-    }
-
 }
