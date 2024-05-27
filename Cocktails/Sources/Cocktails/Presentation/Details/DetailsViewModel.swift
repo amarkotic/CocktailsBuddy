@@ -6,7 +6,7 @@ class DetailsViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var details: DetailsModel?
+    @Published var details: CocktailModel?
     @Published var errorMessage: String?
     let id: String?
 

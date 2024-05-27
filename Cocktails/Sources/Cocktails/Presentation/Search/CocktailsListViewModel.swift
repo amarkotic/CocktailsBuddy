@@ -6,7 +6,7 @@ class CocktailsListViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var items: [CocktailCardModel] = []
+    @Published var items: [CocktailSearchCardModel] = []
     @Published var query: String = ""
 
     private var cancellables = Set<AnyCancellable>()

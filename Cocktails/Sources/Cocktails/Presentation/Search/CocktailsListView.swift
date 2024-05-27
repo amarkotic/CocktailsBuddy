@@ -56,7 +56,7 @@ struct CocktailsListView: View {
     private var searchResultsView: some View {
         ForEach(viewModel.items) { item in
             NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: item.id))) {
-                CocktailCardView(model: item)
+                CocktailSearchCardView(model: item)
             }
             .buttonStyle(PlainButtonStyle())
 

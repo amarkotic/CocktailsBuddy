@@ -1,6 +1,6 @@
 import Foundation
 
-struct DetailsDataSourceModel {
+struct CocktailRepositoryModel {
 
     let id: String
     let name: String?
@@ -12,7 +12,7 @@ struct DetailsDataSourceModel {
     let ingredients: [String]
     let dateModified: Date?
 
-    init(from model: DetailsNetworkModel) {
+    init(from model: CocktailResponse) {
         self.id = model.id
         self.name = model.name
         self.category = model.category
@@ -20,11 +20,11 @@ struct DetailsDataSourceModel {
         self.alcoholicType = model.alcoholicType
         self.instructions = model.instructions
         self.imageUrl = model.imageUrl
-        self.ingredients = DetailsDataSourceModel.createIngredientsList(from: model)
+        self.ingredients = CocktailRepositoryModel.createIngredientsList(from: model)
         self.dateModified = DateFormatter.date(from: model.dateModified)
     }
 
-    private static func createIngredientsList(from model: DetailsNetworkModel) -> [String] {
+    private static func createIngredientsList(from model: CocktailResponse) -> [String] {
         var ingredients: [String] = []
 
         let ingredientMeasures = [

@@ -1,6 +1,6 @@
 import Foundation
 
-struct DetailsModel {
+struct CocktailModel {
 
     let id: String
     let name: String?
@@ -20,9 +20,9 @@ struct DetailsModel {
 
 }
 
-extension DetailsModel {
+extension CocktailModel {
 
-    init(from model: DetailsRepositoryModel) {
+    init(from model: CocktailRepositoryModel) {
         id = model.id
         name = model.name
         category = model.category
@@ -37,10 +37,10 @@ extension DetailsModel {
 }
 
 // swiftlint:disable line_length
-extension DetailsModel {
+extension CocktailModel {
 
-    static var mock: DetailsModel {
-        DetailsModel(
+    static var mock: CocktailModel {
+        CocktailModel(
             id: "11007",
             name: "Margarita",
             category: "Cocktail",

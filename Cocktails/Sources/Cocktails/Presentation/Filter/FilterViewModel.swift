@@ -10,7 +10,7 @@ class FilterViewModel: ObservableObject {
     @Published var selectedGlass: String?
     @Published var selectedAlcohol: String?
 
-    @Published public var filterModel: CocktailFilterModel = .empty
+    @Published public var filtersModel: FiltersModel = .empty
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -20,8 +20,8 @@ class FilterViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in },
-                receiveValue: { filterModel in
-                    self.filterModel = filterModel
+                receiveValue: { filtersModel in
+                    self.filtersModel = filtersModel
                 })
             .store(in: &cancellables)
     }

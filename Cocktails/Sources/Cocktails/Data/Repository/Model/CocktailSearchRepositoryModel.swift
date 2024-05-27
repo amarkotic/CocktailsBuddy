@@ -1,19 +1,19 @@
 import Foundation
 
-struct CocktailDataSourceModel {
+struct CocktailSearchRepositoryModel {
 
     let id: String
-    let title: String?
+    let name: String?
     let description: String
     let imageUrl: String?
 
 }
 
-extension CocktailDataSourceModel {
+extension CocktailSearchRepositoryModel {
 
-    init(from model: DetailsNetworkModel) {
+    init(from model: CocktailSearchResponse) {
         id = model.id
-        title = model.name
+        name = model.name
         description = [model.alcoholicType, model.category, model.glass]
             .compactMap { $0 }
             .joined(separator: ", ")

@@ -15,10 +15,6 @@ struct Endpoint {
           return components.url
       }
 
-}
-
-extension Endpoint {
-
     init(path: String, items: [URLQueryItem] = []) {
         self.path = "\(EndpointConfiguration.basePath)/\(EndpointConfiguration.apiVersion)\(path)"
         self.queryItems = items

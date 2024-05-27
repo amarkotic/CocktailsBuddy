@@ -8,7 +8,7 @@ struct FilterRepositoryModel {
 
 extension FilterRepositoryModel {
 
-    init(from response: FilterResponse) {
+    init(from response: FiltersResponse) {
         self.items = response.drinks.map { $0.name }
     }
 

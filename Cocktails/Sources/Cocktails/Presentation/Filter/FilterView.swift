@@ -31,7 +31,7 @@ struct FilterView: View {
             headerLabel: LocalizableStrings.category.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filterModel.alcoholicFilterItems, id: \.self) { item in
+                    ForEach(viewModel.filtersModel.alcoholicFilterItems, id: \.self) { item in
                         RadioButton(title: item, isSelected: viewModel.selectedCategory == item) {
                             viewModel.selectedCategory = item
                         }
@@ -46,7 +46,7 @@ struct FilterView: View {
             headerLabel: LocalizableStrings.glass.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filterModel.glassFilterItems, id: \.self) { item in
+                    ForEach(viewModel.filtersModel.glassFilterItems, id: \.self) { item in
                         RadioButton(title: item, isSelected: viewModel.selectedGlass == item) {
                             viewModel.selectedGlass = item
                         }
@@ -61,7 +61,7 @@ struct FilterView: View {
             headerLabel: LocalizableStrings.alcohol.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filterModel.categoryFilterItems, id: \.self) { item in
+                    ForEach(viewModel.filtersModel.categoryFilterItems, id: \.self) { item in
                         RadioButton(title: item, isSelected: viewModel.selectedAlcohol == item) {
                             viewModel.selectedAlcohol = item
                         }

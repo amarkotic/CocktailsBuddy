@@ -7,23 +7,23 @@ class Repository: RepositoryProtocol, DependencyKey {
 
     @Dependency(\.networkDataSource) private var networkDataSource: NetworkDataSourceProtocol
 
-    func getDetails(id: String?) -> AnyPublisher<DetailsRepositoryModel, Error> {
+    func getDetails(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
         networkDataSource
-            .fetchDetails(id: id)
-            .map { DetailsRepositoryModel(from: DetailsDataSourceModel(from: $0.firstDrink)) }
+            .fetchCocktailDetails(id: id)
+            .map { CocktailRepositoryModel(from: $0) }
             .eraseToAnyPublisher()
     }
 
-    func searchCocktails(query: String) -> AnyPublisher<[CocktailRepositoryModel], Error> {
+    func searchCocktails(query: String) -> AnyPublisher<[CocktailSearchRepositoryModel], Error> {
         networkDataSource
             .searchCocktails(query)
-            .map { $0.drinks.map { CocktailRepositoryModel(from: CocktailDataSourceModel(from: $0)) } }
+            .map { $0.drinks.map { CocktailSearchRepositoryModel(from: $0) } }
             .eraseToAnyPublisher()
     }
 
     func getFilter(for type: FilterType) -> AnyPublisher<FilterRepositoryModel, Error> {
         networkDataSource
-            .fetchFilter(for: type)
+            .fetchFilters(for: type)
             .map { FilterRepositoryModel(from: $0) }
             .eraseToAnyPublisher()
     }
