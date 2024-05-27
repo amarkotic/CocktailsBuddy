@@ -38,7 +38,7 @@ public struct MainSectionView<Content: View>: View {
     }
 
     var header: some View {
-        Text(headerLabel)
+        Text(headerLabel.appending(":"))
             .font(.headline)
             .foregroundStyle(Color.black)
     }
