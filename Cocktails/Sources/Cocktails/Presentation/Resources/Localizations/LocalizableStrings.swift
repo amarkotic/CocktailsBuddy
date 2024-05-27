@@ -16,6 +16,10 @@ enum LocalizableStrings: String, Localizable {
     case cocktail
     case feelingLucky = "feeling.lucky"
 
+    case category
+    case glass
+    case alcohol
+
     public var localized: String {
         rawValue.localize(bundle: .module)
     }
