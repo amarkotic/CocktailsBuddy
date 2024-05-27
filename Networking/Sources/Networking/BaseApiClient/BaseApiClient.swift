@@ -10,20 +10,19 @@ class BaseApiClient: BaseApiClientProtocol, DependencyKey {
     private let httpClient: HTTPClientProtocol = URLSession.shared
 
     func performRequest<T: Decodable>(
-        _ url: String,
+        _ url: URL?,
         method: HTTPMethod,
         body: Data? = nil,
         responseType: T.Type
     ) -> AnyPublisher<T, NetworkError> {
         Future<URLRequest, NetworkError> { promise in
-            guard let url = URL(string: url) else {
+            guard let url = url else {
                 return promise(.failure(.invalidUrl))
             }
 
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
             request.httpBody = body
-
             promise(.success(request))
         }
         .flatMap { request in
