@@ -8,4 +8,6 @@ protocol UseCaseProtocol {
 
     var allFilters: AnyPublisher<FiltersModel, Error> { get }
 
+    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never>
+
 }

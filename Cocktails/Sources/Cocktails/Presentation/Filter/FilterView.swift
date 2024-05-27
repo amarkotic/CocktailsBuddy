@@ -3,26 +3,37 @@ import CoreUI
 
 struct FilterView: View {
 
-    @ObservedObject var viewModel = FilterViewModel()
+    @StateObject var viewModel = FilterViewModel()
+    @State private var showFilteredResults = false
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 20) {
-                categorySection
+        ZStack(alignment: .bottom) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
+                    categorySection
 
-                HorizontalDivider()
+                    HorizontalDivider()
 
-                glassSection
+                    glassSection
 
-                HorizontalDivider()
+                    HorizontalDivider()
 
-                alcoholSection
+                    alcoholSection
+                }
+                .padding(.bottom, 40)
             }
+            .padding(.horizontal, 24)
+
+            searchButton
         }
-        .padding(24)
-        .onAppear {
-            viewModel.fetchFilters()
+        .toolbar {
+            resetButton
         }
+        .background(
+            NavigationLink(destination: FilteredCocktailsView(viewModel: viewModel), isActive: $showFilteredResults) {
+                EmptyView()
+            }
+        )
     }
 
     @ViewBuilder
@@ -31,9 +42,9 @@ struct FilterView: View {
             headerLabel: LocalizableStrings.category.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filtersModel.alcoholicFilterItems, id: \.self) { item in
-                        RadioButton(title: item, isSelected: viewModel.selectedCategory == item) {
-                            viewModel.selectedCategory = item
+                    ForEach(viewModel.filters.categoryFilterItems, id: \.self) { item in
+                        RadioButton(title: item, isSelected: viewModel.appliedFilters.category == item) {
+                            viewModel.appliedFilters.category = item
                         }
                     }
                 }
@@ -46,9 +57,9 @@ struct FilterView: View {
             headerLabel: LocalizableStrings.glass.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filtersModel.glassFilterItems, id: \.self) { item in
-                        RadioButton(title: item, isSelected: viewModel.selectedGlass == item) {
-                            viewModel.selectedGlass = item
+                    ForEach(viewModel.filters.glassFilterItems, id: \.self) { item in
+                        RadioButton(title: item, isSelected: viewModel.appliedFilters.glass == item) {
+                            viewModel.appliedFilters.glass = item
                         }
                     }
                 }
@@ -61,13 +72,40 @@ struct FilterView: View {
             headerLabel: LocalizableStrings.alcohol.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filtersModel.categoryFilterItems, id: \.self) { item in
-                        RadioButton(title: item, isSelected: viewModel.selectedAlcohol == item) {
-                            viewModel.selectedAlcohol = item
+                    ForEach(viewModel.filters.alcoholicFilterItems, id: \.self) { item in
+                        RadioButton(title: item, isSelected: viewModel.appliedFilters.alcohol == item) {
+                            viewModel.appliedFilters.alcohol = item
                         }
                     }
                 }
             }
+    }
+
+    private var searchButton: some View {
+        Button {
+            viewModel.search {
+                showFilteredResults = true
+            }
+        } label: {
+            Text(LocalizableStrings.search.localized.uppercased())
+                .fontWeight(.bold)
+                .foregroundStyle(Color.white)
+                .padding(.horizontal, 40)
+                .padding(.vertical, 16)
+                .background(viewModel.anyFilterSelected ? Color.blue : Color.gray)
+                .cornerRadius(16)
+        }
+        .disabled(!viewModel.anyFilterSelected)
+    }
+
+    private var resetButton: some View {
+        Button {
+            viewModel.resetFilters()
+        } label: {
+            Text(LocalizableStrings.reset.localized.uppercased())
+                .foregroundStyle(viewModel.anyFilterSelected ? Color.blue : Color.gray)
+        }
+        .disabled(!viewModel.anyFilterSelected)
     }
 
 }

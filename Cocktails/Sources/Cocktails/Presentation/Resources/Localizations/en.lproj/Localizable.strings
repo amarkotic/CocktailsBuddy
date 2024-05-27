@@ -15,3 +15,7 @@
 "category" = "Category";
 "glass" = "Glass";
 "alcohol" = "Alcohol";
+
+"Search" = "Search";
+"reset" = "Reset";
+"filtered.result" = "Filtered Result";

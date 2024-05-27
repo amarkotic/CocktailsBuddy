@@ -6,24 +6,44 @@ class FilterViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var selectedCategory: String?
-    @Published var selectedGlass: String?
-    @Published var selectedAlcohol: String?
-
-    @Published public var filtersModel: FiltersModel = .empty
+    @Published var filters: FiltersModel = .empty
+    @Published var appliedFilters: AppliedFiltersModel = .empty
+    @Published var filteredCocktails: [CocktailSearchCardModel] = []
 
     private var cancellables = Set<AnyCancellable>()
 
-    func fetchFilters() {
+    var anyFilterSelected: Bool {
+        appliedFilters.alcohol != nil ||
+        appliedFilters.glass != nil ||
+        appliedFilters.category != nil
+    }
+
+    init() {
+        bindViews()
+    }
+
+    func bindViews() {
         useCase
             .allFilters
             .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { filtersModel in
-                    self.filtersModel = filtersModel
-                })
+            .catch { _ in Just(.empty) }
+            .assign(to: &$filters)
+    }
+
+    func search(completion: @escaping () -> Void) {
+        useCase
+            .applyFilter(model: appliedFilters)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] results in
+                self?.filteredCocktails = results
+                completion()
+            }
             .store(in: &cancellables)
+
+    }
+
+    func resetFilters() {
+        appliedFilters.reset()
     }
 
 }

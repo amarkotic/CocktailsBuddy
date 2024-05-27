@@ -1,8 +1,9 @@
 import Combine
 import Foundation
+import SwiftUI
 import Dependencies
 
-class CocktailsListViewModel: ObservableObject {
+class CocktailsSearchViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
@@ -11,7 +12,11 @@ class CocktailsListViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    init() {
+    init(items: [CocktailSearchCardModel]? = nil) {
+        if let items {
+            self.items = items
+        }
+
         bindSearch()
     }
 
@@ -19,11 +24,13 @@ class CocktailsListViewModel: ObservableObject {
         $query
             .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
             .flatMap { self.useCase.searchCocktails(query: $0) }
+            .map { $0.sorted { $0.title < $1.title } }
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] cocktails in
-                self?.items = cocktails.sorted { $0.title < $1.title }
-            }
-            .store(in: &cancellables)
+            .assign(to: &$items)
+    }
+
+    func applyFilterResults(_ results: [CocktailSearchCardModel]) {
+        items = results
     }
 
 }

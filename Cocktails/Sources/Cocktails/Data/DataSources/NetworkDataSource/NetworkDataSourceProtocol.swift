@@ -8,4 +8,6 @@ protocol NetworkDataSourceProtocol {
 
     func fetchFilters(for type: FilterType) -> AnyPublisher<FiltersResponse, Error>
 
+    func applyFilter(model: AppliedFiltersNetworkDataSourceModel) -> AnyPublisher<CocktailsSearchResponse, Error>
+
 }

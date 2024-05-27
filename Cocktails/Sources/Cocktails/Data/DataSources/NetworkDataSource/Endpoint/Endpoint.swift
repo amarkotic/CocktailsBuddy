@@ -3,8 +3,8 @@ import Core
 
 struct Endpoint {
 
-    let path: String
-    let queryItems: [URLQueryItem]
+    private let path: String
+    private let queryItems: [URLQueryItem]
 
     var url: URL? {
           var components = URLComponents()

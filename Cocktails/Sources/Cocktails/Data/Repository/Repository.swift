@@ -28,6 +28,13 @@ class Repository: RepositoryProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    func applyFilter(model: AppliedFiltersRepositoryModel) -> AnyPublisher<[CocktailSearchRepositoryModel], Error> {
+        networkDataSource
+            .applyFilter(model: model.toModel())
+            .map { $0.drinks.map { CocktailSearchRepositoryModel(from: $0) } }
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {

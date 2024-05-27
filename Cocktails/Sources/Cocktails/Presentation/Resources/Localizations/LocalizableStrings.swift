@@ -20,6 +20,10 @@ enum LocalizableStrings: String, Localizable {
     case glass
     case alcohol
 
+    case search
+    case reset
+    case filteredResult = "filtered.result"
+
     public var localized: String {
         rawValue.localize(bundle: .module)
     }

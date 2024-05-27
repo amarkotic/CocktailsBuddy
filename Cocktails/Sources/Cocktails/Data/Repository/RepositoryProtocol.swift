@@ -8,4 +8,6 @@ protocol RepositoryProtocol {
 
     func getFilter(for type: FilterType) -> AnyPublisher<FilterRepositoryModel, Error>
 
+    func applyFilter(model: AppliedFiltersRepositoryModel) -> AnyPublisher<[CocktailSearchRepositoryModel], Error>
+
 }

@@ -37,6 +37,14 @@ class UseCase: UseCaseProtocol, DependencyKey {
         .eraseToAnyPublisher()
     }
 
+    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never> {
+        repository
+            .applyFilter(model: model.toModel())
+            .map { $0.map { CocktailSearchCardModel(from: $0) }}
+            .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {

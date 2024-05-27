@@ -42,6 +42,15 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    func applyFilter(model: AppliedFiltersNetworkDataSourceModel) -> AnyPublisher<CocktailsSearchResponse, Error> {
+        let url = Endpoint.applyFilter(model: model).url
+
+        return baseApiClient
+            .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchResponse.self)
+            .mapError { _ in NetworkError() }
+            .eraseToAnyPublisher()
+    }
+
 }
 
 extension DependencyValues {
