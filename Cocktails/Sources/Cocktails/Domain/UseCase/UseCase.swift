@@ -17,7 +17,12 @@ class UseCase: UseCaseProtocol, DependencyKey {
     func searchCocktails(query: String) -> AnyPublisher<[CocktailSearchCardModel], Never> {
         repository
             .searchCocktails(query: query)
-            .map { $0.map { CocktailSearchCardModel(from: $0)} }
+            .map { $0.sorted { $0 < $1 } }
+            .map { cocktails in
+                 cocktails.enumerated().map { index, item in
+                     CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
+                 }
+             }
             .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
             .eraseToAnyPublisher()
     }
@@ -40,7 +45,12 @@ class UseCase: UseCaseProtocol, DependencyKey {
     func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never> {
         repository
             .applyFilter(model: model.toModel())
-            .map { $0.map { CocktailSearchCardModel(from: $0) }}
+            .map { $0.sorted { $0 < $1 } }
+            .map { cocktails in
+                 cocktails.enumerated().map { index, item in
+                     CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
+                 }
+             }
             .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
             .eraseToAnyPublisher()
     }

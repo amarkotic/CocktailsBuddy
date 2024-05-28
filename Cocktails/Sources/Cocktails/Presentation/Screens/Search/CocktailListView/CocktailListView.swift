@@ -3,13 +3,13 @@ import CoreUI
 
 struct CocktailListView: View {
 
-    var viewModel: [CocktailSearchCardModel]
+    var listItems: [CocktailSearchCardModel]
     var query: String?
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 8) {
-                if !viewModel.isEmpty {
+                if !listItems.isEmpty {
                     searchResultsView
                 } else {
                     searchNoResultsView
@@ -17,18 +17,19 @@ struct CocktailListView: View {
             }
         }
         .padding(.horizontal, 24)
-        .background(Color.white)
+        .background(Color.primaryLightBlue)
     }
 
-    @ViewBuilder
     private var searchResultsView: some View {
-        ForEach(viewModel) { item in
+        ForEach(listItems) { item in
             NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: item.id))) {
                 CocktailSearchCardView(model: item)
             }
             .buttonStyle(PlainButtonStyle())
 
-            HorizontalDivider()
+            if !item.isLastItem {
+                HorizontalDivider()
+            }
         }
     }
 
@@ -41,12 +42,21 @@ struct CocktailListView: View {
                     .frame(width: 40, height: 40)
 
                 Text(String(format: LocalizableStrings.noSearchResult.localized, query))
-                    .font(.body)
+                    .font(.bodyPrimary)
+                    .foregroundStyle(Color.secondaryBlack)
                     .multilineTextAlignment(.center)
             }
             .padding(.all, 16)
             .padding(.top, 16)
         }
+    }
+
+}
+
+#Preview {
+
+    NavigationStack {
+        CocktailListView(listItems: [], query: "f")
     }
 
 }

@@ -2,9 +2,9 @@ import SwiftUI
 
 public struct RadioButton: View {
 
-    let title: String
-    let isSelected: Bool
-    let callback: () -> Void
+    private let title: String
+    private let isSelected: Bool
+    private let callback: () -> Void
 
     public init(title: String, isSelected: Bool, callback: @escaping () -> Void) {
         self.title = title
@@ -24,11 +24,13 @@ public struct RadioButton: View {
                 }
 
                 Text(title)
-                    .font(.body)
+                    .font(.bodyPrimary)
+                    .foregroundStyle(Color.secondaryBlack)
             }
             .maxWidth(alignment: .leading)
-            .foregroundColor(.black)
+            .foregroundColor(.primaryBlack)
         }
+        .contentShape(Rectangle())
     }
 
 }

@@ -10,31 +10,25 @@ struct RecipeDetailsView: View {
     }
 
     public var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             headerView(model: details)
                 .padding(.top, 24)
                 .padding(.horizontal, 32)
 
             HorizontalDivider()
-                .padding(.vertical, 16)
 
             contentView(model: details)
                 .padding(.horizontal, 24)
         }
         .padding(.bottom, 40)
-        .background(Color.white)
+        .background(Color.primaryLightBlue)
     }
 
-    // TODO: - replace mocked images with assets
     func headerView(model: CocktailModel) -> some View {
-        HStack {
+        HStack(spacing: 16) {
             iconView(image: Image.category, title: model.category)
 
-            Spacer()
-
             iconView(image: Image.glass, title: model.glass)
-
-            Spacer()
 
             iconView(image: Image.alcoholic, title: model.alcoholicType)
         }
@@ -61,23 +55,28 @@ struct RecipeDetailsView: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 48, height: 48)
-                    .background(Color.white)
+                    .frame(width: 40, height: 40)
+                    .padding(12)
+                    .background(Color.primaryWhite)
+                    .border(cornerRadius: 32, color: .divider.opacity(0.7))
 
                 Text(title)
-                    .font(.subheadline)
+                    .font(.bodyPrimary)
+                    .foregroundStyle(Color.secondaryBlack)
             }
+            .maxWidth()
         }
     }
 
-    @ViewBuilder
     func ingredientsView(_ ingredients: [String]) -> some View {
         MainSectionView(
             headerLabel: LocalizableStrings.ingredientsTitle.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(ingredients, id: \.self) { ingredient in
-                        Text("• \(ingredient)")
+                        Text("\(LocalizableStrings.dot.localized) \(ingredient)")
+                            .font(.bodyPrimary)
+                            .foregroundStyle(Color.secondaryBlack)
                     }
                 }
             }
@@ -90,6 +89,8 @@ struct RecipeDetailsView: View {
                 headerLabel: LocalizableStrings.directionsTitle.localized,
                 compositionType: .vertical(alignment: .leading)) {
                     Text(directions)
+                        .font(.bodyPrimary)
+                        .foregroundStyle(Color.secondaryBlack)
                 }
         }
     }
@@ -101,6 +102,8 @@ struct RecipeDetailsView: View {
                 headerLabel: LocalizableStrings.lastModifiedTitle.localized,
                 compositionType: .horizontal(spacing: 4)) {
                     Text(lastModified.description)
+                        .font(.bodyPrimary)
+                        .foregroundStyle(Color.secondaryBlack)
                 }
         }
     }

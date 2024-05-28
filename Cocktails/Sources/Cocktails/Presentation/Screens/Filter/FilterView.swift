@@ -8,27 +8,14 @@ struct FilterView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 20) {
-                    categorySection
-
-                    HorizontalDivider()
-
-                    glassSection
-
-                    HorizontalDivider()
-
-                    alcoholSection
-                }
-                .padding(.bottom, 40)
-            }
-            .padding(.horizontal, 24)
+            filterSections
 
             searchButton
         }
         .toolbar {
             resetButton
         }
+        .background(Color.primaryWhite)
         .background(
             NavigationLink(destination: FilteredCocktailsView(viewModel: viewModel), isActive: $showFilteredResults) {
                 EmptyView()
@@ -36,7 +23,24 @@ struct FilterView: View {
         )
     }
 
-    @ViewBuilder
+    private var filterSections: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 20) {
+                categorySection
+
+                HorizontalDivider()
+
+                glassSection
+
+                HorizontalDivider()
+
+                alcoholSection
+            }
+            .padding([.top, .horizontal], 24)
+            .padding(.bottom, 60)
+        }
+    }
+
     private var categorySection: some View {
         MainSectionView(
             headerLabel: LocalizableStrings.category.localized,
@@ -51,7 +55,6 @@ struct FilterView: View {
             }
     }
 
-    @ViewBuilder
     private var glassSection: some View {
         MainSectionView(
             headerLabel: LocalizableStrings.glass.localized,
@@ -66,7 +69,6 @@ struct FilterView: View {
             }
     }
 
-    @ViewBuilder
     private var alcoholSection: some View {
         MainSectionView(
             headerLabel: LocalizableStrings.alcohol.localized,
@@ -82,20 +84,15 @@ struct FilterView: View {
     }
 
     private var searchButton: some View {
-        Button {
+        PrimaryButton(
+            title: LocalizableStrings.search.localized.uppercased(),
+            isEnabled: viewModel.anyFilterSelected
+        ) {
             viewModel.search {
                 showFilteredResults = true
             }
-        } label: {
-            Text(LocalizableStrings.search.localized.uppercased())
-                .fontWeight(.bold)
-                .foregroundStyle(Color.white)
-                .padding(.horizontal, 40)
-                .padding(.vertical, 16)
-                .background(viewModel.anyFilterSelected ? Color.blue : Color.gray)
-                .cornerRadius(16)
         }
-        .disabled(!viewModel.anyFilterSelected)
+        .padding(.horizontal, 24)
     }
 
     private var resetButton: some View {
@@ -103,7 +100,8 @@ struct FilterView: View {
             viewModel.resetFilters()
         } label: {
             Text(LocalizableStrings.reset.localized.uppercased())
-                .foregroundStyle(viewModel.anyFilterSelected ? Color.blue : Color.gray)
+                .font(.headerSecondary)
+                .foregroundStyle(viewModel.anyFilterSelected ? Color.primaryBlue : Color.primaryGray)
         }
         .disabled(!viewModel.anyFilterSelected)
     }
@@ -112,6 +110,8 @@ struct FilterView: View {
 
 #Preview {
 
-    FilterView()
+    NavigationStack {
+        FilterView()
+    }
 
 }
