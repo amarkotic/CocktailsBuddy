@@ -5,26 +5,33 @@ import CoreUI
 struct CocktailsSearchView: View {
 
     @StateObject var viewModel: CocktailsSearchViewModel
+    @FocusState private var searchFocused: Bool
 
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                VStack {
-                    searchHeaderView
-
-                    CocktailListView(viewModel: viewModel.items, query: viewModel.query)
-                }
+                searchCocktailsView
 
                 feelingLuckyButton
             }
-            .background(Color.blue)
+            .ignoresSafeArea(.keyboard)
+            .onTapHideKeyboard()
         }
     }
 
-    @ViewBuilder
+    private var searchCocktailsView: some View {
+        VStack(spacing: 0) {
+            searchHeaderView
+                .background(Color.primaryBlue)
+
+            CocktailListView(listItems: viewModel.items, query: viewModel.query)
+        }
+    }
+
     private var searchHeaderView: some View {
         HStack(spacing: 16) {
             SearchBarView(query: $viewModel.query)
+                .focused($searchFocused)
 
             NavigationLink(destination: FilterView()) {
                 if viewModel.query.isEmpty {
@@ -34,20 +41,14 @@ struct CocktailsSearchView: View {
                 }
             }
         }
-        .padding(.top, 8)
-        .padding([.horizontal, .bottom], 16)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
     }
 
-    @ViewBuilder
     private var feelingLuckyButton: some View {
         NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: nil))) {
-            Text(LocalizableStrings.feelingLucky.localized.uppercased())
-                .fontWeight(.bold)
-                .foregroundStyle(Color.white)
-                .padding(.horizontal, 40)
-                .padding(.vertical, 16)
-                .background(Color.blue)
-                .cornerRadius(16)
+            PrimaryButton(title: LocalizableStrings.feelingLucky.localized.uppercased())
+                .padding(.horizontal, 80)
         }
     }
 

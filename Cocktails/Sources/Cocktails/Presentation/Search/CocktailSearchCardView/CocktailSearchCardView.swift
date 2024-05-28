@@ -13,9 +13,10 @@ struct CocktailSearchCardView: View {
         }
         .maxWidth(alignment: .leading)
         .padding(.vertical, 12)
+        .background(Color.primaryLightBlue)
+        .contentShape(Rectangle())
     }
 
-    @ViewBuilder
     private var cocktailImage: some View {
         KFImage(model.url)
             .resizable()
@@ -24,17 +25,19 @@ struct CocktailSearchCardView: View {
             .cornerRadius(16)
     }
 
-    @ViewBuilder
     private var cocktailDetails: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(model.title)
-                .font(.subheadline)
-                .fontWeight(.bold)
+                .font(.headerSecondary)
+                .foregroundStyle(Color.primaryBlack)
                 .lineLimit(1)
 
-            Text(model.description)
-                .font(.caption2)
-                .lineLimit(1)
+            if !model.description.isEmpty {
+                Text(model.description)
+                    .font(.bodySecondary)
+                    .foregroundStyle(Color.secondaryBlack)
+                    .lineLimit(1)
+            }
         }
     }
 

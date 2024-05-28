@@ -2,6 +2,7 @@ import CoreUI
 
 enum LocalizableStrings: String, Localizable {
 
+    case dot
     case today
     case thisWeek = "this.week"
     case thisMonth = "this.month"

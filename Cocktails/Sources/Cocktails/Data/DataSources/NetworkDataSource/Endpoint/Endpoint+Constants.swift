@@ -31,7 +31,6 @@ extension Endpoint {
             items.append(URLQueryItem(name: "g", value: glassFilter))
         }
 
-        print(Endpoint(path: path, items: items).url)
         return Endpoint(path: path, items: items)
     }
 

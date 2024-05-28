@@ -21,7 +21,7 @@ public struct MainSectionView<Content: View>: View {
         }
     }
 
-    func horizontalContent(alignment: VerticalAlignment, spacing: CGFloat) -> some View {
+    private func horizontalContent(alignment: VerticalAlignment, spacing: CGFloat) -> some View {
         HStack(alignment: alignment, spacing: spacing) {
             header
 
@@ -29,7 +29,7 @@ public struct MainSectionView<Content: View>: View {
         }
     }
 
-    func verticalContent(alignment: HorizontalAlignment, spacing: CGFloat) -> some View {
+    private func verticalContent(alignment: HorizontalAlignment, spacing: CGFloat) -> some View {
         VStack(alignment: alignment, spacing: spacing) {
             header
 
@@ -37,10 +37,43 @@ public struct MainSectionView<Content: View>: View {
         }
     }
 
-    var header: some View {
-        Text(headerLabel.appending(":"))
-            .font(.headline)
-            .foregroundStyle(Color.black)
+    private var header: some View {
+        Text(headerLabel.appending(LocalizableStrings.colon.localized))
+            .font(.headerSecondary)
+            .foregroundStyle(Color.primaryBlack)
     }
+
+}
+
+#Preview {
+
+    let items = VStack {
+        Text("Lorem ipsum")
+
+        Text("Lorem ipsum")
+
+        Text("Lorem ipsum")
+    }
+
+    let verticalSection = MainSectionView(
+        headerLabel: "Description",
+        compositionType: .vertical(alignment: .leading, spacing: 8)
+    ) {
+        items
+    }
+
+    let horizontalSection = MainSectionView(
+        headerLabel: "Description",
+        compositionType: .horizontal(alignment: .top, spacing: 8)
+    ) {
+        items
+    }
+
+    return VStack(spacing: 40) {
+        verticalSection
+
+        horizontalSection
+    }
+    .padding(.horizontal, 16)
 
 }

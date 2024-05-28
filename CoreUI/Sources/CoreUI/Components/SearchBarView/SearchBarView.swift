@@ -9,37 +9,62 @@ public struct SearchBarView: View {
     }
 
     public var body: some View {
-        HStack {
-            Image.search
+        HStack(spacing: 8) {
+            magnifierImage
 
-            TextField(LocalizableStrings.searchBarPlaceholder.localized, text: $query)
-                .textFieldStyle(PlainTextFieldStyle())
-                .frame(height: 40)
+            textField
 
-            if !query.isEmpty {
-                cancelButton
-            }
+            cancelButton
         }
         .padding(.horizontal, 12)
         .frame(height: 40)
-        .background(Color(.systemGray6))
+        .background(Color.primaryWhite)
         .cornerRadius(8)
+    }
+
+    private var magnifierImage: some View {
+        Image.search
+    }
+
+    private var textField: some View {
+        TextField(
+            "",
+            text: $query,
+            prompt: Text(LocalizableStrings.searchBarPlaceholder.localized)
+                .foregroundStyle(Color.secondaryBlack.opacity(0.5)))
+        .foregroundStyle(Color.secondaryBlack)
+        .maxHeight()
     }
 
     @ViewBuilder
     private var cancelButton: some View {
-        Button {
-            cancelTapped()
-        } label: {
-            Image.searchCancel
-                .frame(width: 16, height: 16)
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
+        if !query.isEmpty {
+            Button {
+                cancelTapped()
+            } label: {
+                Image.searchCancel
+                    .frame(width: 16, height: 16)
+                    .background(Color.primaryGray)
+                    .cornerRadius(8)
+            }
         }
     }
 
     private func cancelTapped() {
         query.removeAll()
+    }
+
+}
+
+#Preview {
+
+    @State var query1 = ""
+    @State var query2 = "Search text"
+
+    return VStack {
+        SearchBarView(query: $query1)
+
+        SearchBarView(query: $query2)
     }
 
 }

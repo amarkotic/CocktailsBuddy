@@ -8,7 +8,7 @@ struct FilteredCocktailsView: View {
 
     var body: some View {
         NavigationStack {
-            CocktailListView(viewModel: viewModel.filteredCocktails)
+            CocktailListView(listItems: viewModel.filteredCocktails)
                 .navigationTitle("\(viewModel.filteredCocktails.count) \(LocalizableStrings.filteredResult.localized)")
         }
     }
