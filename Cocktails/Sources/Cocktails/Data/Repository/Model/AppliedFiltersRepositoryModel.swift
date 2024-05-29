@@ -8,8 +8,8 @@ struct AppliedFiltersRepositoryModel {
 
 extension AppliedFiltersRepositoryModel {
 
-    func toModel() -> AppliedFiltersNetworkDataSourceModel {
-        AppliedFiltersNetworkDataSourceModel(
+    func toModel() -> AppliedFiltersNetworkDSModel {
+        AppliedFiltersNetworkDSModel(
             alcohol: alcohol?.configuredForRequest,
             category: category?.configuredForRequest,
             glass: glass?.configuredForRequest)

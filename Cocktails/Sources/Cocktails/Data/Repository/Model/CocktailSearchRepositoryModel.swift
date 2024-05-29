@@ -11,7 +11,7 @@ struct CocktailSearchRepositoryModel {
 
 extension CocktailSearchRepositoryModel {
 
-    init(from model: CocktailSearchResponse) {
+    init(from model: CocktailSearchNetworkDSModel) {
         id = model.id
         name = model.name ?? LocalizableStrings.cocktail.localized
         description = [model.alcoholicType, model.category, model.glass]

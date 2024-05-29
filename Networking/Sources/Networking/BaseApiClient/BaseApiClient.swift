@@ -25,8 +25,10 @@ class BaseApiClient: BaseApiClientProtocol, DependencyKey {
             request.httpBody = body
             promise(.success(request))
         }
-        .flatMap { request in
-            self.httpClient
+        .flatMap { [weak self] request -> AnyPublisher<T, NetworkError> in
+            guard let self else { return .empty() }
+
+            return self.httpClient
                 .publisher(request: request)
                 .map { $0.data }
                 .decode(type: T.self, decoder: JSONDecoder())
@@ -42,6 +44,7 @@ class BaseApiClient: BaseApiClientProtocol, DependencyKey {
                         return .invalidResponse
                     }
                 }
+                .eraseToAnyPublisher()
         }
         .eraseToAnyPublisher()
     }
