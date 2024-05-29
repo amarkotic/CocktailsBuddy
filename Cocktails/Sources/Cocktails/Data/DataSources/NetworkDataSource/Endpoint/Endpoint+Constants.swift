@@ -18,7 +18,7 @@ extension Endpoint {
         Endpoint(path: "/list.php", items: [URLQueryItem(name: type.queryKey, value: "list")])
     }
 
-    static func applyFilter(model: AppliedFiltersNetworkDataSourceModel) -> Endpoint {
+    static func applyFilter(model: AppliedFiltersNetworkDSModel) -> Endpoint {
         let path = "/filter.php"
         var items: [URLQueryItem] = []
         if let alcoholFilter = model.alcohol {
