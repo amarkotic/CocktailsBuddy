@@ -1,6 +1,6 @@
 import Foundation
 
-struct CocktailResponse: Decodable {
+struct CocktailNetworkDSModel: Decodable {
 
     let id: String
     let name: String?

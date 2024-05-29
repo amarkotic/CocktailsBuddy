@@ -1,4 +1,4 @@
-struct AppliedFiltersNetworkDataSourceModel {
+struct AppliedFiltersNetworkDSModel {
 
     let alcohol: String?
     let category: String?

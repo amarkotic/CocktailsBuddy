@@ -1,6 +1,6 @@
 import Foundation
 
-struct FilterResponse: Decodable {
+struct FilterNetworkDSModel: Decodable {
 
     let name: String
 

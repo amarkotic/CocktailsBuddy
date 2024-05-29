@@ -9,7 +9,7 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
 
     @Dependency(\.baseApiClient) private var baseApiClient: BaseApiClientProtocol
 
-    func fetchCocktailDetails(id: String?) -> AnyPublisher<CocktailResponse, Error> {
+    func fetchCocktailDetails(id: String?) -> AnyPublisher<CocktailNetworkDSModel, Error> {
         let url: URL?
         if let id {
             url = Endpoint.details(id: id).url
@@ -18,35 +18,35 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
         }
 
         return baseApiClient
-            .performRequest(url, method: .get, body: nil, responseType: CocktailsResponse.self)
+            .performRequest(url, method: .get, body: nil, responseType: CocktailsNetworkDSModel.self)
             .compactMap { $0.firstDrink }
             .mapError { _ in NetworkError() }
             .eraseToAnyPublisher()
     }
 
-    func searchCocktails(_ query: String) -> AnyPublisher<CocktailsSearchResponse, Error> {
+    func searchCocktails(_ query: String) -> AnyPublisher<CocktailsSearchNetworkDSModel, Error> {
         let url = Endpoint.search(query: query).url
 
         return baseApiClient
-            .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchResponse.self)
+            .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchNetworkDSModel.self)
             .mapError { _ in NetworkError() }
             .eraseToAnyPublisher()
     }
 
-    func fetchFilters(for type: FilterType) -> AnyPublisher<FiltersResponse, Error> {
+    func fetchFilters(for type: FilterType) -> AnyPublisher<FiltersNetworkDSModel, Error> {
         let url = Endpoint.filter(type: type).url
 
         return baseApiClient
-            .performRequest(url, method: .get, body: nil, responseType: FiltersResponse.self)
+            .performRequest(url, method: .get, body: nil, responseType: FiltersNetworkDSModel.self)
             .mapError { _ in NetworkError() }
             .eraseToAnyPublisher()
     }
 
-    func applyFilter(model: AppliedFiltersNetworkDataSourceModel) -> AnyPublisher<CocktailsSearchResponse, Error> {
+    func applyFilter(model: AppliedFiltersNetworkDSModel) -> AnyPublisher<CocktailsSearchNetworkDSModel, Error> {
         let url = Endpoint.applyFilter(model: model).url
 
         return baseApiClient
-            .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchResponse.self)
+            .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchNetworkDSModel.self)
             .mapError { _ in NetworkError() }
             .eraseToAnyPublisher()
     }
