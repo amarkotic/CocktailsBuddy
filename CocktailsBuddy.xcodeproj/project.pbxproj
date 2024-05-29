@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6504C7C62C072C7D0047AED4 /* Launch.storyboard */; };
 		657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6504C7C52C0720250047AED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6504C7C62C072C7D0047AED4 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyApp.swift; sourceTree = "<group>"; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,7 +77,9 @@
 		657A422C2BFCD55C00020DCD /* CocktailsBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				6504C7C52C0720250047AED4 /* Info.plist */,
 				657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */,
+				6504C7C62C072C7D0047AED4 /* Launch.storyboard */,
 				657A42312BFCD55D00020DCD /* Assets.xcassets */,
 				657A42332BFCD55D00020DCD /* Preview Content */,
 			);
@@ -172,6 +177,7 @@
 			files = (
 				657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */,
 				657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */,
+				6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,9 +347,11 @@
 				DEVELOPMENT_TEAM = 4729CGQSC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CocktailsBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = Launch.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -371,9 +379,11 @@
 				DEVELOPMENT_TEAM = 4729CGQSC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CocktailsBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = Launch.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
