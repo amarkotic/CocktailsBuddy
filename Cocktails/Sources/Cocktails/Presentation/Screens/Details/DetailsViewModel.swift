@@ -19,7 +19,7 @@ class DetailsViewModel: ObservableObject {
     func fetchDetails() {
         useCase
             .getDetails(id: id)
-            .receive(on: DispatchQueue.main)
+            .receiveOnMain()
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     self.errorMessage = error.localizedDescription

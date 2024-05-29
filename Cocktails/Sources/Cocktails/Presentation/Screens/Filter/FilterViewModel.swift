@@ -25,7 +25,7 @@ class FilterViewModel: ObservableObject {
     func bindViews() {
         useCase
             .allFilters
-            .receive(on: DispatchQueue.main)
+            .receiveOnMain()
             .catch { _ in Just(.empty) }
             .assign(to: &$filters)
     }
@@ -33,7 +33,7 @@ class FilterViewModel: ObservableObject {
     func search(completion: @escaping () -> Void) {
         useCase
             .applyFilter(model: appliedFilters)
-            .receive(on: DispatchQueue.main)
+            .receiveOnMain()
             .sink { [weak self] results in
                 self?.filteredCocktails = results
                 completion()
