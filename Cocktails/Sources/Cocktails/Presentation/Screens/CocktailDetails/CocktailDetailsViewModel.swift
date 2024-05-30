@@ -3,7 +3,7 @@ import Foundation
 import Dependencies
 import Core
 
-class DetailsViewModel: ObservableObject {
+class CocktailDetailsViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
@@ -27,7 +27,7 @@ class DetailsViewModel: ObservableObject {
 }
 
 // MARK: - Coordinator methods
-extension DetailsViewModel {
+extension CocktailDetailsViewModel {
 
     func backTap() {
         coordinator.popViewController()

@@ -22,14 +22,14 @@ public class CocktailsCoordinator: Coordinator {
     }
 
     func showCocktailDetails(for cocktailID: String?) {
-        let viewModel = DetailsViewModel(coordinator: self, id: cocktailID)
-        let detailsView = DetailsView(viewModel: viewModel)
+        let viewModel = CocktailDetailsViewModel(coordinator: self, id: cocktailID)
+        let detailsView = CocktailDetailsView(viewModel: viewModel)
         pushHostingViewController(with: detailsView)
     }
 
     func showFilters() {
-        let viewModel = FilterViewModel(coordinator: self)
-        let filtersView = FilterView(viewModel: viewModel)
+        let viewModel = FiltersViewModel(coordinator: self)
+        let filtersView = FiltersView(viewModel: viewModel)
         pushHostingViewController(with: filtersView)
     }
 
@@ -37,6 +37,14 @@ public class CocktailsCoordinator: Coordinator {
         let viewModel = FilteredCocktailsViewModel(coordinator: self, appliedFilters: appliedFilters)
         let resultsView = FilteredCocktailsView(viewModel: viewModel)
         pushHostingViewController(with: resultsView)
+    }
+
+}
+
+extension CocktailsCoordinator {
+
+    static var mock: CocktailsCoordinator {
+        CocktailsCoordinator(navigationController: UINavigationController())
     }
 
 }

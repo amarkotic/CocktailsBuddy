@@ -1,9 +1,9 @@
 import SwiftUI
 import CoreUI
 
-struct FilterView: View {
+struct FiltersView: View {
 
-    @StateObject var viewModel: FilterViewModel
+    @StateObject var viewModel: FiltersViewModel
 
     var body: some View {
         switch viewModel.filters {
@@ -115,5 +115,11 @@ struct FilterView: View {
             .foregroundStyle(Color.primaryLightBlue.opacity(viewModel.anyFilterSelected ? 1 : 0.2))
             .disabled(!viewModel.anyFilterSelected)
     }
+
+}
+
+#Preview {
+
+    return FiltersView(viewModel: FiltersViewModel(coordinator: .mock))
 
 }

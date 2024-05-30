@@ -7,7 +7,7 @@ class FilteredCocktailsViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var filteredCocktails: Result<[CocktailSearchCardModel]> = .loading
+    @Published var filteredCocktails: Result<[CocktailCardModel]> = .loading
 
     private let coordinator: CocktailsCoordinator
     private var cancellables = Set<AnyCancellable>()

@@ -3,7 +3,7 @@ import Foundation
 import Dependencies
 import Core
 
-class FilterViewModel: ObservableObject {
+class FiltersViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
@@ -38,7 +38,7 @@ class FilterViewModel: ObservableObject {
 }
 
 // MARK: - Coordinator methods
-extension FilterViewModel {
+extension FiltersViewModel {
 
     func showFilteredResults() {
         coordinator.showFilterResults(appliedFilters: appliedFilters)

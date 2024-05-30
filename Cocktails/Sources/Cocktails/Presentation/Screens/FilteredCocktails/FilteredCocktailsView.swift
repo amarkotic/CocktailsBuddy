@@ -10,7 +10,7 @@ struct FilteredCocktailsView: View {
         VStack(spacing: 0) {
             navigationBar
 
-            CocktailListView(listItems: viewModel.filteredCocktails) { cocktailID in
+            CocktailsListView(listItems: viewModel.filteredCocktails) { cocktailID in
                 viewModel.selectCocktail(cocktailID)
             }
         }
@@ -26,5 +26,14 @@ struct FilteredCocktailsView: View {
             }
         }
     }
+
+}
+
+#Preview {
+
+    FilteredCocktailsView(
+        viewModel: FilteredCocktailsViewModel(
+            coordinator: .mock,
+            appliedFilters: AppliedFiltersModel(alcohol: "Alcoholic")))
 
 }

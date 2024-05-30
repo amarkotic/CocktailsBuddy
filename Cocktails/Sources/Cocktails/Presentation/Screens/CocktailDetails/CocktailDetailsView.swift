@@ -1,9 +1,9 @@
 import SwiftUI
 import CoreUI
 
-struct DetailsView: View {
+struct CocktailDetailsView: View {
 
-    @StateObject var viewModel: DetailsViewModel
+    @StateObject var viewModel: CocktailDetailsViewModel
 
     private let defaultImageHeight: CGFloat = DeviceType.isMobile ? 480 : 600
 
@@ -45,5 +45,11 @@ struct DetailsView: View {
             )
         }
     }
+
+}
+
+#Preview {
+
+    CocktailDetailsView(viewModel: CocktailDetailsViewModel(coordinator: .mock, id: "11000"))
 
 }

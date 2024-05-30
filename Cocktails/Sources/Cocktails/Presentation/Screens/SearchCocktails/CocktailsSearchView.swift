@@ -5,7 +5,6 @@ import CoreUI
 struct CocktailsSearchView: View {
 
     @StateObject var viewModel: CocktailsSearchViewModel
-    @FocusState private var searchFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -24,7 +23,7 @@ struct CocktailsSearchView: View {
         VStack(spacing: 0) {
             navigationBar
 
-            CocktailListView(listItems: viewModel.items) { selectedId in
+            CocktailsListView(listItems: viewModel.items) { selectedId in
                 viewModel.selectCocktail(selectedId)
             }
             .maxSize(alignment: .top)
@@ -41,7 +40,6 @@ struct CocktailsSearchView: View {
     private var searchHeaderView: some View {
         HStack(spacing: 16) {
             SearchBarView(query: $viewModel.query)
-                .focused($searchFocused)
 
             if viewModel.query.isEmpty {
                 Image.filter
@@ -62,5 +60,11 @@ struct CocktailsSearchView: View {
         }
         .padding(.horizontal, 80)
     }
+
+}
+
+#Preview {
+
+    CocktailsSearchView(viewModel: CocktailsSearchViewModel(coordinator: .mock))
 
 }

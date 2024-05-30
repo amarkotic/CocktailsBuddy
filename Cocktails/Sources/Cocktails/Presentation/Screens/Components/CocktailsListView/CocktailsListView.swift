@@ -2,9 +2,9 @@ import SwiftUI
 import Core
 import CoreUI
 
-struct CocktailListView: View {
+struct CocktailsListView: View {
 
-    var listItems: Result<[CocktailSearchCardModel]>
+    var listItems: Result<[CocktailCardModel]>
     var action: (_ id: String) -> Void
 
     var body: some View {
@@ -22,11 +22,11 @@ struct CocktailListView: View {
         }
     }
 
-    private func searchResultsView(items: [CocktailSearchCardModel]) -> some View {
+    private func searchResultsView(items: [CocktailCardModel]) -> some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 8) {
                 ForEach(items) { item in
-                    CocktailSearchCardView(model: item)
+                    CocktailCardView(model: item)
                         .onTapGesture {
                             action(item.id)
                         }
@@ -40,5 +40,11 @@ struct CocktailListView: View {
         .padding(.horizontal, 24)
         .background(Color.primaryLightBlue)
     }
+
+}
+
+#Preview {
+
+    CocktailsListView(listItems: .success([CocktailCardModel.mock]), action: { _ in })
 
 }
