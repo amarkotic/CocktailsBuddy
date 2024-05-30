@@ -24,6 +24,7 @@ struct CocktailsSearchView: View {
         VStack(spacing: 0) {
             searchHeaderView
                 .background(Color.primaryBlue)
+                .disabled(viewModel.items == .failure)
 
             CocktailListView(listItems: viewModel.items)
                 .maxSize(alignment: .top)

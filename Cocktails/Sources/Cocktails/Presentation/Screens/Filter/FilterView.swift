@@ -13,7 +13,8 @@ struct FilterView: View {
         case .success(let model):
             content(model)
         case .failure:
-            NoResultView(result: .empty)
+            NoResultView(result: .failure)
+                .background(Color.primaryLightBlue)
         }
     }
 
