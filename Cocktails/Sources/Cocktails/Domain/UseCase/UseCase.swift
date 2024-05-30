@@ -1,5 +1,6 @@
 import Combine
 import Dependencies
+import Core
 
 class UseCase: UseCaseProtocol, DependencyKey {
 
@@ -14,7 +15,8 @@ class UseCase: UseCaseProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
-    func searchCocktails(query: String) -> AnyPublisher<[CocktailSearchCardModel], Never> {
+    // Get search results, sort them alphabeticaly by title, apply isLast paramter and mark result as success
+    func searchCocktails(query: String) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> {
         repository
             .searchCocktails(query: query)
             .map { $0.sorted { $0 < $1 } }
@@ -23,7 +25,8 @@ class UseCase: UseCaseProtocol, DependencyKey {
                      CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
-            .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
+            .map { .success($0) }
+            .catch { _ in Just(.failure) } // Map thrown error to Result's failure to avoid breaking the chain
             .eraseToAnyPublisher()
     }
 

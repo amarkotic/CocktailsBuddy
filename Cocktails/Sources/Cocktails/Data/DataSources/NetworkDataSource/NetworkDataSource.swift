@@ -20,7 +20,7 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
         return baseApiClient
             .performRequest(url, method: .get, body: nil, responseType: CocktailsNetworkDSModel.self)
             .compactMap { $0.firstDrink }
-            .mapError { _ in NetworkError() }
+            .mapError { NetworkError(from: $0) }
             .eraseToAnyPublisher()
     }
 
@@ -29,7 +29,7 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
 
         return baseApiClient
             .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchNetworkDSModel.self)
-            .mapError { _ in NetworkError() }
+            .mapError { NetworkError(from: $0) }
             .eraseToAnyPublisher()
     }
 
@@ -38,7 +38,7 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
 
         return baseApiClient
             .performRequest(url, method: .get, body: nil, responseType: FiltersNetworkDSModel.self)
-            .mapError { _ in NetworkError() }
+            .mapError { NetworkError(from: $0) }
             .eraseToAnyPublisher()
     }
 
@@ -47,7 +47,7 @@ class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
 
         return baseApiClient
             .performRequest(url, method: .get, body: nil, responseType: CocktailsSearchNetworkDSModel.self)
-            .mapError { _ in NetworkError() }
+            .mapError { NetworkError(from: $0) }
             .eraseToAnyPublisher()
     }
 

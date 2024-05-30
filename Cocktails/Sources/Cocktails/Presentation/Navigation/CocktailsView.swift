@@ -5,7 +5,7 @@ public struct CocktailsView: View {
     public init() {}
 
     public var body: some View {
-        CocktailsSearchView(viewModel: CocktailsSearchViewModel(items: nil))
+        CocktailsSearchView(viewModel: CocktailsSearchViewModel())
     }
 
 }

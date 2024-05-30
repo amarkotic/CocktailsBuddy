@@ -11,6 +11,10 @@ public extension View {
         frame(maxHeight: .infinity, alignment: alignment)
     }
 
+    func maxSize(alignment: Alignment = .center) -> some View {
+        frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
 }
 
 // MARK: Hide keyboard
