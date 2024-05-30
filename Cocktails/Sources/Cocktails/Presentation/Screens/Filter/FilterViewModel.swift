@@ -9,8 +9,8 @@ class FilterViewModel: ObservableObject {
 
     @Published var filters: Result<FiltersModel> = .loading
     @Published var appliedFilters: AppliedFiltersModel = .empty
-    @Published var filteredCocktails: Result<[CocktailSearchCardModel]> = .loading
 
+    private let coordinator: CocktailsCoordinator
     private var cancellables = Set<AnyCancellable>()
 
     var anyFilterSelected: Bool {
@@ -19,7 +19,8 @@ class FilterViewModel: ObservableObject {
         appliedFilters.category != nil
     }
 
-    init() {
+    init(coordinator: CocktailsCoordinator) {
+        self.coordinator = coordinator
         bindViews()
     }
 
@@ -30,19 +31,21 @@ class FilterViewModel: ObservableObject {
             .assign(to: &$filters)
     }
 
-    func search(completion: @escaping () -> Void) {
-        useCase
-            .getFilteredCocktails(model: appliedFilters)
-            .receiveOnMain()
-            .sink { [weak self] results in
-                self?.filteredCocktails = results
-                completion()
-            }
-            .store(in: &cancellables)
-    }
-
     func resetFilters() {
         appliedFilters.reset()
+    }
+
+}
+
+// MARK: - Coordinator methods
+extension FilterViewModel {
+
+    func showFilteredResults() {
+        coordinator.showFilterResults(appliedFilters: appliedFilters)
+    }
+
+    func backTap() {
+        coordinator.popViewController()
     }
 
 }

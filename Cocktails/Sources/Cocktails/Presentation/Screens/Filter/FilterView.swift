@@ -3,8 +3,7 @@ import CoreUI
 
 struct FilterView: View {
 
-    @StateObject var viewModel = FilterViewModel()
-    @State private var showFilteredResults = false
+    @StateObject var viewModel: FilterViewModel
 
     var body: some View {
         switch viewModel.filters {
@@ -20,7 +19,11 @@ struct FilterView: View {
 
     private func content(_ model: FiltersModel) -> some View {
         ZStack(alignment: .bottom) {
-            filterSections(model)
+            VStack(spacing: 0) {
+                navigationBar
+
+                filterSections(model)
+            }
 
             searchButton
         }
@@ -28,11 +31,15 @@ struct FilterView: View {
             resetButton
         }
         .background(Color.primaryWhite)
-        .background(
-            NavigationLink(destination: FilteredCocktailsView(viewModel: viewModel), isActive: $showFilteredResults) {
-                EmptyView()
-            }
-        )
+    }
+
+    private var navigationBar: some View {
+        NavigationBar {
+            PrimaryNavBarContent(
+                title: LocalizableStrings.filters.localized,
+                leadingModel: NavBarButtonModel(action: viewModel.backTap, buttonContent: NavBarBackButton()),
+                trailingModel: NavBarButtonModel(action: viewModel.resetFilters, buttonContent: resetButton))
+        }
     }
 
     private func filterSections(_ model: FiltersModel) -> some View {
@@ -96,34 +103,17 @@ struct FilterView: View {
     }
 
     private var searchButton: some View {
-        PrimaryButton(
-            title: LocalizableStrings.search.localized.uppercased(),
-            isEnabled: viewModel.anyFilterSelected
-        ) {
-            viewModel.search {
-                showFilteredResults = true
-            }
+        PrimaryButton(title: LocalizableStrings.search.localized.uppercased(), isEnabled: viewModel.anyFilterSelected) {
+            viewModel.showFilteredResults()
         }
         .padding(.horizontal, 24)
     }
 
     private var resetButton: some View {
-        Button {
-            viewModel.resetFilters()
-        } label: {
-            Text(LocalizableStrings.reset.localized.uppercased())
-                .font(.headerSecondary)
-                .foregroundStyle(viewModel.anyFilterSelected ? Color.primaryBlue : Color.primaryGray)
-        }
-        .disabled(!viewModel.anyFilterSelected)
-    }
-
-}
-
-#Preview {
-
-    NavigationStack {
-        FilterView()
+        Text(LocalizableStrings.reset.localized.uppercased())
+            .font(.headerSecondary)
+            .foregroundStyle(Color.primaryLightBlue.opacity(viewModel.anyFilterSelected ? 1 : 0.2))
+            .disabled(!viewModel.anyFilterSelected)
     }
 
 }

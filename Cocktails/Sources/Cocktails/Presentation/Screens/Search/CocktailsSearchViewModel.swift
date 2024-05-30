@@ -12,8 +12,10 @@ class CocktailsSearchViewModel: ObservableObject {
     @Published var query: String = ""
 
     private var cancellables = Set<AnyCancellable>()
+    private let coordinator: CocktailsCoordinator
 
-    init() {
+    init(coordinator: CocktailsCoordinator) {
+        self.coordinator = coordinator
         bindSearch()
     }
 
@@ -27,6 +29,19 @@ class CocktailsSearchViewModel: ObservableObject {
             }
             .receiveOnMain()
             .assign(to: &$items)
+    }
+
+}
+
+// MARK: - Coordinator methods
+extension CocktailsSearchViewModel {
+
+    func selectCocktail(_ cocktailID: String?) {
+        coordinator.showCocktailDetails(for: cocktailID)
+    }
+
+    func openFilters() {
+        coordinator.showFilters()
     }
 
 }

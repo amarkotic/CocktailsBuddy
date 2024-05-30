@@ -22,12 +22,19 @@ struct CocktailsSearchView: View {
 
     private var searchCocktailsView: some View {
         VStack(spacing: 0) {
-            searchHeaderView
-                .background(Color.primaryBlue)
-                .disabled(viewModel.items == .failure)
+            navigationBar
 
-            CocktailListView(listItems: viewModel.items)
-                .maxSize(alignment: .top)
+            CocktailListView(listItems: viewModel.items) { selectedId in
+                viewModel.selectCocktail(selectedId)
+            }
+            .maxSize(alignment: .top)
+        }
+    }
+
+    private var navigationBar: some View {
+        NavigationBar {
+            searchHeaderView
+                .disabled(viewModel.items == .failure)
         }
     }
 
@@ -36,12 +43,13 @@ struct CocktailsSearchView: View {
             SearchBarView(query: $viewModel.query)
                 .focused($searchFocused)
 
-            NavigationLink(destination: FilterView()) {
-                if viewModel.query.isEmpty {
-                    Image.filter
-                        .resizable()
-                        .frame(width: 32, height: 32)
-                }
+            if viewModel.query.isEmpty {
+                Image.filter
+                    .resizable()
+                    .frame(width: 32, height: 32)
+                    .onTapGesture {
+                        viewModel.openFilters()
+                    }
             }
         }
         .padding(.vertical, 8)
@@ -49,16 +57,10 @@ struct CocktailsSearchView: View {
     }
 
     private var feelingLuckyButton: some View {
-        NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: nil))) {
-            PrimaryButton(title: LocalizableStrings.feelingLucky.localized.uppercased())
-                .padding(.horizontal, 80)
+        PrimaryButton(title: LocalizableStrings.feelingLucky.localized.uppercased()) {
+            viewModel.selectCocktail(nil)
         }
+        .padding(.horizontal, 80)
     }
-
-}
-
-#Preview {
-
-    CocktailsSearchView(viewModel: CocktailsSearchViewModel())
 
 }

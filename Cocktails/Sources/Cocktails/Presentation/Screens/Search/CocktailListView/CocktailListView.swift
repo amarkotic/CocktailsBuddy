@@ -5,6 +5,7 @@ import CoreUI
 struct CocktailListView: View {
 
     var listItems: Result<[CocktailSearchCardModel]>
+    var action: (_ id: String) -> Void
 
     var body: some View {
         switch listItems {
@@ -25,10 +26,10 @@ struct CocktailListView: View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 8) {
                 ForEach(items) { item in
-                    NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: item.id))) {
-                        CocktailSearchCardView(model: item)
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    CocktailSearchCardView(model: item)
+                        .onTapGesture {
+                            action(item.id)
+                        }
 
                     if !item.isLastItem {
                         HorizontalDivider()
@@ -38,14 +39,6 @@ struct CocktailListView: View {
         }
         .padding(.horizontal, 24)
         .background(Color.primaryLightBlue)
-    }
-
-}
-
-#Preview {
-
-    NavigationStack {
-        CocktailListView(listItems: .loading)
     }
 
 }

@@ -10,9 +10,10 @@ class DetailsViewModel: ObservableObject {
     @Published var details: Result<CocktailModel> = .loading
     @Published var errorMessage: String?
 
-    private var cancellables = Set<AnyCancellable>()
+    private let coordinator: CocktailsCoordinator
 
-    init(id: String?) {
+    init(coordinator: CocktailsCoordinator, id: String?) {
+        self.coordinator = coordinator
         fetchDetails(id: id)
     }
 
@@ -21,6 +22,15 @@ class DetailsViewModel: ObservableObject {
             .getCocktailDetails(id: id)
             .receiveOnMain()
             .assign(to: &$details)
+    }
+
+}
+
+// MARK: - Coordinator methods
+extension DetailsViewModel {
+
+    func backTap() {
+        coordinator.popViewController()
     }
 
 }
