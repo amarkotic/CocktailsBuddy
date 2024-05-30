@@ -13,7 +13,6 @@ enum LocalizableStrings: String, Localizable {
     case directionsTitle = "directions.title"
     case lastModifiedTitle = "last.modified.title"
 
-    case noSearchResult = "no.search.result"
     case cocktail
     case feelingLucky = "feeling.lucky"
 
