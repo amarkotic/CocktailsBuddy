@@ -8,10 +8,11 @@ class UseCase: UseCaseProtocol, DependencyKey {
 
     @Dependency(\.repository) private var repository: RepositoryProtocol
 
-    func getDetails(id: String?) -> AnyPublisher<CocktailModel, Error> {
+    func getDetails(id: String?) -> AnyPublisher<Result<CocktailModel>, Never> {
         repository
             .getDetails(id: id)
-            .map { CocktailModel(from: $0) }
+            .map { .success(CocktailModel(from: $0)) }
+            .catch { _ in Just(.failure) }
             .eraseToAnyPublisher()
     }
 

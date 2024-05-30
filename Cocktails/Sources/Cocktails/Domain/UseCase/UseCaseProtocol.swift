@@ -3,7 +3,7 @@ import Core
 
 protocol UseCaseProtocol {
 
-    func getDetails(id: String?) -> AnyPublisher<CocktailModel, Error>
+    func getDetails(id: String?) -> AnyPublisher<Result<CocktailModel>, Never>
 
     func searchCocktails(query: String) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never>
 
