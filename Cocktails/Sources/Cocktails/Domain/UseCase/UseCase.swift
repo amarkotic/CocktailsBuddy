@@ -1,5 +1,6 @@
 import Combine
 import Dependencies
+import Core
 
 class UseCase: UseCaseProtocol, DependencyKey {
 
@@ -7,27 +8,29 @@ class UseCase: UseCaseProtocol, DependencyKey {
 
     @Dependency(\.repository) private var repository: RepositoryProtocol
 
-    func getDetails(id: String?) -> AnyPublisher<CocktailModel, Error> {
+    // Get detailed model for a single cocktail
+    func getCocktailDetails(id: String?) -> AnyPublisher<Result<CocktailModel>, Never> {
         repository
-            .getDetails(id: id)
+            .getCocktailDetails(id: id)
             .map { CocktailModel(from: $0) }
-            .eraseToAnyPublisher()
+            .mapToNonFailingResult()
     }
 
-    func searchCocktails(query: String) -> AnyPublisher<[CocktailSearchCardModel], Never> {
+    // Get search results, sort them alphabeticaly by title, apply isLast paramter and mark result as success
+    func getCocktails(query: String) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> {
         repository
-            .searchCocktails(query: query)
+            .getCocktails(query: query)
             .map { $0.sorted { $0 < $1 } }
             .map { cocktails in
                  cocktails.enumerated().map { index, item in
                      CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
-            .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
-            .eraseToAnyPublisher()
+            .mapToNonFailingResult()
     }
 
-    var allFilters: AnyPublisher<FiltersModel, Error> {
+    // Get all three filters and zip them into one model
+    var allFilters: AnyPublisher<Result<FiltersModel>, Never> {
         Publishers.Zip3(
             repository.getFilter(for: .alcohol),
             repository.getFilter(for: .glass),
@@ -36,23 +39,22 @@ class UseCase: UseCaseProtocol, DependencyKey {
             FiltersModel(
                 alcoholicFilterItems: alcoholicResponse.items,
                 glassFilterItems: glassResponse.items,
-                categoryFilterItems: categoryResponse.items
-            )
+                categoryFilterItems: categoryResponse.items)
         }
-        .eraseToAnyPublisher()
+        .mapToNonFailingResult()
     }
 
-    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never> {
+    // Get cocktails which corespond to applied filters
+    func getFilteredCocktails(model: AppliedFiltersModel) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> {
         repository
-            .applyFilter(model: model.toModel())
+            .getFilteredCocktails(model: model.toModel())
             .map { $0.sorted { $0 < $1 } }
             .map { cocktails in
                  cocktails.enumerated().map { index, item in
                      CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
-            .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
-            .eraseToAnyPublisher()
+            .mapToNonFailingResult()
     }
 
 }

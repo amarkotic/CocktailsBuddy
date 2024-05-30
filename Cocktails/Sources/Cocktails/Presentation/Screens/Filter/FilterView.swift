@@ -7,8 +7,20 @@ struct FilterView: View {
     @State private var showFilteredResults = false
 
     var body: some View {
+        switch viewModel.filters {
+        case .loading:
+            MainProgressView()
+        case .success(let model):
+            content(model)
+        case .failure:
+            NoResultView(result: .failure)
+                .background(Color.primaryLightBlue)
+        }
+    }
+
+    private func content(_ model: FiltersModel) -> some View {
         ZStack(alignment: .bottom) {
-            filterSections
+            filterSections(model)
 
             searchButton
         }
@@ -23,30 +35,30 @@ struct FilterView: View {
         )
     }
 
-    private var filterSections: some View {
+    private func filterSections(_ model: FiltersModel) -> some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
-                categorySection
+                categorySection(model.categoryFilterItems)
 
                 HorizontalDivider()
 
-                glassSection
+                glassSection(model.glassFilterItems)
 
                 HorizontalDivider()
 
-                alcoholSection
+                alcoholSection(model.alcoholicFilterItems)
             }
             .padding([.top, .horizontal], 24)
             .padding(.bottom, 60)
         }
     }
 
-    private var categorySection: some View {
+    private func categorySection(_ items: [String]) -> some View {
         MainSectionView(
             headerLabel: LocalizableStrings.category.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filters.categoryFilterItems, id: \.self) { item in
+                    ForEach(items, id: \.self) { item in
                         RadioButton(title: item, isSelected: viewModel.appliedFilters.category == item) {
                             viewModel.appliedFilters.category = item
                         }
@@ -55,12 +67,12 @@ struct FilterView: View {
             }
     }
 
-    private var glassSection: some View {
+    private func glassSection(_ items: [String]) -> some View {
         MainSectionView(
             headerLabel: LocalizableStrings.glass.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filters.glassFilterItems, id: \.self) { item in
+                    ForEach(items, id: \.self) { item in
                         RadioButton(title: item, isSelected: viewModel.appliedFilters.glass == item) {
                             viewModel.appliedFilters.glass = item
                         }
@@ -69,12 +81,12 @@ struct FilterView: View {
             }
     }
 
-    private var alcoholSection: some View {
+    private func alcoholSection(_ items: [String]) -> some View {
         MainSectionView(
             headerLabel: LocalizableStrings.alcohol.localized,
             compositionType: .vertical(alignment: .leading)) {
                 VStack(spacing: 16) {
-                    ForEach(viewModel.filters.alcoholicFilterItems, id: \.self) { item in
+                    ForEach(items, id: \.self) { item in
                         RadioButton(title: item, isSelected: viewModel.appliedFilters.alcohol == item) {
                             viewModel.appliedFilters.alcohol = item
                         }

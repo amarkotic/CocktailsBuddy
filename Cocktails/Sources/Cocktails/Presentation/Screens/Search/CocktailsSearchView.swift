@@ -14,6 +14,7 @@ struct CocktailsSearchView: View {
 
                 feelingLuckyButton
             }
+            .background(Color.primaryLightBlue)
             .ignoresSafeArea(.keyboard)
             .onTapHideKeyboard()
         }
@@ -23,8 +24,10 @@ struct CocktailsSearchView: View {
         VStack(spacing: 0) {
             searchHeaderView
                 .background(Color.primaryBlue)
+                .disabled(viewModel.items == .failure)
 
-            CocktailListView(listItems: viewModel.items, query: viewModel.query)
+            CocktailListView(listItems: viewModel.items)
+                .maxSize(alignment: .top)
         }
     }
 

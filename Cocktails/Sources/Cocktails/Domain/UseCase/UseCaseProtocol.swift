@@ -1,13 +1,14 @@
 import Combine
+import Core
 
 protocol UseCaseProtocol {
 
-    func getDetails(id: String?) -> AnyPublisher<CocktailModel, Error>
+    func getCocktailDetails(id: String?) -> AnyPublisher<Result<CocktailModel>, Never>
 
-    func searchCocktails(query: String) -> AnyPublisher<[CocktailSearchCardModel], Never>
+    func getCocktails(query: String) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never>
 
-    var allFilters: AnyPublisher<FiltersModel, Error> { get }
+    var allFilters: AnyPublisher<Result<FiltersModel>, Never> { get }
 
-    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never>
+    func getFilteredCocktails(model: AppliedFiltersModel) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never>
 
 }

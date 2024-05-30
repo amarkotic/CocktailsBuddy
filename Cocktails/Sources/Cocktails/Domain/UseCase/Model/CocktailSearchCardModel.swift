@@ -1,6 +1,6 @@
 import Foundation
 
-struct CocktailSearchCardModel: Identifiable {
+struct CocktailSearchCardModel: Equatable, Identifiable {
 
     let id: String
     let title: String

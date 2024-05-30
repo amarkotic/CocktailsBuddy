@@ -1,6 +1,6 @@
 import Foundation
 
-enum LastModified {
+enum LastModified: Equatable {
 
     case today
     case thisWeek

@@ -1,14 +1,15 @@
 import Combine
 import Foundation
 import Dependencies
+import Core
 
 class FilterViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var filters: FiltersModel = .empty
+    @Published var filters: Result<FiltersModel> = .loading
     @Published var appliedFilters: AppliedFiltersModel = .empty
-    @Published var filteredCocktails: [CocktailSearchCardModel] = []
+    @Published var filteredCocktails: Result<[CocktailSearchCardModel]> = .loading
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -26,20 +27,18 @@ class FilterViewModel: ObservableObject {
         useCase
             .allFilters
             .receiveOnMain()
-            .catch { _ in Just(.empty) }
             .assign(to: &$filters)
     }
 
     func search(completion: @escaping () -> Void) {
         useCase
-            .applyFilter(model: appliedFilters)
+            .getFilteredCocktails(model: appliedFilters)
             .receiveOnMain()
             .sink { [weak self] results in
                 self?.filteredCocktails = results
                 completion()
             }
             .store(in: &cancellables)
-
     }
 
     func resetFilters() {

@@ -6,9 +6,12 @@ enum FilterType: String {
 
     var queryKey: String {
         switch self {
-        case .alcohol: "a"
-        case .category: "c"
-        case .glass: "g"
+        case .alcohol:
+            "a"
+        case .category:
+            "c"
+        case .glass:
+            "g"
         }
     }
 

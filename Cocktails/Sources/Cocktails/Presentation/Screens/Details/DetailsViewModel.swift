@@ -1,33 +1,26 @@
 import Combine
 import Foundation
 import Dependencies
+import Core
 
 class DetailsViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var details: CocktailModel?
+    @Published var details: Result<CocktailModel> = .loading
     @Published var errorMessage: String?
-    let id: String?
 
     private var cancellables = Set<AnyCancellable>()
 
     init(id: String?) {
-        self.id = id
+        fetchDetails(id: id)
     }
 
-    func fetchDetails() {
+    func fetchDetails(id: String?) {
         useCase
-            .getDetails(id: id)
+            .getCocktailDetails(id: id)
             .receiveOnMain()
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    self.errorMessage = error.localizedDescription
-                }
-            }, receiveValue: { details in
-                self.details = details
-            })
-            .store(in: &cancellables)
+            .assign(to: &$details)
     }
 
 }
