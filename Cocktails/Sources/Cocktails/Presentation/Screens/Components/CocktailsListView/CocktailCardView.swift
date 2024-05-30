@@ -16,6 +16,9 @@ struct CocktailCardView: View {
         .padding(.vertical, 12)
         .background(Color.primaryLightBlue)
         .contentShape(Rectangle())
+        .onTapGesture {
+            action()
+        }
     }
 
     private var cocktailImage: some View {
