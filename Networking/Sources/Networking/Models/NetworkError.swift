@@ -8,7 +8,7 @@ public enum NetworkError: Error, LocalizedError {
     case decodingError(Error)
     case networkError(Error)
 
-    public var errorDescription: String? {
+    public var errorDescription: String {
         switch self {
         case .invalidUrl:
             return "Invalid url."
