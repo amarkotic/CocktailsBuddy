@@ -32,14 +32,13 @@ class FilterViewModel: ObservableObject {
 
     func search(completion: @escaping () -> Void) {
         useCase
-            .applyFilter(model: appliedFilters)
+            .getFilteredCocktails(model: appliedFilters)
             .receiveOnMain()
             .sink { [weak self] results in
                 self?.filteredCocktails = results
                 completion()
             }
             .store(in: &cancellables)
-
     }
 
     func resetFilters() {

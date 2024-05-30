@@ -23,7 +23,7 @@ class CocktailsSearchViewModel: ObservableObject {
             .flatMap { [weak self] query -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> in
                 guard let self else { return .empty() }
 
-                return self.useCase.searchCocktails(query: query)
+                return self.useCase.getCocktails(query: query)
             }
             .receiveOnMain()
             .assign(to: &$items)

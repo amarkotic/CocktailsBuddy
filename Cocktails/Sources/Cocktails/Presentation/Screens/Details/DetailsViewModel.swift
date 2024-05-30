@@ -18,7 +18,7 @@ class DetailsViewModel: ObservableObject {
 
     func fetchDetails(id: String?) {
         useCase
-            .getDetails(id: id)
+            .getCocktailDetails(id: id)
             .receiveOnMain()
             .assign(to: &$details)
     }
