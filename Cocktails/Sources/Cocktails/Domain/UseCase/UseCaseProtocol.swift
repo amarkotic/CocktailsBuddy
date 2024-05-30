@@ -9,6 +9,6 @@ protocol UseCaseProtocol {
 
     var allFilters: AnyPublisher<Result<FiltersModel>, Never> { get }
 
-    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never>
+    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never>
 
 }

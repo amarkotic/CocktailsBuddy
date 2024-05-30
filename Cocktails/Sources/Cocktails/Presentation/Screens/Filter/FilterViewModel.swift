@@ -9,7 +9,7 @@ class FilterViewModel: ObservableObject {
 
     @Published var filters: Result<FiltersModel> = .loading
     @Published var appliedFilters: AppliedFiltersModel = .empty
-    @Published var filteredCocktails: [CocktailSearchCardModel] = []
+    @Published var filteredCocktails: Result<[CocktailSearchCardModel]> = .loading
 
     private var cancellables = Set<AnyCancellable>()
 

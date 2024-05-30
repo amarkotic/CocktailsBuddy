@@ -11,9 +11,8 @@ class UseCase: UseCaseProtocol, DependencyKey {
     func getDetails(id: String?) -> AnyPublisher<Result<CocktailModel>, Never> {
         repository
             .getDetails(id: id)
-            .map { .success(CocktailModel(from: $0)) }
-            .catch { _ in Just(.failure) }
-            .eraseToAnyPublisher()
+            .map { CocktailModel(from: $0) }
+            .mapToNonFailingResult()
     }
 
     // Get search results, sort them alphabeticaly by title, apply isLast paramter and mark result as success
@@ -26,9 +25,7 @@ class UseCase: UseCaseProtocol, DependencyKey {
                      CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
-            .map { .success($0) }
-            .catch { _ in Just(.failure) } // Map thrown error to Result's failure to avoid breaking the chain
-            .eraseToAnyPublisher()
+            .mapToNonFailingResult()
     }
 
     var allFilters: AnyPublisher<Result<FiltersModel>, Never> {
@@ -37,18 +34,15 @@ class UseCase: UseCaseProtocol, DependencyKey {
             repository.getFilter(for: .glass),
             repository.getFilter(for: .category))
         .map { alcoholicResponse, glassResponse, categoryResponse in
-            let filters = FiltersModel(
+            FiltersModel(
                 alcoholicFilterItems: alcoholicResponse.items,
                 glassFilterItems: glassResponse.items,
                 categoryFilterItems: categoryResponse.items)
-
-            return .success(filters)
         }
-        .catch { _ in Just(.failure) }
-        .eraseToAnyPublisher()
+        .mapToNonFailingResult()
     }
 
-    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never> {
+    func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> {
         repository
             .applyFilter(model: model.toModel())
             .map { $0.sorted { $0 < $1 } }
@@ -57,8 +51,7 @@ class UseCase: UseCaseProtocol, DependencyKey {
                      CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
-            .catch { _ in Just([]) } // In case request fails, return an empty array insted of breaking the chain
-            .eraseToAnyPublisher()
+            .mapToNonFailingResult()
     }
 
 }

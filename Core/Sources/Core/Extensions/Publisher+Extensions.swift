@@ -17,3 +17,14 @@ extension Publisher {
     }
 
 }
+
+extension Publisher where Output: Equatable {
+
+    // Map a chain which can fail to a nonfailable chain which transfers failure inside a Result type
+    public func mapToNonFailingResult() -> AnyPublisher<Result<Output>, Never> {
+        map { Result.success($0) }
+            .catch { _ in Just(Result.failure) }
+            .eraseToAnyPublisher()
+    }
+
+}
