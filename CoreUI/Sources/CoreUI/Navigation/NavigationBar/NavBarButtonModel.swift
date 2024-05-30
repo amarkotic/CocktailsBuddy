@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Single navigation bar button model
 public struct NavBarButtonModel {
 
     let action: () -> Void

@@ -1,6 +1,8 @@
 import SwiftUI
 import UIKit
 
+// Protocol which every coordinator across the app has to conform
+// Rule of thumb is that each module has it's coordinator, and all of them are managed by MainCoordinator in the root
 public protocol Coordinator {
 
     var navigationController: UINavigationController { get set }
@@ -9,6 +11,7 @@ public protocol Coordinator {
 
 }
 
+// Default implementation of often used methods
 extension Coordinator {
 
     public func pushHostingViewController<T: View>(with view: T) {

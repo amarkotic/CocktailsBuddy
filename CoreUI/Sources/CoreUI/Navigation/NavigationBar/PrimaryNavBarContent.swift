@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Primary view to be used in navigation bar which offers title, leading and trailing bar buttons
 public struct PrimaryNavBarContent: View {
 
     var title: String?

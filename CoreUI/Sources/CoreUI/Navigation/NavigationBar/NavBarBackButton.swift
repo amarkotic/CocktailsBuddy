@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Default back button for navigation bar
 public struct NavBarBackButton: View {
 
     public init() {}
