@@ -1,2 +1,4 @@
 "search.bar.placeholder" = "Type to search";
+"no.result" = "No results";
+"failure.description" = "We've run into an issue. Please check your internet connection and try to restart the app";
 "colon" = ":";
