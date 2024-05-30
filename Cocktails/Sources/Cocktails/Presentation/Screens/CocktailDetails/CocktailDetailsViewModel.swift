@@ -8,7 +8,6 @@ class CocktailDetailsViewModel: ObservableObject {
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
     @Published var details: Result<CocktailModel> = .loading
-    @Published var errorMessage: String?
 
     private let coordinator: CocktailsCoordinator
 

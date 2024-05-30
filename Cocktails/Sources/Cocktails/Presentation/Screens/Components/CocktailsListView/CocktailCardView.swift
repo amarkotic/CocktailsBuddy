@@ -4,6 +4,7 @@ import Kingfisher
 struct CocktailCardView: View {
 
     var model: CocktailCardModel
+    var action: () -> Void
 
     var body: some View {
         HStack(spacing: 16) {
@@ -47,10 +48,10 @@ struct CocktailCardView: View {
 
     ScrollView {
         LazyVStack {
-            CocktailCardView(model: CocktailCardModel.mock)
-            CocktailCardView(model: CocktailCardModel.mock)
-            CocktailCardView(model: CocktailCardModel.mock)
-            CocktailCardView(model: CocktailCardModel.mock)
+            CocktailCardView(model: CocktailCardModel.mock) { }
+            CocktailCardView(model: CocktailCardModel.mock) { }
+            CocktailCardView(model: CocktailCardModel.mock) { }
+            CocktailCardView(model: CocktailCardModel.mock) { }
         }
     }
     .padding()

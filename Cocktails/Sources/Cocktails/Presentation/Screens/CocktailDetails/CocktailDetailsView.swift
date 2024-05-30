@@ -18,7 +18,15 @@ struct CocktailDetailsView: View {
         }
     }
 
-    @ViewBuilder
+    private func navigationBar(title: String) -> some View {
+        NavigationBar {
+            PrimaryNavBarContent(
+                title: title,
+                leadingModel: NavBarButtonModel(action: viewModel.backTap, buttonContent: NavBarBackButton())
+            )
+        }
+    }
+
     private func cocktailDetails(_ model: CocktailModel) -> some View {
         VStack(spacing: 0) {
             navigationBar(title: model.name)
@@ -34,15 +42,6 @@ struct CocktailDetailsView: View {
                 .edgesIgnoringSafeArea(.all)
             }
             .background(Color.primaryLightBlue)
-        }
-    }
-
-    private func navigationBar(title: String) -> some View {
-        NavigationBar {
-            PrimaryNavBarContent(
-                title: title,
-                leadingModel: NavBarButtonModel(action: viewModel.backTap, buttonContent: NavBarBackButton())
-            )
         }
     }
 

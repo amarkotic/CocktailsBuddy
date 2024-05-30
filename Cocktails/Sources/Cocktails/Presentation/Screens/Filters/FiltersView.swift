@@ -27,9 +27,6 @@ struct FiltersView: View {
 
             searchButton
         }
-        .toolbar {
-            resetButton
-        }
         .background(Color.primaryWhite)
     }
 
@@ -113,7 +110,6 @@ struct FiltersView: View {
         Text(LocalizableStrings.reset.localized.uppercased())
             .font(.headerSecondary)
             .foregroundStyle(Color.primaryLightBlue.opacity(viewModel.anyFilterSelected ? 1 : 0.2))
-            .disabled(!viewModel.anyFilterSelected)
     }
 
 }

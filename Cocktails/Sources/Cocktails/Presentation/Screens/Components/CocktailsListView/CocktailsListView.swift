@@ -5,7 +5,7 @@ import CoreUI
 struct CocktailsListView: View {
 
     var listItems: Result<[CocktailCardModel]>
-    var action: (_ id: String) -> Void
+    var cardSelected: (_ id: String) -> Void
 
     var body: some View {
         switch listItems {
@@ -26,10 +26,9 @@ struct CocktailsListView: View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 8) {
                 ForEach(items) { item in
-                    CocktailCardView(model: item)
-                        .onTapGesture {
-                            action(item.id)
-                        }
+                    CocktailCardView(model: item) {
+                        cardSelected(item.id)
+                    }
 
                     if !item.isLastItem {
                         HorizontalDivider()
@@ -45,6 +44,6 @@ struct CocktailsListView: View {
 
 #Preview {
 
-    CocktailsListView(listItems: .success([CocktailCardModel.mock]), action: { _ in })
+    CocktailsListView(listItems: .success([CocktailCardModel.mock])) { _ in }
 
 }

@@ -11,7 +11,6 @@ class FiltersViewModel: ObservableObject {
     @Published var appliedFilters: AppliedFiltersModel = .empty
 
     private let coordinator: CocktailsCoordinator
-    private var cancellables = Set<AnyCancellable>()
 
     var anyFilterSelected: Bool {
         appliedFilters.alcohol != nil ||

@@ -11,7 +11,6 @@ class CocktailsSearchViewModel: ObservableObject {
     @Published var items: Result<[CocktailCardModel]> = .loading
     @Published var query: String = ""
 
-    private var cancellables = Set<AnyCancellable>()
     private let coordinator: CocktailsCoordinator
 
     init(coordinator: CocktailsCoordinator) {

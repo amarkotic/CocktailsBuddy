@@ -2,6 +2,7 @@ import UIKit
 import Cocktails
 import CoreUI
 
+// Parent coordinator designed to store different coordinators from feature modules and handle navigation between them
 class MainCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()

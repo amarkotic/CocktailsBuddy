@@ -10,7 +10,6 @@ class FilteredCocktailsViewModel: ObservableObject {
     @Published var filteredCocktails: Result<[CocktailCardModel]> = .loading
 
     private let coordinator: CocktailsCoordinator
-    private var cancellables = Set<AnyCancellable>()
 
     init(coordinator: CocktailsCoordinator, appliedFilters: AppliedFiltersModel) {
         self.coordinator = coordinator

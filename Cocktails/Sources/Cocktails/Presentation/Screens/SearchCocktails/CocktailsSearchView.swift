@@ -26,7 +26,6 @@ struct CocktailsSearchView: View {
             CocktailsListView(listItems: viewModel.items) { selectedId in
                 viewModel.selectCocktail(selectedId)
             }
-            .maxSize(alignment: .top)
         }
     }
 
