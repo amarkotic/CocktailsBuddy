@@ -6,5 +6,6 @@ public extension Image {
     static var searchCancel: Image { BundleImage.searchCancel.image }
     static var radioButton: Image { BundleImage.radioButton.image }
     static var radioButtonSelected: Image { BundleImage.radioButtonSelected.image }
+    static var back: Image { BundleImage.back.image }
 
 }
