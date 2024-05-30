@@ -7,7 +7,7 @@ protocol UseCaseProtocol {
 
     func searchCocktails(query: String) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never>
 
-    var allFilters: AnyPublisher<FiltersModel, Error> { get }
+    var allFilters: AnyPublisher<Result<FiltersModel>, Never> { get }
 
     func applyFilter(model: AppliedFiltersModel) -> AnyPublisher<[CocktailSearchCardModel], Never>
 

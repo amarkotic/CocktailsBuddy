@@ -1,12 +1,13 @@
 import Combine
 import Foundation
 import Dependencies
+import Core
 
 class FilterViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
-    @Published var filters: FiltersModel = .empty
+    @Published var filters: Result<FiltersModel> = .loading
     @Published var appliedFilters: AppliedFiltersModel = .empty
     @Published var filteredCocktails: [CocktailSearchCardModel] = []
 
@@ -26,7 +27,6 @@ class FilterViewModel: ObservableObject {
         useCase
             .allFilters
             .receiveOnMain()
-            .catch { _ in Just(.empty) }
             .assign(to: &$filters)
     }
 

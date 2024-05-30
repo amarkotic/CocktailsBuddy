@@ -31,18 +31,20 @@ class UseCase: UseCaseProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
-    var allFilters: AnyPublisher<FiltersModel, Error> {
+    var allFilters: AnyPublisher<Result<FiltersModel>, Never> {
         Publishers.Zip3(
             repository.getFilter(for: .alcohol),
             repository.getFilter(for: .glass),
             repository.getFilter(for: .category))
         .map { alcoholicResponse, glassResponse, categoryResponse in
-            FiltersModel(
+            let filters = FiltersModel(
                 alcoholicFilterItems: alcoholicResponse.items,
                 glassFilterItems: glassResponse.items,
-                categoryFilterItems: categoryResponse.items
-            )
+                categoryFilterItems: categoryResponse.items)
+
+            return .success(filters)
         }
+        .catch { _ in Just(.failure) }
         .eraseToAnyPublisher()
     }
 
