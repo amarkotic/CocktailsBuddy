@@ -18,3 +18,9 @@ public struct MainProgressView: View {
     }
 
 }
+
+#Preview {
+
+    MainProgressView()
+
+}

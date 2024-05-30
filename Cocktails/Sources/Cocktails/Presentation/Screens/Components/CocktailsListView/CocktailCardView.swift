@@ -1,9 +1,10 @@
 import SwiftUI
 import Kingfisher
 
-struct CocktailSearchCardView: View {
+struct CocktailCardView: View {
 
-    var model: CocktailSearchCardModel
+    var model: CocktailCardModel
+    var action: () -> Void
 
     var body: some View {
         HStack(spacing: 16) {
@@ -47,10 +48,10 @@ struct CocktailSearchCardView: View {
 
     ScrollView {
         LazyVStack {
-            CocktailSearchCardView(model: CocktailSearchCardModel.mock)
-            CocktailSearchCardView(model: CocktailSearchCardModel.mock)
-            CocktailSearchCardView(model: CocktailSearchCardModel.mock)
-            CocktailSearchCardView(model: CocktailSearchCardModel.mock)
+            CocktailCardView(model: CocktailCardModel.mock) { }
+            CocktailCardView(model: CocktailCardModel.mock) { }
+            CocktailCardView(model: CocktailCardModel.mock) { }
+            CocktailCardView(model: CocktailCardModel.mock) { }
         }
     }
     .padding()

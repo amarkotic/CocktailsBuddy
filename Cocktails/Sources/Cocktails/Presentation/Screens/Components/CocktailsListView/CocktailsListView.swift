@@ -2,9 +2,10 @@ import SwiftUI
 import Core
 import CoreUI
 
-struct CocktailListView: View {
+struct CocktailsListView: View {
 
-    var listItems: Result<[CocktailSearchCardModel]>
+    var listItems: Result<[CocktailCardModel]>
+    var cardSelected: (_ id: String) -> Void
 
     var body: some View {
         switch listItems {
@@ -21,14 +22,13 @@ struct CocktailListView: View {
         }
     }
 
-    private func searchResultsView(items: [CocktailSearchCardModel]) -> some View {
+    private func searchResultsView(items: [CocktailCardModel]) -> some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 8) {
                 ForEach(items) { item in
-                    NavigationLink(destination: DetailsView(viewModel: DetailsViewModel(id: item.id))) {
-                        CocktailSearchCardView(model: item)
+                    CocktailCardView(model: item) {
+                        cardSelected(item.id)
                     }
-                    .buttonStyle(PlainButtonStyle())
 
                     if !item.isLastItem {
                         HorizontalDivider()
@@ -44,8 +44,6 @@ struct CocktailListView: View {
 
 #Preview {
 
-    NavigationStack {
-        CocktailListView(listItems: .loading)
-    }
+    CocktailsListView(listItems: .success([CocktailCardModel.mock])) { _ in }
 
 }

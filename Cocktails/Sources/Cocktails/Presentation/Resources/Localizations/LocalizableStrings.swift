@@ -23,6 +23,7 @@ enum LocalizableStrings: String, Localizable {
     case search
     case reset
     case filteredResult = "filtered.result"
+    case filters
 
     public var localized: String {
         rawValue.localize(bundle: .module)

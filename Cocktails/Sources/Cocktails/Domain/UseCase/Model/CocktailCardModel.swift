@@ -1,6 +1,6 @@
 import Foundation
 
-struct CocktailSearchCardModel: Equatable, Identifiable {
+struct CocktailCardModel: Equatable, Identifiable {
 
     let id: String
     let title: String
@@ -18,7 +18,7 @@ struct CocktailSearchCardModel: Equatable, Identifiable {
 
 }
 
-extension CocktailSearchCardModel {
+extension CocktailCardModel {
 
     init(from model: CocktailSearchRepositoryModel, isLastItem: Bool) {
         id = model.id
@@ -30,10 +30,10 @@ extension CocktailSearchCardModel {
 
 }
 
-extension CocktailSearchCardModel {
+extension CocktailCardModel {
 
-    static var mock: CocktailSearchCardModel {
-        CocktailSearchCardModel(
+    static var mock: CocktailCardModel {
+        CocktailCardModel(
             id: "24214",
             title: "Mojito",
             description: "Alcoholic, Beverage, Regular glass",

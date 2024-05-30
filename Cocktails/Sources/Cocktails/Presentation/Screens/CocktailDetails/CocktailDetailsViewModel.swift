@@ -3,16 +3,16 @@ import Foundation
 import Dependencies
 import Core
 
-class DetailsViewModel: ObservableObject {
+class CocktailDetailsViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
     @Published var details: Result<CocktailModel> = .loading
-    @Published var errorMessage: String?
 
-    private var cancellables = Set<AnyCancellable>()
+    private let coordinator: CocktailsCoordinator
 
-    init(id: String?) {
+    init(coordinator: CocktailsCoordinator, id: String?) {
+        self.coordinator = coordinator
         fetchDetails(id: id)
     }
 
@@ -21,6 +21,15 @@ class DetailsViewModel: ObservableObject {
             .getCocktailDetails(id: id)
             .receiveOnMain()
             .assign(to: &$details)
+    }
+
+}
+
+// MARK: - Coordinator methods
+extension CocktailDetailsViewModel {
+
+    func backTap() {
+        coordinator.popViewController()
     }
 
 }

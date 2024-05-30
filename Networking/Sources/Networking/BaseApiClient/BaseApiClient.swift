@@ -1,7 +1,7 @@
-import Foundation
 import Combine
-import Core
+import Foundation
 import Dependencies
+import Core
 
 class BaseApiClient: BaseApiClientProtocol, DependencyKey {
 

@@ -3,7 +3,7 @@ import Foundation
 struct CocktailModel: Equatable {
 
     let id: String
-    let name: String?
+    let name: String
     let category: String?
     let glass: String?
     let alcoholicType: String?
@@ -24,7 +24,7 @@ extension CocktailModel {
 
     init(from model: CocktailRepositoryModel) {
         id = model.id
-        name = model.name
+        name = model.name ?? LocalizableStrings.cocktail.localized
         category = model.category
         glass = model.glass
         alcoholicType = model.alcoholicType

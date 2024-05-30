@@ -21,4 +21,5 @@
 
 "Search" = "Search";
 "reset" = "Reset";
-"filtered.result" = "Filtered Result";
+"filtered.result" = "%@ Filtered Result";
+"filters" = "Filters";

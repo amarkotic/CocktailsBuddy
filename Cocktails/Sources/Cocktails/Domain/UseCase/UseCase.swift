@@ -17,13 +17,13 @@ class UseCase: UseCaseProtocol, DependencyKey {
     }
 
     // Get search results, sort them alphabeticaly by title, apply isLast paramter and mark result as success
-    func getCocktails(query: String) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> {
+    func getCocktails(query: String) -> AnyPublisher<Result<[CocktailCardModel]>, Never> {
         repository
             .getCocktails(query: query)
             .map { $0.sorted { $0 < $1 } }
             .map { cocktails in
                  cocktails.enumerated().map { index, item in
-                     CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
+                     CocktailCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
             .mapToNonFailingResult()
@@ -45,13 +45,13 @@ class UseCase: UseCaseProtocol, DependencyKey {
     }
 
     // Get cocktails which corespond to applied filters
-    func getFilteredCocktails(model: AppliedFiltersModel) -> AnyPublisher<Result<[CocktailSearchCardModel]>, Never> {
+    func getFilteredCocktails(model: AppliedFiltersModel) -> AnyPublisher<Result<[CocktailCardModel]>, Never> {
         repository
             .getFilteredCocktails(model: model.toModel())
             .map { $0.sorted { $0 < $1 } }
             .map { cocktails in
                  cocktails.enumerated().map { index, item in
-                     CocktailSearchCardModel(from: item, isLastItem: index == cocktails.count - 1)
+                     CocktailCardModel(from: item, isLastItem: index == cocktails.count - 1)
                  }
              }
             .mapToNonFailingResult()

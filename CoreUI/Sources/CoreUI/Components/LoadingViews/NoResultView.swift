@@ -20,9 +20,18 @@ public struct NoResultView: View {
                 .multilineTextAlignment(.center)
         }
         .maxHeight(alignment: .top)
-        .background(Color.primaryLightBlue)
+        .maxWidth()
         .padding(.top, 32)
         .padding(.all, 16)
+        .background(Color.primaryLightBlue)
+    }
+
+}
+
+#Preview {
+
+    VStack {
+        NoResultView(result: .empty)
     }
 
 }

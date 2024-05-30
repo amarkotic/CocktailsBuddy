@@ -3,15 +3,14 @@ import Foundation
 import Dependencies
 import Core
 
-class FilterViewModel: ObservableObject {
+class FiltersViewModel: ObservableObject {
 
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
     @Published var filters: Result<FiltersModel> = .loading
     @Published var appliedFilters: AppliedFiltersModel = .empty
-    @Published var filteredCocktails: Result<[CocktailSearchCardModel]> = .loading
 
-    private var cancellables = Set<AnyCancellable>()
+    private let coordinator: CocktailsCoordinator
 
     var anyFilterSelected: Bool {
         appliedFilters.alcohol != nil ||
@@ -19,7 +18,8 @@ class FilterViewModel: ObservableObject {
         appliedFilters.category != nil
     }
 
-    init() {
+    init(coordinator: CocktailsCoordinator) {
+        self.coordinator = coordinator
         bindViews()
     }
 
@@ -30,19 +30,21 @@ class FilterViewModel: ObservableObject {
             .assign(to: &$filters)
     }
 
-    func search(completion: @escaping () -> Void) {
-        useCase
-            .getFilteredCocktails(model: appliedFilters)
-            .receiveOnMain()
-            .sink { [weak self] results in
-                self?.filteredCocktails = results
-                completion()
-            }
-            .store(in: &cancellables)
-    }
-
     func resetFilters() {
         appliedFilters.reset()
+    }
+
+}
+
+// MARK: - Coordinator methods
+extension FiltersViewModel {
+
+    func showFilteredResults() {
+        coordinator.showFilterResults(appliedFilters: appliedFilters)
+    }
+
+    func backTap() {
+        coordinator.popViewController()
     }
 
 }
