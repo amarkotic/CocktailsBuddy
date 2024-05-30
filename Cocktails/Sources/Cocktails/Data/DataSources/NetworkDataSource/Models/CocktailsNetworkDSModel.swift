@@ -2,10 +2,10 @@ import Foundation
 
 struct CocktailsNetworkDSModel: Decodable {
 
-    let drinks: [CocktailNetworkDSModel]
+    let drinks: [CocktailNetworkDSModel]?
 
     var firstDrink: CocktailNetworkDSModel? {
-        drinks.first
+        drinks?.first
     }
 
 }

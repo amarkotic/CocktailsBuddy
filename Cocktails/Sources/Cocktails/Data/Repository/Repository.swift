@@ -15,10 +15,11 @@ class Repository: RepositoryProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    // API doesn't retrieve an empty list, but nil instead when there are no drinks. In that case, map it manually to []
     func searchCocktails(query: String) -> AnyPublisher<[CocktailSearchRepositoryModel], Error> {
         networkDataSource
             .searchCocktails(query)
-            .map { $0.drinks.map { CocktailSearchRepositoryModel(from: $0) } }
+            .map { $0.drinks?.map { CocktailSearchRepositoryModel(from: $0) } ?? [] }
             .eraseToAnyPublisher()
     }
 
@@ -29,10 +30,11 @@ class Repository: RepositoryProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
+    // API doesn't retrieve an empty list, but nil instead when there are no drinks. In that case, map it manually to []
     func applyFilter(model: AppliedFiltersRepositoryModel) -> AnyPublisher<[CocktailSearchRepositoryModel], Error> {
         networkDataSource
             .applyFilter(model: model.toModel())
-            .map { $0.drinks.map { CocktailSearchRepositoryModel(from: $0) } }
+            .map { $0.drinks?.map { CocktailSearchRepositoryModel(from: $0) } ?? [] }
             .eraseToAnyPublisher()
     }
 

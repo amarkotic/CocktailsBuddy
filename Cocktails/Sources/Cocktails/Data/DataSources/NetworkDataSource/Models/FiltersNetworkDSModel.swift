@@ -2,6 +2,12 @@ import Foundation
 
 struct FiltersNetworkDSModel: Decodable {
 
-    let drinks: [FilterNetworkDSModel]
+    let filters: [FilterNetworkDSModel]?
+
+    enum CodingKeys: String, CodingKey {
+
+        case filters = "drinks"
+
+    }
 
 }
