@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6504C7C62C072C7D0047AED4 /* Launch.storyboard */; };
-		657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
 		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
 		65AA51C52BFCFFF20097F697 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C42BFCFFF20097F697 /* Core */; };
 		65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C62BFCFFF20097F697 /* CoreUI */; };
 		65AA51C92BFCFFF20097F697 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C82BFCFFF20097F697 /* Networking */; };
+		65B6C50B2C08EA9600BA4794 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6C50A2C08EA9600BA4794 /* AppDelegate.swift */; };
+		65B6C50D2C08EA9C00BA4794 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6C50C2C08EA9C00BA4794 /* SceneDelegate.swift */; };
+		65B6C50F2C08EBB000BA4794 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6C50E2C08EBB000BA4794 /* MainCoordinator.swift */; };
 		65B919582BFFDD940065BC9D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 65B919572BFFDD940065BC9D /* Kingfisher */; };
 		65CD83BF2C05455300E18F29 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 65CD83BE2C05455300E18F29 /* RealmSwift */; };
 		65F2BD6F2C00A2D2000CEF22 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 65F2BD6E2C00A2D2000CEF22 /* Dependencies */; };
@@ -25,13 +27,15 @@
 		6504C7C52C0720250047AED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6504C7C62C072C7D0047AED4 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyApp.swift; sourceTree = "<group>"; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65AA51BD2BFCFB2C0097F697 /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreUI; sourceTree = "<group>"; };
 		65AA51BE2BFCFB3F0097F697 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		65AA51BF2BFCFB580097F697 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		65AA51C02BFCFFC60097F697 /* Cocktails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Cocktails; sourceTree = "<group>"; };
+		65B6C50A2C08EA9600BA4794 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65B6C50C2C08EA9C00BA4794 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		65B6C50E2C08EBB000BA4794 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				6504C7C52C0720250047AED4 /* Info.plist */,
-				657A422D2BFCD55C00020DCD /* CocktailsBuddyApp.swift */,
 				6504C7C62C072C7D0047AED4 /* Launch.storyboard */,
+				65B6C50A2C08EA9600BA4794 /* AppDelegate.swift */,
+				65B6C50E2C08EBB000BA4794 /* MainCoordinator.swift */,
+				65B6C50C2C08EA9C00BA4794 /* SceneDelegate.swift */,
 				657A42312BFCD55D00020DCD /* Assets.xcassets */,
 				657A42332BFCD55D00020DCD /* Preview Content */,
 			);
@@ -144,6 +150,7 @@
 				TargetAttributes = {
 					657A42292BFCD55C00020DCD = {
 						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
 					};
 				};
 			};
@@ -210,7 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657A422E2BFCD55C00020DCD /* CocktailsBuddyApp.swift in Sources */,
+				65B6C50B2C08EA9600BA4794 /* AppDelegate.swift in Sources */,
+				65B6C50F2C08EBB000BA4794 /* MainCoordinator.swift in Sources */,
+				65B6C50D2C08EA9C00BA4794 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CocktailsBuddy/Preview Content\"";
@@ -348,7 +358,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CocktailsBuddy/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Launch.storyboard;
@@ -363,6 +373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.antoniomarkotic.CocktailsBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -373,6 +384,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CocktailsBuddy/Preview Content\"";
@@ -380,7 +392,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CocktailsBuddy/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Launch.storyboard;
