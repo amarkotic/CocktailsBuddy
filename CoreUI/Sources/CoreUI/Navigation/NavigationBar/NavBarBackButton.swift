@@ -13,3 +13,11 @@ public struct NavBarBackButton: View {
     }
 
 }
+
+#Preview {
+
+    NavBarBackButton()
+        .padding(16)
+        .background(Color.blue)
+
+}

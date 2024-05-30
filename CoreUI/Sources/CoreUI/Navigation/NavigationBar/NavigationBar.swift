@@ -21,3 +21,12 @@ public struct NavigationBar<Content: View>: View {
     }
 
 }
+
+#Preview {
+
+    NavigationBar { PrimaryNavBarContent(
+        title: "Cocktail",
+        leadingModel: NavBarButtonModel(action: {}, buttonContent: NavBarBackButton()))
+    }
+
+}
