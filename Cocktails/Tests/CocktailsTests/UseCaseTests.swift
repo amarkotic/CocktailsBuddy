@@ -103,4 +103,5 @@ final class UseCaseTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0)
     }
+
 }
