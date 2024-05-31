@@ -10,7 +10,7 @@ class FiltersViewModel: ObservableObject {
     @Published var filters: Result<FiltersModel> = .loading
     @Published var appliedFilters: AppliedFiltersModel = .empty
 
-    private let coordinator: CocktailsCoordinator
+    private let coordinator: CocktailsCoordinatorProtocol
 
     var anyFilterSelected: Bool {
         appliedFilters.alcohol != nil ||
@@ -18,7 +18,7 @@ class FiltersViewModel: ObservableObject {
         appliedFilters.category != nil
     }
 
-    init(coordinator: CocktailsCoordinator) {
+    init(coordinator: CocktailsCoordinatorProtocol) {
         self.coordinator = coordinator
         bindViews()
     }

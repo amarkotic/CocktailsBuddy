@@ -64,6 +64,6 @@ struct CocktailsSearchView: View {
 
 #Preview {
 
-    CocktailsSearchView(viewModel: CocktailsSearchViewModel(coordinator: .mock))
+    CocktailsSearchView(viewModel: CocktailsSearchViewModel(coordinator: CocktailsCoordinatorMock()))
 
 }

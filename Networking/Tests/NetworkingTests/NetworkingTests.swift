@@ -32,7 +32,6 @@ final class NetworkingTests: XCTestCase {
 
         waitForExpectations(timeout: 5.0)
 
-
     }
 
     func testPerformRequestWithInvalidURL() {

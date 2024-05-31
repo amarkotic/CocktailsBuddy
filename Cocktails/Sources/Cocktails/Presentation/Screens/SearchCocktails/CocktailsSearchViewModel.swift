@@ -11,9 +11,9 @@ class CocktailsSearchViewModel: ObservableObject {
     @Published var items: Result<[CocktailCardModel]> = .loading
     @Published var query: String = ""
 
-    private let coordinator: CocktailsCoordinator
+    private let coordinator: CocktailsCoordinatorProtocol
 
-    init(coordinator: CocktailsCoordinator) {
+    init(coordinator: CocktailsCoordinatorProtocol) {
         self.coordinator = coordinator
         bindSearch()
     }

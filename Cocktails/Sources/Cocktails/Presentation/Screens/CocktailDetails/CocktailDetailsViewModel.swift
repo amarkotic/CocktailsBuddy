@@ -9,9 +9,9 @@ class CocktailDetailsViewModel: ObservableObject {
 
     @Published var details: Result<CocktailModel> = .loading
 
-    private let coordinator: CocktailsCoordinator
+    private let coordinator: CocktailsCoordinatorProtocol
 
-    init(coordinator: CocktailsCoordinator, id: String?) {
+    init(coordinator: CocktailsCoordinatorProtocol, id: String?) {
         self.coordinator = coordinator
         fetchDetails(id: id)
     }

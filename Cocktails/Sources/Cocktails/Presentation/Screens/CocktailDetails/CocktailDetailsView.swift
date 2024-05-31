@@ -49,6 +49,6 @@ struct CocktailDetailsView: View {
 
 #Preview {
 
-    CocktailDetailsView(viewModel: CocktailDetailsViewModel(coordinator: .mock, id: "11000"))
+    CocktailDetailsView(viewModel: CocktailDetailsViewModel(coordinator: CocktailsCoordinatorMock(), id: "11000"))
 
 }

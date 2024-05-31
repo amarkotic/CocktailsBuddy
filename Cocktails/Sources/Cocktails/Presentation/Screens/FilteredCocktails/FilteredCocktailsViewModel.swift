@@ -9,9 +9,9 @@ class FilteredCocktailsViewModel: ObservableObject {
 
     @Published var filteredCocktails: Result<[CocktailCardModel]> = .loading
 
-    private let coordinator: CocktailsCoordinator
+    private let coordinator: CocktailsCoordinatorProtocol
 
-    init(coordinator: CocktailsCoordinator, appliedFilters: AppliedFiltersModel) {
+    init(coordinator: CocktailsCoordinatorProtocol, appliedFilters: AppliedFiltersModel) {
         self.coordinator = coordinator
         bindViews(model: appliedFilters)
     }
