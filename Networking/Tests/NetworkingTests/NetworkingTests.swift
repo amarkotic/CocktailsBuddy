@@ -103,13 +103,17 @@ final class NetworkingTests: XCTestCase {
 extension NetworkingTests {
 
     struct CocktailResponse: Decodable {
+
         let drinks: [Drink]
+
     }
 
     struct Drink: Decodable {
+
         let idDrink: String
         let strDrink: String
         let strCategory: String?
+
     }
 
 }

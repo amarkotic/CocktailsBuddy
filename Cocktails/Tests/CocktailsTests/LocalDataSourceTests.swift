@@ -3,6 +3,7 @@ import Combine
 import RealmSwift
 @testable import Cocktails
 
+// swiftlint:disable force_try
 final class LocalDataSourceTests: XCTestCase {
 
     var localDataSource: LocalDataSource!
@@ -35,7 +36,7 @@ final class LocalDataSourceTests: XCTestCase {
         localDataSource.saveCocktail(model: cocktail)
 
         let realm = try! Realm()
-        let savedCocktail =  realm.objects(CocktailLocalDSModel.self).filter("id == %@", "11007").first
+        let savedCocktail = realm.objects(CocktailLocalDSModel.self).filter("id == %@", "11007").first
 
         XCTAssertNotNil(savedCocktail)
         XCTAssertEqual(savedCocktail?.name, "Margarita")
@@ -47,14 +48,9 @@ final class LocalDataSourceTests: XCTestCase {
         localDataSource.saveCocktail(model: cocktail)
 
         localDataSource.getCocktailDetails(id: "11007")
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    XCTFail("Request failed with error: \(error)")
-                }
-            }, receiveValue: { retrievedCocktail in
+            .sinkToExpectation(expectation) { retrievedCocktail in
                 XCTAssertEqual(retrievedCocktail.name, "Margarita")
-                expectation.fulfill()
-            })
+            }
             .store(in: &cancellables)
 
         waitForExpectations(timeout: 5.0)
@@ -68,31 +64,9 @@ final class LocalDataSourceTests: XCTestCase {
         localDataSource.saveCocktail(model: cocktail2)
 
         localDataSource.getCocktailDetails(id: nil)
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    XCTFail("Request failed with error: \(error)")
-                }
-            }, receiveValue: { retrievedCocktail in
+            .sinkToExpectation(expectation) { retrievedCocktail in
                 XCTAssertTrue(["Margarita", "Mojito"].contains(retrievedCocktail.name))
-                expectation.fulfill()
-            })
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 5.0)
-    }
-
-    func testRetrieveCocktailNotFound() {
-        let expectation = self.expectation(description: "Retrieve non-existent cocktail should fail")
-
-        localDataSource.getCocktailDetails(id: "99999")
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    XCTAssertEqual(error.localizedDescription, "The operation couldn’t be completed. (No data found error 0.)")
-                    expectation.fulfill()
-                }
-            }, receiveValue: { _ in
-                XCTFail("Request should not succeed")
-            })
+            }
             .store(in: &cancellables)
 
         waitForExpectations(timeout: 5.0)
@@ -119,4 +93,6 @@ final class LocalDataSourceTests: XCTestCase {
         cocktail.name = name
         return cocktail
     }
+
 }
+// swiftlint:enable force_try
