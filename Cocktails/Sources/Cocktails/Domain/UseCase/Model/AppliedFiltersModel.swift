@@ -1,4 +1,4 @@
-struct AppliedFiltersModel {
+public struct AppliedFiltersModel {
 
     var alcohol: String?
     var category: String?

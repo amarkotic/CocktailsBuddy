@@ -1,6 +1,6 @@
 import CoreUI
 
-protocol CocktailsCoordinatorProtocol: Coordinator {
+public protocol CocktailsCoordinatorProtocol: Coordinator {
 
     func showSearchScreen()
 

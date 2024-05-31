@@ -12,7 +12,13 @@ class Repository: RepositoryProtocol, DependencyKey {
     // Try retrieving cocktail details from local data source, and if that fails - fetch it from the network
     func getCocktailDetails(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
         fetchFromLocalDataSource(id: id)
-            .catch { _ in self.fetchFromNetworkDataSource(id: id) }
+            .catch { [weak self] _ -> AnyPublisher<CocktailRepositoryModel, Error> in
+                guard let self = self else {
+                    return Fail(error: CocktailError.generalError)
+                        .eraseToAnyPublisher()
+                }
+                return self.fetchFromNetworkDataSource(id: id)
+            }
             .eraseToAnyPublisher()
     }
 
@@ -46,10 +52,14 @@ class Repository: RepositoryProtocol, DependencyKey {
 extension Repository {
 
     fileprivate func fetchFromLocalDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
-        localDataSource
-            .getCocktailDetails(id: id)
-            .map { CocktailRepositoryModel(from: $0) }
-            .eraseToAnyPublisher()
+        if let model = localDataSource.getCocktail(id: id) {
+            return Just(CocktailRepositoryModel(from: model))
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+        } else {
+            return Fail(error: CocktailError.generalError)
+                .eraseToAnyPublisher()
+        }
     }
 
     fileprivate func fetchFromNetworkDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {

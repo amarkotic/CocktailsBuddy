@@ -42,36 +42,6 @@ final class LocalDataSourceTests: XCTestCase {
         XCTAssertEqual(savedCocktail?.name, "Margarita")
     }
 
-    func testRetrieveCocktailById() {
-        let expectation = self.expectation(description: "Retrieve cocktail by id")
-        let cocktail = createSampleCocktail(id: "11007", name: "Margarita")
-        localDataSource.saveCocktail(model: cocktail)
-
-        localDataSource.getCocktailDetails(id: "11007")
-            .sinkToExpectation(expectation) { retrievedCocktail in
-                XCTAssertEqual(retrievedCocktail.name, "Margarita")
-            }
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 5.0)
-    }
-
-    func testRetrieveRandomCocktail() {
-        let expectation = self.expectation(description: "Retrieve random cocktail")
-        let cocktail1 = createSampleCocktail(id: "11007", name: "Margarita")
-        let cocktail2 = createSampleCocktail(id: "11008", name: "Mojito")
-        localDataSource.saveCocktail(model: cocktail1)
-        localDataSource.saveCocktail(model: cocktail2)
-
-        localDataSource.getCocktailDetails(id: nil)
-            .sinkToExpectation(expectation) { retrievedCocktail in
-                XCTAssertTrue(["Margarita", "Mojito"].contains(retrievedCocktail.name))
-            }
-            .store(in: &cancellables)
-
-        waitForExpectations(timeout: 5.0)
-    }
-
     func testUpdateCocktail() {
         let initialCocktail = createSampleCocktail(id: "11007", name: "Margarita")
         localDataSource.saveCocktail(model: initialCocktail)

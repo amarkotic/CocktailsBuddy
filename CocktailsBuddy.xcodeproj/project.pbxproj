@@ -10,7 +10,10 @@
 		6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6504C7C62C072C7D0047AED4 /* Launch.storyboard */; };
 		653EBAA42C0A52C30034A81A /* CocktailsBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
-		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
+		65A8F1862C0A62A100DAE66B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8F1852C0A62A100DAE66B /* NotificationManager.swift */; };
+		65A8F1892C0A6F8B00DAE66B /* NotificationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8F1882C0A6F8B00DAE66B /* NotificationManagerProtocol.swift */; };
+		65A8F18B2C0A80C700DAE66B /* NotificationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8F18A2C0A80C700DAE66B /* NotificationIdentifier.swift */; };
+		65A8F18D2C0A845100DAE66B /* DailyNotificationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8F18C2C0A845100DAE66B /* DailyNotificationTime.swift */; };
 		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
 		65AA51C52BFCFFF20097F697 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C42BFCFFF20097F697 /* Core */; };
 		65AA51C72BFCFFF20097F697 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C62BFCFFF20097F697 /* CoreUI */; };
@@ -41,7 +44,10 @@
 		653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyUITests.swift; sourceTree = "<group>"; };
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		65A8F1852C0A62A100DAE66B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		65A8F1882C0A6F8B00DAE66B /* NotificationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerProtocol.swift; sourceTree = "<group>"; };
+		65A8F18A2C0A80C700DAE66B /* NotificationIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationIdentifier.swift; sourceTree = "<group>"; };
+		65A8F18C2C0A845100DAE66B /* DailyNotificationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNotificationTime.swift; sourceTree = "<group>"; };
 		65AA51BD2BFCFB2C0097F697 /* CoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreUI; sourceTree = "<group>"; };
 		65AA51BE2BFCFB3F0097F697 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		65AA51BF2BFCFB580097F697 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
@@ -111,23 +117,34 @@
 		657A422C2BFCD55C00020DCD /* CocktailsBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				65A8F1872C0A6F7900DAE66B /* NotificationManager */,
 				6504C7C52C0720250047AED4 /* Info.plist */,
 				6504C7C62C072C7D0047AED4 /* Launch.storyboard */,
 				65B6C50A2C08EA9600BA4794 /* AppDelegate.swift */,
 				65B6C50E2C08EBB000BA4794 /* MainCoordinator.swift */,
 				65B6C50C2C08EA9C00BA4794 /* SceneDelegate.swift */,
 				657A42312BFCD55D00020DCD /* Assets.xcassets */,
-				657A42332BFCD55D00020DCD /* Preview Content */,
 			);
 			path = CocktailsBuddy;
 			sourceTree = "<group>";
 		};
-		657A42332BFCD55D00020DCD /* Preview Content */ = {
+		65A8F1872C0A6F7900DAE66B /* NotificationManager */ = {
 			isa = PBXGroup;
 			children = (
-				657A42342BFCD55D00020DCD /* Preview Assets.xcassets */,
+				65A8F18E2C0A84F700DAE66B /* Models */,
+				65A8F1852C0A62A100DAE66B /* NotificationManager.swift */,
+				65A8F1882C0A6F8B00DAE66B /* NotificationManagerProtocol.swift */,
 			);
-			path = "Preview Content";
+			path = NotificationManager;
+			sourceTree = "<group>";
+		};
+		65A8F18E2C0A84F700DAE66B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				65A8F18A2C0A80C700DAE66B /* NotificationIdentifier.swift */,
+				65A8F18C2C0A845100DAE66B /* DailyNotificationTime.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		65AA51C12BFCFFF20097F697 /* Frameworks */ = {
@@ -242,7 +259,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */,
 				657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */,
 				6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */,
 			);
@@ -287,7 +303,11 @@
 			files = (
 				65B6C50B2C08EA9600BA4794 /* AppDelegate.swift in Sources */,
 				65B6C50F2C08EBB000BA4794 /* MainCoordinator.swift in Sources */,
+				65A8F18D2C0A845100DAE66B /* DailyNotificationTime.swift in Sources */,
+				65A8F1862C0A62A100DAE66B /* NotificationManager.swift in Sources */,
+				65A8F1892C0A6F8B00DAE66B /* NotificationManagerProtocol.swift in Sources */,
 				65B6C50D2C08EA9C00BA4794 /* SceneDelegate.swift in Sources */,
+				65A8F18B2C0A80C700DAE66B /* NotificationIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +492,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CocktailsBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = 4729CGQSC7;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
@@ -508,7 +527,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CocktailsBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = 4729CGQSC7;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
