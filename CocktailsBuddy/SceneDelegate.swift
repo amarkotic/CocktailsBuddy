@@ -1,6 +1,9 @@
 import UIKit
+import Dependencies
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    @Dependency(\.notificationManager) var notificationManager: NotificationManagerProtocol
 
     var window: UIWindow?
     var cocktailsCoordinator: MainCoordinator?
@@ -18,6 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        notificationManager.scheduleDailyNotification()
     }
 
 }
