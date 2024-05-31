@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6504C7C62C072C7D0047AED4 /* Launch.storyboard */; };
+		653EBAA42C0A52C30034A81A /* CocktailsBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
 		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
@@ -23,9 +24,21 @@
 		65F2BD712C00A2D2000CEF22 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 65F2BD702C00A2D2000CEF22 /* DependenciesMacros */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		653EBAA72C0A52C30034A81A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 657A42222BFCD55C00020DCD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 657A42292BFCD55C00020DCD;
+			remoteInfo = CocktailsBuddy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6504C7C52C0720250047AED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6504C7C62C072C7D0047AED4 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		653EBAA12C0A52C30034A81A /* CocktailsBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocktailsBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyUITests.swift; sourceTree = "<group>"; };
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -39,6 +52,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		653EBA9E2C0A52C30034A81A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		657A42272BFCD55C00020DCD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		653EBAA22C0A52C30034A81A /* CocktailsBuddyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */,
+			);
+			path = CocktailsBuddyUITests;
+			sourceTree = "<group>";
+		};
 		657A42212BFCD55C00020DCD = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +93,7 @@
 				65AA51BE2BFCFB3F0097F697 /* Core */,
 				65AA51BD2BFCFB2C0097F697 /* CoreUI */,
 				657A422C2BFCD55C00020DCD /* CocktailsBuddy */,
+				653EBAA22C0A52C30034A81A /* CocktailsBuddyUITests */,
 				657A422B2BFCD55C00020DCD /* Products */,
 				65AA51C12BFCFFF20097F697 /* Frameworks */,
 			);
@@ -74,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */,
+				653EBAA12C0A52C30034A81A /* CocktailsBuddyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +140,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		653EBAA02C0A52C30034A81A /* CocktailsBuddyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653EBAAB2C0A52C30034A81A /* Build configuration list for PBXNativeTarget "CocktailsBuddyUITests" */;
+			buildPhases = (
+				653EBA9D2C0A52C30034A81A /* Sources */,
+				653EBA9E2C0A52C30034A81A /* Frameworks */,
+				653EBA9F2C0A52C30034A81A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653EBAA82C0A52C30034A81A /* PBXTargetDependency */,
+			);
+			name = CocktailsBuddyUITests;
+			productName = CocktailsBuddyUITests;
+			productReference = 653EBAA12C0A52C30034A81A /* CocktailsBuddyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		657A42292BFCD55C00020DCD /* CocktailsBuddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 657A424E2BFCD55D00020DCD /* Build configuration list for PBXNativeTarget "CocktailsBuddy" */;
@@ -148,6 +196,10 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					653EBAA02C0A52C30034A81A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 657A42292BFCD55C00020DCD;
+					};
 					657A42292BFCD55C00020DCD = {
 						CreatedOnToolsVersion = 15.3;
 						LastSwiftMigration = 1530;
@@ -173,11 +225,19 @@
 			projectRoot = "";
 			targets = (
 				657A42292BFCD55C00020DCD /* CocktailsBuddy */,
+				653EBAA02C0A52C30034A81A /* CocktailsBuddyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		653EBA9F2C0A52C30034A81A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		657A42282BFCD55C00020DCD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +273,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		653EBA9D2C0A52C30034A81A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653EBAA42C0A52C30034A81A /* CocktailsBuddyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		657A42262BFCD55C00020DCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,7 +293,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		653EBAA82C0A52C30034A81A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 657A42292BFCD55C00020DCD /* CocktailsBuddy */;
+			targetProxy = 653EBAA72C0A52C30034A81A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		653EBAA92C0A52C30034A81A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4729CGQSC7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antoniomarkotic.CocktailsBuddyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CocktailsBuddy;
+			};
+			name = Debug;
+		};
+		653EBAAA2C0A52C30034A81A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4729CGQSC7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antoniomarkotic.CocktailsBuddyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CocktailsBuddy;
+			};
+			name = Release;
+		};
 		657A424C2BFCD55D00020DCD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -423,6 +537,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		653EBAAB2C0A52C30034A81A /* Build configuration list for PBXNativeTarget "CocktailsBuddyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653EBAA92C0A52C30034A81A /* Debug */,
+				653EBAAA2C0A52C30034A81A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		657A42252BFCD55C00020DCD /* Build configuration list for PBXProject "CocktailsBuddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
