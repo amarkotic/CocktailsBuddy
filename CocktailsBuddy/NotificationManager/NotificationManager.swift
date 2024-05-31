@@ -3,6 +3,7 @@ import UserNotifications
 import Dependencies
 import RealmSwift
 import Cocktails
+import Core
 
 class NotificationManager: NotificationManagerProtocol, DependencyKey {
 
@@ -11,39 +12,48 @@ class NotificationManager: NotificationManagerProtocol, DependencyKey {
     public static var liveValue: any NotificationManagerProtocol = NotificationManager()
 
     func scheduleDailyNotification() {
-        let content = configureNotificationContent()
-        let dateComponents = configureDateComponent()
+        UNUserNotificationCenter.current().getPendingNotificationRequests { [weak self] requests in
+            // If there is an already registered notification request with identifier dailyCocktailReminder, then return
+            guard
+                let self = self,
+                !requests.contains(where: { $0.identifier == NotificationIdentifier.dailyReminder.rawValue }),
+                let content = self.configureNotificationContent()
+            else { return }
 
-        // Create the trigger as a repeating event
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            let trigger = self.configureNotificationTrigger()
+            let identifier = NotificationIdentifier.dailyReminder.rawValue
 
-        // Create the request and add it to the notification center
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
+            // Create the request and add it to the notification center
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error { Logger.shared.log(error: error) }
+            }
+        }
     }
 
-    // If user accesed any cocktail details, it gets saved to local DB. Fetch cocktail name from it to personalize PN
-    private func configureNotificationContent() -> UNMutableNotificationContent {
+    // If user accessed any cocktail details, it gets saved to local DB. Fetch cocktail model from it to personalize PN
+    private func configureNotificationContent() -> UNMutableNotificationContent? {
+        guard
+            let cocktail = localDataSource.getCocktail(id: nil),
+            let cocktailName = cocktail.name
+        else { return nil }
+
         let content = UNMutableNotificationContent()
         content.title = "Cocktails Time!"
+        content.body = "Did you try out \(cocktailName)? Check it out again and have a lovely drink!"
+        content.userInfo = ["cocktailID": cocktail.id]
         content.sound = .default
-
-        if let cocktailModelName = localDataSource.getCocktail(id: nil)?.name {
-            content.body = "Did you try out \(cocktailModelName)? Check it out again and have a lovely drink!"
-        } else {
-            content.body = "Every day is a cocktail day. Check out new recipes now!"
-        }
 
         return content
     }
 
-    // Send this push notification daily at 20:30
-    private func configureDateComponent() -> DateComponents {
+    // Trigger which fires each day at stated time
+    private func configureNotificationTrigger() -> UNCalendarNotificationTrigger {
         var dateComponents = DateComponents()
         dateComponents.hour = 20
-        dateComponents.minute = 30
+        dateComponents.minute = 15
 
-        return dateComponents
+        return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
     }
 
 }
