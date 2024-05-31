@@ -14,13 +14,23 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        configureCocktailsCoordinator()
+        let coordinator = configureCocktailsCoordinator()
+        coordinator.start()
     }
 
-    private func configureCocktailsCoordinator() {
+    func deepLinkToCocktailDetails(for id: String?) {
+        let coordinator = childCoordinators
+            .compactMap { $0 as? CocktailsCoordinator }
+            .first ?? configureCocktailsCoordinator()
+        coordinator.start()
+        coordinator.showCocktailDetails(for: id)
+    }
+
+    private func configureCocktailsCoordinator() -> CocktailsCoordinatorProtocol {
         let cocktailsCoordinator = CocktailsCoordinator(navigationController: navigationController)
         childCoordinators.append(cocktailsCoordinator)
-        cocktailsCoordinator.start()
+
+        return cocktailsCoordinator
     }
 
 }
