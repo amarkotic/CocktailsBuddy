@@ -2,10 +2,10 @@ import Foundation
 import RealmSwift
 
 // Realm needs classes to maintain object identity and data consistency
-class CocktailLocalDSModel: Object {
+public class CocktailLocalDSModel: Object {
 
     @Persisted var id: String
-    @Persisted var name: String?
+    @Persisted public var name: String?
     @Persisted var category: String?
     @Persisted var glass: String?
     @Persisted var alcoholicType: String?
