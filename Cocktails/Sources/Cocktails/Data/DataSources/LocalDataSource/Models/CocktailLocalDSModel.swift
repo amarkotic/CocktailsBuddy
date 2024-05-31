@@ -4,7 +4,7 @@ import RealmSwift
 // Realm needs classes to maintain object identity and data consistency
 public class CocktailLocalDSModel: Object {
 
-    @Persisted var id: String
+    @Persisted public var id: String
     @Persisted public var name: String?
     @Persisted var category: String?
     @Persisted var glass: String?

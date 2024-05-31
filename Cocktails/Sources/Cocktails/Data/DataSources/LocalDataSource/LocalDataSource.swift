@@ -12,7 +12,10 @@ public class LocalDataSource: LocalDataSourceProtocol, DependencyKey {
     public static var testValue: any LocalDataSourceProtocol = LocalDataSource()
 
     public func getCocktailDetails(id: String?) -> AnyPublisher<CocktailLocalDSModel, Error> {
-        guard let model = getCocktail(id: id) else { return .never() }
+        guard let model = getCocktail(id: id) else {
+            return Fail(error: NSError(domain: "No data found", code: 0, userInfo: nil))
+                .eraseToAnyPublisher()
+        }
 
         return Just(model)
             .setFailureType(to: Error.self)
