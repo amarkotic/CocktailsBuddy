@@ -20,7 +20,7 @@ final class FiltersViewModelTests: XCTestCase {
     func testApplyFilter() {
         let expectedAlcoholFilter = "Vodka"
         viewModel.appliedFilters.alcohol = expectedAlcoholFilter
-        XCTAssertEqual(viewModel.appliedFilters.alcohol, expectedAlcoholFilter, "The alcohol filter should be applied correctly.")
+        XCTAssertEqual(viewModel.appliedFilters.alcohol, expectedAlcoholFilter, "Filter should be applied correctly.")
     }
 
     func testResetFilters() {

@@ -10,6 +10,7 @@ class CocktailsCoordinatorMock: CocktailsCoordinatorProtocol {
     var showCocktailDetailsCalled = false
     var showFiltersCalled = false
     var showFilteredResultsCalled = false
+    var popViewControllerCalled = false
 
     var navigationController = UINavigationController()
 
@@ -29,6 +30,10 @@ class CocktailsCoordinatorMock: CocktailsCoordinatorProtocol {
 
     func showFilterResults(appliedFilters: AppliedFiltersModel) {
         showFilteredResultsCalled = true
+    }
+
+    func popViewController(animated: Bool) {
+        popViewControllerCalled = true
     }
 
 }
