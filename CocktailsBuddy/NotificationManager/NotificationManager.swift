@@ -49,11 +49,7 @@ class NotificationManager: NotificationManagerProtocol, DependencyKey {
 
     // Trigger which fires each day at stated time
     private func configureNotificationTrigger() -> UNCalendarNotificationTrigger {
-        var dateComponents = DateComponents()
-        dateComponents.hour = 20
-        dateComponents.minute = 15
-
-        return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        UNCalendarNotificationTrigger(dateMatching: DailyNotificationTime.time, repeats: true)
     }
 
 }
