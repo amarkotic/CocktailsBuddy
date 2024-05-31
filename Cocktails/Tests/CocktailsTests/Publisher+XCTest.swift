@@ -9,14 +9,14 @@ extension Publisher where Failure: Error {
         line: UInt = #line,
         receiveValue: @escaping ((Output) -> Void)
     ) -> AnyCancellable {
-        sink(receiveCompletion: { completion in
-            if case .failure(let error) = completion {
-                XCTFail("Request failed with error: \(error)", file: file, line: line)
-            }
-            expectation.fulfill()
-        },
-             receiveValue: receiveValue
-        )
+        sink(
+            receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    XCTFail("Request failed with error: \(error)", file: file, line: line)
+                }
+                expectation.fulfill()
+            },
+            receiveValue: receiveValue)
     }
 
 }
