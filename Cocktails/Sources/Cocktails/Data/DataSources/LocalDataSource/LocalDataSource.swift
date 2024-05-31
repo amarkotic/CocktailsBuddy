@@ -1,4 +1,3 @@
-import Combine
 import Foundation
 import Dependencies
 import RealmSwift
@@ -11,29 +10,13 @@ public class LocalDataSource: LocalDataSourceProtocol, DependencyKey {
     public static var liveValue: any LocalDataSourceProtocol = LocalDataSource()
     public static var testValue: any LocalDataSourceProtocol = LocalDataSource()
 
-    public func getCocktailDetails(id: String?) -> AnyPublisher<CocktailLocalDSModel, Error> {
-        guard let model = getCocktail(id: id) else {
-            return Fail(error: NSError(domain: "No data found", code: 0, userInfo: nil))
-                .eraseToAnyPublisher()
-        }
-
-        return Just(model)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
-
-}
-
-// MARK: - Read and write from local DB
-extension LocalDataSource {
-
     // Get cocktail model from local DB - return specific model if id is not nil, and a random model if id is nil
     public func getCocktail(id: String?) -> CocktailLocalDSModel? {
         guard let realm = try? Realm() else { return nil }
 
         let persistedObject = id != nil ?
-        realm.objects(CocktailLocalDSModel.self).filter("id == %@", id!).first :
-        realm.objects(CocktailLocalDSModel.self).randomElement()
+            realm.objects(CocktailLocalDSModel.self).filter("id == %@", id!).first :
+            realm.objects(CocktailLocalDSModel.self).randomElement()
 
         return persistedObject
     }

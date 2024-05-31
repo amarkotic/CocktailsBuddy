@@ -1,4 +1,5 @@
 import Combine
+import Foundation
 import Dependencies
 
 class Repository: RepositoryProtocol, DependencyKey {
@@ -46,10 +47,14 @@ class Repository: RepositoryProtocol, DependencyKey {
 extension Repository {
 
     fileprivate func fetchFromLocalDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
-        localDataSource
-            .getCocktailDetails(id: id)
-            .map { CocktailRepositoryModel(from: $0) }
-            .eraseToAnyPublisher()
+        if let model = localDataSource.getCocktail(id: id) {
+            return Just(CocktailRepositoryModel(from: model))
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+        } else {
+            return Fail(error: NSError(domain: "No data found", code: 0, userInfo: nil))
+                .eraseToAnyPublisher()
+        }
     }
 
     fileprivate func fetchFromNetworkDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
