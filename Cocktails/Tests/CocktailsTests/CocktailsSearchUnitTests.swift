@@ -5,7 +5,6 @@ import Dependencies
 
 final class CocktailsSearchViewModelTests: XCTestCase {
 
-    @Dependency(\.useCase) private var useCase: UseCaseProtocol
     var viewModel: CocktailsSearchViewModel!
     var cancellables: Set<AnyCancellable>!
 

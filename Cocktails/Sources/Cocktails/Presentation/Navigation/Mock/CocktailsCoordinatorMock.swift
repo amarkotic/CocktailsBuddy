@@ -9,7 +9,7 @@ class CocktailsCoordinatorMock: CocktailsCoordinatorProtocol {
     var showSearchScreenCalled = false
     var showCocktailDetailsCalled = false
     var showFiltersCalled = false
-    var showFilterResultsCalled = false
+    var showFilteredResultsCalled = false
 
     var navigationController = UINavigationController()
 
@@ -28,7 +28,7 @@ class CocktailsCoordinatorMock: CocktailsCoordinatorProtocol {
     }
 
     func showFilterResults(appliedFilters: AppliedFiltersModel) {
-        showFiltersCalled = true
+        showFilteredResultsCalled = true
     }
 
 }
