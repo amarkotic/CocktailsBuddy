@@ -5,7 +5,8 @@ import Core
 
 class BaseApiClient: BaseApiClientProtocol, DependencyKey {
 
-    public static var liveValue: any BaseApiClientProtocol = BaseApiClient()
+    public static let liveValue: any BaseApiClientProtocol = BaseApiClient()
+    public static let testValue: any BaseApiClientProtocol = BaseApiClient()
 
     private let httpClient: HTTPClientProtocol = URLSession.shared
 

@@ -10,6 +10,7 @@ import Core
 class LocalDataSource: LocalDataSourceProtocol, DependencyKey {
 
     static var liveValue: any LocalDataSourceProtocol = LocalDataSource()
+    static var testValue: any LocalDataSourceProtocol = LocalDataSource()
 
     // Get cocktail model from local DB - return specific model if id is not nil, and a random model if id is nil
     func getCocktailDetails(id: String?) -> AnyPublisher<CocktailLocalDSModel, Error> {

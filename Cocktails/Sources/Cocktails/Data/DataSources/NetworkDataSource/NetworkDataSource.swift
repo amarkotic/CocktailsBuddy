@@ -6,6 +6,7 @@ import Networking
 class NetworkDataSource: NetworkDataSourceProtocol, DependencyKey {
 
     static var liveValue: any NetworkDataSourceProtocol = NetworkDataSource()
+    static var testValue: any NetworkDataSourceProtocol = NetworkDataSource()
 
     @Dependency(\.baseApiClient) private var baseApiClient: BaseApiClientProtocol
 
