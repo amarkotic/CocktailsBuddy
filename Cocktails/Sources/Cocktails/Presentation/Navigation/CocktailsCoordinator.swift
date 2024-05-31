@@ -3,7 +3,7 @@ import UIKit
 import Core
 import CoreUI
 
-public class CocktailsCoordinator: Coordinator {
+public class CocktailsCoordinator: CocktailsCoordinatorProtocol {
 
     public var navigationController: UINavigationController
 
@@ -37,14 +37,6 @@ public class CocktailsCoordinator: Coordinator {
         let viewModel = FilteredCocktailsViewModel(coordinator: self, appliedFilters: appliedFilters)
         let resultsView = FilteredCocktailsView(viewModel: viewModel)
         pushHostingViewController(with: resultsView)
-    }
-
-}
-
-extension CocktailsCoordinator {
-
-    static var mock: CocktailsCoordinator {
-        CocktailsCoordinator(navigationController: UINavigationController())
     }
 
 }

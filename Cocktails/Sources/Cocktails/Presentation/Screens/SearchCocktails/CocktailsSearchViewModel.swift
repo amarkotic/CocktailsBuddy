@@ -11,14 +11,15 @@ class CocktailsSearchViewModel: ObservableObject {
     @Published var items: Result<[CocktailCardModel]> = .loading
     @Published var query: String = ""
 
-    private let coordinator: CocktailsCoordinator
+    private let coordinator: CocktailsCoordinatorProtocol
 
-    init(coordinator: CocktailsCoordinator) {
+    init(coordinator: CocktailsCoordinatorProtocol) {
         self.coordinator = coordinator
-        bindSearch()
+
+        bindViews()
     }
 
-    func bindSearch() {
+    func bindViews() {
         $query
             .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
             .flatMap { [weak self] query -> AnyPublisher<Result<[CocktailCardModel]>, Never> in

@@ -116,6 +116,6 @@ struct FiltersView: View {
 
 #Preview {
 
-    return FiltersView(viewModel: FiltersViewModel(coordinator: .mock))
+    return FiltersView(viewModel: FiltersViewModel(coordinator: CocktailsCoordinatorMock()))
 
 }

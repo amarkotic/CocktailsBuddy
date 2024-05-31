@@ -9,16 +9,19 @@ class FilteredCocktailsViewModel: ObservableObject {
 
     @Published var filteredCocktails: Result<[CocktailCardModel]> = .loading
 
-    private let coordinator: CocktailsCoordinator
+    private let appliedFilters: AppliedFiltersModel
+    private let coordinator: CocktailsCoordinatorProtocol
 
-    init(coordinator: CocktailsCoordinator, appliedFilters: AppliedFiltersModel) {
+    init(coordinator: CocktailsCoordinatorProtocol, appliedFilters: AppliedFiltersModel) {
         self.coordinator = coordinator
-        bindViews(model: appliedFilters)
+        self.appliedFilters = appliedFilters
+
+        bindViews()
     }
 
-    func bindViews(model: AppliedFiltersModel) {
+    func bindViews() {
         useCase
-            .getFilteredCocktails(model: model)
+            .getFilteredCocktails(model: appliedFilters)
             .receiveOnMain()
             .assign(to: &$filteredCocktails)
     }
