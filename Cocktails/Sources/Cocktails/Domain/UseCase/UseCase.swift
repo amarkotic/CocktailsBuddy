@@ -5,6 +5,7 @@ import Core
 class UseCase: UseCaseProtocol, DependencyKey {
 
     static var liveValue: any UseCaseProtocol = UseCase()
+    static var testValue: any UseCaseProtocol = UseCase()
 
     @Dependency(\.repository) private var repository: RepositoryProtocol
 
