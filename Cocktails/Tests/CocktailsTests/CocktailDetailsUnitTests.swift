@@ -21,7 +21,7 @@ final class CocktailDetailsViewModelTests: XCTestCase {
     }
 
     func testFetchDetails() {
-        let expectation = XCTestExpectation(description: "Fetch details")
+        let expectation = expectation(description: "Fetch details")
 
         viewModel
             .$details
