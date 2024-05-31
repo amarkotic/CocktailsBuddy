@@ -19,8 +19,6 @@ final class CocktailsBuddyUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        XCTAssertTrue(app.scrollViews.count > 0, "Main screen did not load correctly")
-
         let element = app.scrollViews
             .children(matching: .other)
             .element

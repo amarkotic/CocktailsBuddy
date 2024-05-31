@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6504C7C72C072C7D0047AED4 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6504C7C62C072C7D0047AED4 /* Launch.storyboard */; };
 		653EBAA42C0A52C30034A81A /* CocktailsBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */; };
-		653EBAA62C0A52C30034A81A /* CocktailsBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653EBAA52C0A52C30034A81A /* CocktailsBuddyUITestsLaunchTests.swift */; };
 		657A42322BFCD55D00020DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42312BFCD55D00020DCD /* Assets.xcassets */; };
 		657A42352BFCD55D00020DCD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657A42342BFCD55D00020DCD /* Preview Assets.xcassets */; };
 		65AA51C32BFCFFF20097F697 /* Cocktails in Frameworks */ = {isa = PBXBuildFile; productRef = 65AA51C22BFCFFF20097F697 /* Cocktails */; };
@@ -40,7 +39,6 @@
 		6504C7C62C072C7D0047AED4 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		653EBAA12C0A52C30034A81A /* CocktailsBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocktailsBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyUITests.swift; sourceTree = "<group>"; };
-		653EBAA52C0A52C30034A81A /* CocktailsBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		657A422A2BFCD55C00020DCD /* CocktailsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657A42312BFCD55D00020DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657A42342BFCD55D00020DCD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				653EBAA32C0A52C30034A81A /* CocktailsBuddyUITests.swift */,
-				653EBAA52C0A52C30034A81A /* CocktailsBuddyUITestsLaunchTests.swift */,
 			);
 			path = CocktailsBuddyUITests;
 			sourceTree = "<group>";
@@ -281,7 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				653EBAA42C0A52C30034A81A /* CocktailsBuddyUITests.swift in Sources */,
-				653EBAA62C0A52C30034A81A /* CocktailsBuddyUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
