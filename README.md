@@ -1,6 +1,10 @@
 # CocktailsBuddy
 Project built in 05/24. Detailed instructions can be found [here](https://github.com/amarkotic/CocktailsBuddy/blob/develop/Task.md).
 
+Main focus was on the architecture, clean code and testability. I set the project in a way which makes it easy to continue scaling it by adding new features. 
+
+Even though it is a personal project, i wanted to display all the good practices of git flow and task management, so i also created a mini task board which you can find [here](https://trello.com/b/RYWeeNYF/coctails-app)
+
 ## Table of contents
   * [Usage](#usage)
   * [Bonus features](#bonus-features)
@@ -70,6 +74,4 @@ Motivation - take advantage of UIKit's navigation while at the same time using S
 
 ## Unit and UI tests
 Motivation - ensure lasting code quality
-
-### [Trello board](https://trello.com/b/RYWeeNYF/coctails-app)
 
