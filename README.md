@@ -53,7 +53,7 @@ Motivation - reduce build times and showcase a project setup for unlimited featu
 ## **Uncle's Bob Clean Architecture** 
 Motivation - follow SOC and SOLID rules by utilising **Singletons** and **Dependency injection** design patterns
 
-![Clean](https://github.com/amarkotic/CocktailsBuddy/assets/40775323/783dc0c9-70bf-445d-afc6-7184c89aa79a)
+![clean](https://github.com/amarkotic/CocktailsBuddy/assets/40775323/b722f56f-b81e-4090-b7c8-673cdc1a3042)
 
 - Separate Feature module to layers following Clean architecture rules.
 
@@ -62,13 +62,14 @@ Motivation - follow SOC and SOLID rules by utilising **Singletons** and **Depend
 ## MVVM + SwiftUI + Combine
 Motivation - use a declarative modern approach to build Presentation layer effectively and take advantage of the reactive paradigm with combine to sink data from business layer fast
 
-![Combine](https://github.com/amarkotic/CocktailsBuddy/assets/40775323/d1ecc64c-ffa7-47e0-91a8-320228058003)
+![result](https://github.com/amarkotic/CocktailsBuddy/assets/40775323/0025fd1b-0e67-4a30-afc9-ee8d9402e3a8)
 
 
 ## Coordinator pattern
 Motivation - take advantage of UIKit's navigation while at the same time using SwiftUI views wrapped in **UIHostingViewController**
 
-![coordinator](https://github.com/amarkotic/CocktailsBuddy/assets/40775323/b1fa519b-3f9d-4b78-b261-8590bdcbbc84)
+![coordinator](https://github.com/amarkotic/CocktailsBuddy/assets/40775323/8eff7049-4966-4dee-a891-904edcded8e5)
+
 
 - Main coordinator is responsible for handling communication between many feature coordinators - which is currently only one - CocktailsCoordinator
 
