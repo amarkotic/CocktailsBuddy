@@ -1,0 +1,5 @@
+protocol NotificationManagerProtocol {
+
+    func scheduleDailyNotification()
+
+}

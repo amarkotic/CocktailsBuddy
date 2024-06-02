@@ -1,0 +1,25 @@
+"today" = "Today";
+"this.week" = "This week";
+"this.month" = "This month";
+"dot" = "•";
+"today" = "Today";
+"this.week" = "This week";
+"this.month" = "This month";
+"this.year" = "This year";
+"years.ago" = " years ago";
+
+"ingredients.title" = "Ingredients";
+"directions.title" = "Directions";
+"last.modified.title" = "Last modified";
+
+"cocktail" = "Cocktail";
+"feeling.lucky" = "Feeling lucky";
+
+"category" = "Category";
+"glass" = "Glass";
+"alcohol" = "Alcohol";
+
+"Search" = "Search";
+"reset" = "Reset";
+"filtered.result" = "%@ Filtered Result";
+"filters" = "Filters";

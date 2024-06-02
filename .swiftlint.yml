@@ -1,0 +1,44 @@
+function_parameter_count: 8
+identifier_name:
+  min_length: 2
+  max_length: 50
+line_length:
+  warning: 120
+  ignores_comments: true
+type_name:
+  max_length: 50
+function_parameter_count:
+  warning: 9
+  error: 12
+large_tuple: 4
+  
+
+
+opt_in_rules:
+  - file_header
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - "**/Package.swift"
+  - CachedDependencies
+
+disabled_rules:
+  - todo
+  - notification_center_detachment
+  - closure_parameter_position
+  - multiple_closures_with_trailing_closure
+  - operator_whitespace
+
+file_header:
+  forbidden_pattern: |
+    .*?
+
+
+custom_rules:
+  newline_after_definition_start:
+    name: "There should be an empty line after the definition opening braces"
+    regex: '(^[ a-zA-Z]*(?:protocol|extension|class|struct|enum)[ a-zA-Z:,<>\n_]*\{\n *\S+)'
+    severity: warning
+  newline_before_definition_end:
+    name: "There should be an empty line before the definition closing braces"
+    regex: '^[^\n]+\n\}\n'
+    severity: warning
