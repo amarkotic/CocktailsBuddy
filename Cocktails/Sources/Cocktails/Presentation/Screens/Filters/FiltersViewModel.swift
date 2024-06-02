@@ -11,12 +11,7 @@ class FiltersViewModel: ObservableObject {
     @Published var alcohol: String?
     @Published var category: String?
     @Published var glass: String?
-
-    var anyFilterSelected: Bool {
-        alcohol != nil ||
-        glass != nil ||
-        category != nil
-    }
+    @Published var anyFilterSelected: Bool = false
 
     private let coordinator: CocktailsCoordinatorProtocol
 
@@ -31,6 +26,12 @@ class FiltersViewModel: ObservableObject {
             .allFilters
             .receiveOnMain()
             .assign(to: &$filters)
+
+        Publishers.CombineLatest3($alcohol, $category, $glass)
+            .map { alcohol, category, glass in
+                return alcohol != nil || category != nil || glass != nil
+            }
+            .assign(to: &$anyFilterSelected)
     }
 
     func resetFilters() {
