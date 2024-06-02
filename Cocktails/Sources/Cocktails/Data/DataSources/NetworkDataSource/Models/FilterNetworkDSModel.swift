@@ -12,6 +12,10 @@ struct FilterNetworkDSModel: Decodable {
 
     }
 
+}
+
+extension FilterNetworkDSModel {
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let name = try container.decodeIfPresent(String.self, forKey: .category) {
