@@ -8,12 +8,14 @@ class FiltersViewModel: ObservableObject {
     @Dependency(\.useCase) private var useCase: UseCaseProtocol
 
     @Published var filters: Result<FiltersModel> = .loading
-    @Published var appliedFilters: AppliedFiltersModel = .empty
+    @Published var alcohol: String?
+    @Published var category: String?
+    @Published var glass: String?
 
     var anyFilterSelected: Bool {
-        appliedFilters.alcohol != nil ||
-        appliedFilters.glass != nil ||
-        appliedFilters.category != nil
+        alcohol != nil ||
+        glass != nil ||
+        category != nil
     }
 
     private let coordinator: CocktailsCoordinatorProtocol
@@ -32,7 +34,9 @@ class FiltersViewModel: ObservableObject {
     }
 
     func resetFilters() {
-        appliedFilters.reset()
+        alcohol = nil
+        category = nil
+        glass = nil
     }
 
 }
@@ -41,6 +45,7 @@ class FiltersViewModel: ObservableObject {
 extension FiltersViewModel {
 
     func showFilteredResults() {
+        let appliedFilters = AppliedFiltersModel(alcohol: alcohol, category: category, glass: glass)
         coordinator.showFilterResults(appliedFilters: appliedFilters)
     }
 
