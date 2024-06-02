@@ -34,6 +34,6 @@ struct FilteredCocktailsView: View {
     FilteredCocktailsView(
         viewModel: FilteredCocktailsViewModel(
             coordinator: CocktailsCoordinatorMock(),
-            appliedFilters: AppliedFiltersModel(alcohol: "Alcoholic", category: nil, glass: nil)))
+            appliedFilters: AppliedFiltersModel.mock))
 
 }

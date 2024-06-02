@@ -2,9 +2,9 @@ import SwiftUI
 
 public struct MainSectionView<Content: View>: View {
 
-    private var headerLabel: String
-    private var compositionType: CompositionType
-    private var content: Content
+    private let headerLabel: String
+    private let compositionType: CompositionType
+    private let content: Content
 
     public init(headerLabel: String, compositionType: CompositionType, @ViewBuilder content: () -> Content) {
         self.headerLabel = headerLabel

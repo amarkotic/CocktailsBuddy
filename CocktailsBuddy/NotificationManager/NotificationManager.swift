@@ -9,7 +9,7 @@ class NotificationManager: NotificationManagerProtocol, DependencyKey {
 
     @Dependency(\.localDataSource) private var localDataSource: LocalDataSourceProtocol
 
-    public static var liveValue: any NotificationManagerProtocol = NotificationManager()
+    public static let liveValue: any NotificationManagerProtocol = NotificationManager()
 
     func scheduleDailyNotification() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { [weak self] requests in

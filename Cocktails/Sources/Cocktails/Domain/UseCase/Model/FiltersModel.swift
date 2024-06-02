@@ -5,11 +5,3 @@ struct FiltersModel: Equatable {
     let categoryFilterItems: [String]
 
 }
-
-extension FiltersModel {
-
-    static var empty: FiltersModel {
-        FiltersModel(alcoholicFilterItems: [], glassFilterItems: [], categoryFilterItems: [])
-    }
-
-}

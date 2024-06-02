@@ -3,8 +3,8 @@ import Dependencies
 
 class Repository: RepositoryProtocol, DependencyKey {
 
-    static var liveValue: any RepositoryProtocol = Repository()
-    static var testValue: any RepositoryProtocol = Repository()
+    static let liveValue: any RepositoryProtocol = Repository()
+    static let testValue: any RepositoryProtocol = Repository()
 
     @Dependency(\.networkDataSource) private var networkDataSource: NetworkDataSourceProtocol
     @Dependency(\.localDataSource) private var localDataSource: LocalDataSourceProtocol

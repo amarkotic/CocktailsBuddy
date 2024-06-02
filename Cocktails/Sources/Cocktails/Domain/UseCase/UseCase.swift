@@ -4,8 +4,8 @@ import Core
 
 class UseCase: UseCaseProtocol, DependencyKey {
 
-    static var liveValue: any UseCaseProtocol = UseCase()
-    static var testValue: any UseCaseProtocol = UseCase()
+    static let liveValue: any UseCaseProtocol = UseCase()
+    static let testValue: any UseCaseProtocol = UseCaseMock()
 
     @Dependency(\.repository) private var repository: RepositoryProtocol
 

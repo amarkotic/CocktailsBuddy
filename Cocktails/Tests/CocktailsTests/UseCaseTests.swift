@@ -13,7 +13,6 @@ final class UseCaseTests: XCTestCase {
         super.setUp()
         cancellables = []
     }
-
     override func tearDown() {
         cancellables = nil
         super.tearDown()
@@ -23,7 +22,7 @@ final class UseCaseTests: XCTestCase {
         let expectation = expectation(description: "Retrieve cocktail details")
 
         useCase
-            .getCocktailDetails(id: "11007")
+            .getCocktailDetails(id: "testId")
             .sinkToExpectation(expectation) { result in
                 switch result {
                 case .success(let cocktail):
@@ -81,11 +80,7 @@ final class UseCaseTests: XCTestCase {
     func testGetFilteredCocktails() {
         let expectation = expectation(description: "Retrieve filtered cocktails")
 
-        let filters = AppliedFiltersModel(
-            alcohol: "Alcoholic",
-            category: "Cocktail",
-            glass: "Cocktail glass"
-        )
+        let filters = AppliedFiltersModel.mock
 
         useCase
             .getFilteredCocktails(model: filters)
