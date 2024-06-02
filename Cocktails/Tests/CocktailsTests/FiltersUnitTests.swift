@@ -19,20 +19,22 @@ final class FiltersViewModelTests: XCTestCase {
 
     func testApplyFilter() {
         let expectedAlcoholFilter = "Vodka"
-        viewModel.appliedFilters.alcohol = expectedAlcoholFilter
-        XCTAssertEqual(viewModel.appliedFilters.alcohol, expectedAlcoholFilter, "Filter should be applied correctly.")
+        viewModel.alcohol = expectedAlcoholFilter
+        XCTAssertEqual(viewModel.alcohol, expectedAlcoholFilter, "Filter should be applied correctly.")
+        XCTAssertEqual(viewModel.anyFilterSelected, true, "Filter is selected, but the anyFilterSelected is false")
     }
 
     func testResetFilters() {
-        viewModel.appliedFilters.alcohol = "Vodka"
-        viewModel.appliedFilters.glass = "Highball glass"
-        viewModel.appliedFilters.category = "Cocktail"
+        viewModel.alcohol = "Vodka"
+        viewModel.glass = "Highball glass"
+        viewModel.category = "Cocktail"
 
         viewModel.resetFilters()
 
-        XCTAssertNil(viewModel.appliedFilters.alcohol, "The alcohol filter should be reset to nil.")
-        XCTAssertNil(viewModel.appliedFilters.glass, "The glass filter should be reset to nil.")
-        XCTAssertNil(viewModel.appliedFilters.category, "The category filter should be reset to nil.")
+        XCTAssertNil(viewModel.alcohol, "The alcohol filter should be reset to nil.")
+        XCTAssertNil(viewModel.glass, "The glass filter should be reset to nil.")
+        XCTAssertNil(viewModel.category, "The category filter should be reset to nil.")
+        XCTAssertFalse(viewModel.anyFilterSelected, "No filter should be selected after reset")
     }
 
     func testOpenFilteredResults() {

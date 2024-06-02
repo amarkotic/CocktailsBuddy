@@ -6,10 +6,12 @@ public class LocalDataSourceMock: LocalDataSourceProtocol {
 
     private var realm: Realm
 
+    // swiftlint:disable force_try
     public init() {
         let configuration = Realm.Configuration(inMemoryIdentifier: "TestingRealm")
         self.realm = try! Realm(configuration: configuration)
     }
+    // swiftlint:enable force_try
 
     public func getCocktail(id: String?) -> CocktailLocalDSModel? {
         guard let id = id else { return nil }

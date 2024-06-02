@@ -3,7 +3,7 @@ import CoreUI
 
 struct RecipeDetailsView: View {
 
-    private var details: CocktailModel
+    private let details: CocktailModel
 
     init(details: CocktailModel) {
         self.details = details

@@ -11,6 +11,7 @@ struct CocktailRepositoryModel {
     let imageUrl: String?
     let ingredients: [String]
     let dateModified: Date?
+
 }
 
 extension CocktailRepositoryModel {

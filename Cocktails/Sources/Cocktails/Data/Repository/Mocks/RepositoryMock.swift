@@ -2,6 +2,7 @@ import Combine
 import Core
 
 public class RepositoryMock: RepositoryProtocol {
+
     func getCocktailDetails(id: String?) -> AnyPublisher<CocktailRepositoryModel, any Error> {
         if id == "11007" {
             Just(CocktailRepositoryModel.mock)
@@ -14,19 +15,21 @@ public class RepositoryMock: RepositoryProtocol {
     }
 
     func getCocktails(query: String) -> AnyPublisher<[CocktailSearchRepositoryModel], any Error> {
-        return Just([CocktailSearchRepositoryModel.mock])
+        Just([CocktailSearchRepositoryModel.mock])
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
 
     func getFilter(for type: FilterType) -> AnyPublisher<FilterRepositoryModel, any Error> {
-        return Just(FilterRepositoryModel.mock)
+        Just(FilterRepositoryModel.mock)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
 
-    func getFilteredCocktails(model: AppliedFiltersRepositoryModel) -> AnyPublisher<[CocktailSearchRepositoryModel], any Error> {
-        return Just([CocktailSearchRepositoryModel.mock])
+    func getFilteredCocktails(
+        model: AppliedFiltersRepositoryModel
+    ) -> AnyPublisher<[CocktailSearchRepositoryModel], any Error> {
+        Just([CocktailSearchRepositoryModel.mock])
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
