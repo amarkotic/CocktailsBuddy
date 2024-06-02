@@ -11,6 +11,9 @@ struct CocktailRepositoryModel {
     let imageUrl: String?
     let ingredients: [String]
     let dateModified: Date?
+}
+
+extension CocktailRepositoryModel {
 
     init(from model: CocktailNetworkDSModel) {
         self.id = model.id
@@ -23,6 +26,22 @@ struct CocktailRepositoryModel {
         self.ingredients = CocktailRepositoryModel.createIngredientsList(from: model)
         self.dateModified = DateFormatter.date(from: model.dateModified)
     }
+
+    init(from model: CocktailLocalDSModel) {
+        id = model.id
+        name = model.name
+        category = model.category
+        glass = model.glass
+        alcoholicType = model.alcoholicType
+        instructions = model.instructions
+        imageUrl = model.imageUrl
+        ingredients = model.ingredients.map { $0 }
+        dateModified = model.dateModified
+    }
+
+}
+
+extension CocktailRepositoryModel {
 
     static func createIngredientsList(from model: CocktailNetworkDSModel) -> [String] {
         var ingredients: [String] = []
@@ -56,22 +75,6 @@ struct CocktailRepositoryModel {
         }
 
         return ingredients
-    }
-
-}
-
-extension CocktailRepositoryModel {
-
-    init(from model: CocktailLocalDSModel) {
-        id = model.id
-        name = model.name
-        category = model.category
-        glass = model.glass
-        alcoholicType = model.alcoholicType
-        instructions = model.instructions
-        imageUrl = model.imageUrl
-        ingredients = model.ingredients.map { $0 }
-        dateModified = model.dateModified
     }
 
 }

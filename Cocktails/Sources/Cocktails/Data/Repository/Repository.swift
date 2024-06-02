@@ -4,7 +4,7 @@ import Dependencies
 class Repository: RepositoryProtocol, DependencyKey {
 
     static let liveValue: any RepositoryProtocol = Repository()
-    static let testValue: any RepositoryProtocol = Repository()
+    static let testValue: any RepositoryProtocol = RepositoryMock()
 
     @Dependency(\.networkDataSource) private var networkDataSource: NetworkDataSourceProtocol
     @Dependency(\.localDataSource) private var localDataSource: LocalDataSourceProtocol
