@@ -23,16 +23,16 @@ class NotificationManager: NotificationManagerProtocol, DependencyKey {
             let trigger = self.configureNotificationTrigger()
             let identifier = NotificationIdentifier.dailyReminder.rawValue
 
-            // Create the request and add it to the notification center
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error { Logger.shared.log(error: error) }
-            }
+            registerNotification(identifier: identifier, content: content, trigger: trigger)
         }
     }
 
-    // If user accessed any cocktail details, it gets saved to local DB. Fetch cocktail model from it to personalize PN
-    private func configureNotificationContent() -> UNMutableNotificationContent? {
+}
+
+// MARK: - Notification configuration
+private extension NotificationManager {
+
+    func configureNotificationContent() -> UNMutableNotificationContent? {
         guard
             let cocktail = localDataSource.getCocktail(id: nil),
             let cocktailName = cocktail.name
@@ -47,9 +47,21 @@ class NotificationManager: NotificationManagerProtocol, DependencyKey {
         return content
     }
 
-    // Trigger which fires each day at stated time
-    private func configureNotificationTrigger() -> UNCalendarNotificationTrigger {
+    func configureNotificationTrigger() -> UNCalendarNotificationTrigger {
         UNCalendarNotificationTrigger(dateMatching: DailyNotificationTime.time, repeats: true)
+    }
+
+}
+
+// MARK: - Notification registrattion
+private extension NotificationManager {
+
+    func registerNotification(identifier: String, content: UNNotificationContent, trigger: UNNotificationTrigger) {
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error { Logger.shared.log(error: error) }
+        }
     }
 
 }
