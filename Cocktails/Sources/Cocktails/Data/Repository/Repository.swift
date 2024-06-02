@@ -3,8 +3,8 @@ import Dependencies
 
 class Repository: RepositoryProtocol, DependencyKey {
 
-    static var liveValue: any RepositoryProtocol = Repository()
-    static var testValue: any RepositoryProtocol = Repository()
+    static let liveValue: any RepositoryProtocol = Repository()
+    static let testValue: any RepositoryProtocol = RepositoryMock()
 
     @Dependency(\.networkDataSource) private var networkDataSource: NetworkDataSourceProtocol
     @Dependency(\.localDataSource) private var localDataSource: LocalDataSourceProtocol
@@ -22,7 +22,6 @@ class Repository: RepositoryProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
-    // API doesn't retrieve an empty list, but nil instead when there are no drinks. In that case, map it manually to []
     func getCocktails(query: String) -> AnyPublisher<[CocktailSearchRepositoryModel], Error> {
         networkDataSource
             .getCocktails(query)
@@ -37,7 +36,6 @@ class Repository: RepositoryProtocol, DependencyKey {
             .eraseToAnyPublisher()
     }
 
-    // API doesn't retrieve an empty list, but nil instead when there are no drinks. In that case, map it manually to []
     func getFilteredCocktails(
         model: AppliedFiltersRepositoryModel
     ) -> AnyPublisher<[CocktailSearchRepositoryModel], Error> {
@@ -49,9 +47,9 @@ class Repository: RepositoryProtocol, DependencyKey {
 
 }
 
-extension Repository {
+private extension Repository {
 
-    fileprivate func fetchFromLocalDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
+    func fetchFromLocalDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
         if let model = localDataSource.getCocktail(id: id) {
             return Just(CocktailRepositoryModel(from: model))
                 .setFailureType(to: Error.self)
@@ -62,7 +60,7 @@ extension Repository {
         }
     }
 
-    fileprivate func fetchFromNetworkDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
+    func fetchFromNetworkDataSource(id: String?) -> AnyPublisher<CocktailRepositoryModel, Error> {
         networkDataSource
             .getCocktailDetails(id: id)
             .handleEvents(receiveOutput: { [weak self] cocktailResponse in
@@ -72,7 +70,7 @@ extension Repository {
             .eraseToAnyPublisher()
     }
 
-    fileprivate func saveToLocalDataSource(_ cocktailResponse: CocktailNetworkDSModel) {
+    func saveToLocalDataSource(_ cocktailResponse: CocktailNetworkDSModel) {
         let localModel = CocktailLocalDSModel(from: cocktailResponse)
         localDataSource.saveCocktail(model: localModel)
     }

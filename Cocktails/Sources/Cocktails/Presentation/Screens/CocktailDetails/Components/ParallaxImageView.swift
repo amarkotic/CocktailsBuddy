@@ -3,8 +3,8 @@ import Kingfisher
 
 struct ParallaxImageView: View {
 
-    private var imageUrl: URL?
-    private var defaultHeight: CGFloat
+    private let imageUrl: URL?
+    private let defaultHeight: CGFloat
 
     init(imageUrl: URL?, defaultHeight: CGFloat) {
         self.imageUrl = imageUrl

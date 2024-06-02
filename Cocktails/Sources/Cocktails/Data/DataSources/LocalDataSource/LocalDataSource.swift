@@ -7,8 +7,8 @@ import Core
 // It is simply a prototype for cocktail details model and could be used for other features as well in the future
 public class LocalDataSource: LocalDataSourceProtocol, DependencyKey {
 
-    public static var liveValue: any LocalDataSourceProtocol = LocalDataSource()
-    public static var testValue: any LocalDataSourceProtocol = LocalDataSource()
+    public static let liveValue: any LocalDataSourceProtocol = LocalDataSource()
+    public static let testValue: any LocalDataSourceProtocol = LocalDataSourceMock()
 
     // Get cocktail model from local DB - return specific model if id is not nil, and a random model if id is nil
     public func getCocktail(id: String?) -> CocktailLocalDSModel? {

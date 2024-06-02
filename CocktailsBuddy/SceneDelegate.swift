@@ -34,13 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         notificationManager.scheduleDailyNotification()
     }
 
-    private func requestNotificationPermission() {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-            if let error = error { Logger.shared.log(error: error) }
-        }
-    }
-
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -50,6 +43,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             mainCoordinator?.deepLinkToCocktailDetails(for: cocktailID)
         }
         completionHandler()
+    }
+
+}
+
+private extension SceneDelegate {
+
+    func requestNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
+            if let error = error { Logger.shared.log(error: error) }
+        }
     }
 
 }

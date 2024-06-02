@@ -2,8 +2,8 @@ import SwiftUI
 
 public struct HorizontalDivider: View {
 
-    private var color: Color
-    private var height: CGFloat
+    private let color: Color
+    private let height: CGFloat
 
     public init(color: Color = .divider, height: CGFloat = 1.0) {
         self.color = color

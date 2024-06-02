@@ -42,61 +42,31 @@ struct FiltersView: View {
     private func filterSections(_ model: FiltersModel) -> some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
-                categorySection(model.categoryFilterItems)
+                FilterSectionView(
+                    headerLabel: LocalizableStrings.category.localized,
+                    items: model.categoryFilterItems,
+                    selectedItem: $viewModel.category
+                )
 
                 HorizontalDivider()
 
-                glassSection(model.glassFilterItems)
+                FilterSectionView(
+                    headerLabel: LocalizableStrings.glass.localized,
+                    items: model.glassFilterItems,
+                    selectedItem: $viewModel.glass
+                )
 
                 HorizontalDivider()
 
-                alcoholSection(model.alcoholicFilterItems)
+                FilterSectionView(
+                    headerLabel: LocalizableStrings.alcohol.localized,
+                    items: model.alcoholicFilterItems,
+                    selectedItem: $viewModel.alcohol
+                )
             }
             .padding([.top, .horizontal], 24)
             .padding(.bottom, 60)
         }
-    }
-
-    private func categorySection(_ items: [String]) -> some View {
-        MainSectionView(
-            headerLabel: LocalizableStrings.category.localized,
-            compositionType: .vertical(alignment: .leading)) {
-                VStack(spacing: 16) {
-                    ForEach(items, id: \.self) { item in
-                        RadioButton(title: item, isSelected: viewModel.appliedFilters.category == item) {
-                            viewModel.appliedFilters.category = item
-                        }
-                    }
-                }
-            }
-    }
-
-    private func glassSection(_ items: [String]) -> some View {
-        MainSectionView(
-            headerLabel: LocalizableStrings.glass.localized,
-            compositionType: .vertical(alignment: .leading)) {
-                VStack(spacing: 16) {
-                    ForEach(items, id: \.self) { item in
-                        RadioButton(title: item, isSelected: viewModel.appliedFilters.glass == item) {
-                            viewModel.appliedFilters.glass = item
-                        }
-                    }
-                }
-            }
-    }
-
-    private func alcoholSection(_ items: [String]) -> some View {
-        MainSectionView(
-            headerLabel: LocalizableStrings.alcohol.localized,
-            compositionType: .vertical(alignment: .leading)) {
-                VStack(spacing: 16) {
-                    ForEach(items, id: \.self) { item in
-                        RadioButton(title: item, isSelected: viewModel.appliedFilters.alcohol == item) {
-                            viewModel.appliedFilters.alcohol = item
-                        }
-                    }
-                }
-            }
     }
 
     private var searchButton: some View {

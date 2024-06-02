@@ -26,7 +26,11 @@ class MainCoordinator: Coordinator {
         coordinator.showCocktailDetails(for: id)
     }
 
-    private func configureCocktailsCoordinator() -> CocktailsCoordinatorProtocol {
+}
+
+private extension MainCoordinator {
+
+    func configureCocktailsCoordinator() -> CocktailsCoordinatorProtocol {
         let cocktailsCoordinator = CocktailsCoordinator(navigationController: navigationController)
         childCoordinators.append(cocktailsCoordinator)
 

@@ -29,25 +29,33 @@ class BaseApiClient: BaseApiClientProtocol, DependencyKey {
         .flatMap { [weak self] request -> AnyPublisher<T, NetworkError> in
             guard let self else { return .empty() }
 
-            return self.httpClient
-                .publisher(request: request)
-                .map { $0.data }
-                .decode(type: T.self, decoder: JSONDecoder())
-                .mapError { error in
-                    Core.Logger.shared.log(error: error)
-
-                    switch error {
-                    case is URLError:
-                        return .networkError(error)
-                    case is DecodingError:
-                        return .decodingError(error)
-                    default:
-                        return .invalidResponse
-                    }
-                }
-                .eraseToAnyPublisher()
+            return self.executeAndReturn(request: request)
         }
         .eraseToAnyPublisher()
+    }
+
+}
+
+private extension BaseApiClient {
+
+    func executeAndReturn<T: Decodable>(request: URLRequest) -> AnyPublisher<T, NetworkError> {
+        httpClient
+            .publisher(request: request)
+            .map { $0.data }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .mapError { error in
+                Core.Logger.shared.log(error: error)
+
+                switch error {
+                case is URLError:
+                    return .networkError(error)
+                case is DecodingError:
+                    return .decodingError(error)
+                default:
+                    return .invalidResponse
+                }
+            }
+            .eraseToAnyPublisher()
     }
 
 }

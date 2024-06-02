@@ -3,9 +3,9 @@ import SwiftUI
 // Primary view to be used in navigation bar which offers title, leading and trailing bar buttons
 public struct PrimaryNavBarContent: View {
 
-    var title: String?
-    var leadingModel: NavBarButtonModel?
-    var trailingModel: NavBarButtonModel?
+    let title: String?
+    let leadingModel: NavBarButtonModel?
+    let trailingModel: NavBarButtonModel?
 
     public init(title: String? = nil, leadingModel: NavBarButtonModel? = nil, trailingModel: NavBarButtonModel? = nil) {
         self.title = title

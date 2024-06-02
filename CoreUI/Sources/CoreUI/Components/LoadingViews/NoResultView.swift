@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct NoResultView: View {
 
-    private var result: NoResultType
+    private let result: NoResultType
 
     public init(result: NoResultType) {
         self.result = result

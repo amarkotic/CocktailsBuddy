@@ -4,7 +4,7 @@ import SwiftUI
 // It takes any View as input, but PrimaryNavBarContent is designed to be used in most of the screens
 public struct NavigationBar<Content: View>: View {
 
-    private var content: Content
+    private let content: Content
 
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()

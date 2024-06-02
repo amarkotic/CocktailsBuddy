@@ -3,8 +3,8 @@ import Kingfisher
 
 struct CocktailCardView: View {
 
-    var model: CocktailCardModel
-    var action: () -> Void
+    let model: CocktailCardModel
+    let action: () -> Void
 
     var body: some View {
         HStack(spacing: 16) {

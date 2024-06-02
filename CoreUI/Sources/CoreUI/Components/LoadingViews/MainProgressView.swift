@@ -2,8 +2,8 @@ import SwiftUI
 
 public struct MainProgressView: View {
 
-    private var tint: Color
-    private var backgroundColor: Color
+    private let tint: Color
+    private let backgroundColor: Color
 
     public init(tint: Color = .primaryBlue, backgroundColor: Color = .primaryLightBlue) {
         self.tint = tint
